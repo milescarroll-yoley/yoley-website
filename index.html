@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Yoley — the free business app built for UK tradespeople. Quotes, invoices, expenses, job diary, card payments. No monthly fees, no lock-in.">
+  <title>Free Invoice &amp; Quote App for UK Tradespeople | Yoley</title>
+  <meta name="description" content="Yoley is the free iPhone app for UK tradespeople. Send quotes, invoices and take card payments at 1.49%. CIS, expenses and job diary included. No monthly fee.">
+  <meta name="keywords" content="free invoice app UK, tradesman app, quote app for tradespeople, sole trader invoice app, CIS app, tradesperson business app, Tap to Pay iPhone, free quoting software UK">
+  <meta name="author" content="Monek Limited">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="theme-color" content="#1A1F36">
-  <meta property="og:title" content="Yoley — Run Your Trade Business From Your Phone">
-  <meta property="og:description" content="Free forever. Quotes, invoices, expenses, CIS, card payments — all in one app built for UK trades.">
+  <link rel="canonical" href="https://yoley.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Invoice &amp; Quote App for UK Tradespeople | Yoley">
+  <meta property="og:description" content="Free iPhone business app for UK trades. Quotes, invoices, CIS, expenses, 1.49% card payments, Tap to Pay on iPhone. No monthly fee, no lock-in.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yoley.com">
-  <title>Yoley — Run Your Trade Business From Your Phone</title>
+  <meta property="og:url" content="https://yoley.com/">
+  <meta property="og:site_name" content="Yoley">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image" content="https://yoley.com/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Yoley — the free business app for UK tradespeople">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Invoice &amp; Quote App for UK Tradespeople | Yoley">
+  <meta name="twitter:description" content="Free iPhone app for UK trades. Quotes, invoices, CIS, expenses and card payments at 1.49%. No monthly fee.">
+  <meta name="twitter:image" content="https://yoley.com/social-card.png">
+  <meta name="twitter:image:alt" content="Yoley — the free business app for UK tradespeople">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -17,13 +37,78 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- JSON-LD: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Yoley",
+    "url": "https://yoley.com/",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "Invoicing",
+    "operatingSystem": "iOS",
+    "description": "Free iPhone business app for UK tradespeople. Quotes, invoices, expenses, CIS, job diary and card payments at 1.49%.",
+    "image": "https://yoley.com/social-card.png",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free plan",
+        "price": "0",
+        "priceCurrency": "GBP",
+        "description": "Unlimited quotes and invoices, expenses, CIS, job diary. Card payments at 1.49%."
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro plan",
+        "price": "9.99",
+        "priceCurrency": "GBP",
+        "description": "Tap to Pay on iPhone at 0.99%, Open Banking, WhatsApp enquiries, Pay by Bank."
+      }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Monek Limited",
+      "url": "https://yoley.com/"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Yoley",
+    "alternateName": "Yoley by Monek",
+    "url": "https://yoley.com/",
+    "logo": "https://yoley.com/yoley-logo-full.png",
+    "description": "Yoley is the free iPhone business app for UK tradespeople. Built by Monek Limited.",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Monek Limited",
+      "addressCountry": "GB"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite with SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Yoley",
+    "url": "https://yoley.com/",
+    "inLanguage": "en-GB"
+  }
+  </script>
 </head>
 <body>
 
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="#" class="nav-logo"><img src="yoley-logo-navbar.png" alt="Yoley" height="80"></a>
+      <a href="/" class="nav-logo" aria-label="Yoley home"><img src="yoley-logo-navbar.png" alt="Yoley logo" height="80" width="200"></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#features">Features</a></li>
         <li><a href="#comparison">Compare</a></li>
@@ -521,7 +606,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="nav-logo"><img src="yoley-logo-navbar.png" alt="Yoley" height="80"></a>
+          <a href="/" class="nav-logo" aria-label="Yoley home"><img src="yoley-logo-navbar.png" alt="Yoley logo" height="80" width="200"></a>
           <p>The free business app built for UK tradespeople. Quotes, invoices, expenses, payments &mdash; all in one place.</p>
         </div>
         <div class="footer-col">
@@ -545,24 +630,23 @@
         <div class="footer-col">
           <h4>Trades</h4>
           <ul>
-            <li><a href="#">Electricians</a></li>
-            <li><a href="#">Plumbers</a></li>
-            <li><a href="#">Builders</a></li>
-            <li><a href="#">Joiners</a></li>
-            <li><a href="#">Roofers</a></li>
+            <li><a href="#features">Electricians</a></li>
+            <li><a href="#features">Plumbers</a></li>
+            <li><a href="#features">Builders</a></li>
+            <li><a href="#features">Joiners</a></li>
+            <li><a href="#features">Roofers</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
           <ul>
-            <li><a href="/docs/privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="/docs/terms-of-service.html">Terms of Service</a></li>
-            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2025 Yoley Ltd. All rights reserved.</span>
+        <span>&copy; 2026 Yoley &mdash; a product of Monek Limited. All rights reserved.</span>
         <div class="footer-flag">
           <span>&#127468;&#127463;</span> Designed &amp; built in the UK
         </div>

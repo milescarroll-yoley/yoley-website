@@ -1,0 +1,19 @@
+# robots.txt for Yoley — https://yoley.com
+User-agent: *
+Allow: /
+Disallow: /docs/
+
+# Allow major AI crawlers (optional — remove lines to block)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://yoley.com/sitemap.xml
