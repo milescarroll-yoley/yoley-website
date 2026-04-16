@@ -126,20 +126,12 @@ a { text-decoration: none; color: inherit; }
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 24px;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 2px;
 }
 
 .nav-logo img {
-  height: 40px;
-  width: 40px;
-  border-radius: 8px;
+  height: 80px;
+  width: auto;
 }
-
-.nav-logo span { color: var(--yellow); }
 
 .nav-links {
   display: flex;
@@ -1097,6 +1089,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .footer-brand .nav-logo { margin-bottom: 12px; display: flex; }
+.footer-brand .nav-logo img { height: 60px; }
 
 .footer-brand p {
   font-size: 14px;
