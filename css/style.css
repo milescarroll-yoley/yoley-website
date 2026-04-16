@@ -1089,7 +1089,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .footer-brand .nav-logo { margin-bottom: 12px; display: flex; }
-.footer-brand .nav-logo img { height: 60px; }
+.footer-brand .nav-logo img { height: 50px; }
 
 .footer-brand p {
   font-size: 14px;
