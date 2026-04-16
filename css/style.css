@@ -124,10 +124,19 @@ a { text-decoration: none; color: inherit; }
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 24px;
   font-weight: 900;
   color: #fff;
   letter-spacing: 2px;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
 }
 
 .nav-logo span { color: var(--yellow); }
@@ -1087,7 +1096,7 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 48px;
 }
 
-.footer-brand .nav-logo { margin-bottom: 12px; display: block; }
+.footer-brand .nav-logo { margin-bottom: 12px; display: flex; }
 
 .footer-brand p {
   font-size: 14px;
