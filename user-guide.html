@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yoley Full User Guide — comprehensive documentation for all features including quotes, invoices, expenses, job diary, payments and more.">
+  <title>Full User Guide — Yoley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .guide-hero {
+      background: linear-gradient(165deg, var(--navy) 0%, var(--navy-tint) 100%);
+      padding: 120px 0 64px;
+      text-align: center;
+    }
+    .guide-hero h1 { color:#fff; font-size:clamp(28px,4vw,48px); font-weight:900; margin-bottom:12px; }
+    .guide-hero p  { color:rgba(255,255,255,0.65); font-size:18px; max-width:560px; margin:0 auto; }
+
+    .guide-breadcrumb {
+      display:flex; align-items:center; gap:8px;
+      font-size:13px; color:rgba(255,255,255,0.5);
+      margin-bottom:24px; justify-content:center;
+    }
+    .guide-breadcrumb a { color:var(--teal); }
+    .guide-breadcrumb span { color:rgba(255,255,255,0.3); }
+
+    .guide-nav-pills {
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:28px; justify-content:center;
+    }
+    .guide-nav-pills a {
+      padding:7px 18px; border-radius:100px; font-size:13px; font-weight:600;
+      border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7);
+      transition:all 0.2s;
+    }
+    .guide-nav-pills a:hover { background:rgba(255,255,255,0.1); color:#fff; }
+    .guide-nav-pills a.active { background:var(--teal); color:#fff; border-color:var(--teal); }
+
+    /* Two-column layout */
+    .guide-layout {
+      display:grid;
+      grid-template-columns: 260px 1fr;
+      gap:48px;
+      padding:64px 0 120px;
+      align-items:start;
+    }
+
+    /* Sticky sidebar */
+    .guide-sidebar {
+      position:sticky;
+      top:84px;
+    }
+    .sidebar-nav { list-style:none; }
+    .sidebar-nav li { margin-bottom:2px; }
+    .sidebar-nav a {
+      display:flex; align-items:center; gap:8px;
+      padding:9px 14px; border-radius:10px;
+      font-size:14px; font-weight:500; color:var(--mid-text);
+      transition:all 0.2s;
+    }
+    .sidebar-nav a:hover { background:rgba(0,194,168,0.08); color:var(--teal); }
+    .sidebar-nav a.active { background:var(--teal-tint); color:var(--teal); font-weight:700; }
+    .sidebar-nav .nav-icon { font-size:15px; }
+    .sidebar-section-label {
+      font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1.5px;
+      color:var(--mid-text); padding:16px 14px 6px; margin-top:8px;
+    }
+
+    /* Guide content */
+    .guide-content section {
+      margin-bottom:72px;
+      scroll-margin-top:96px;
+    }
+    .guide-content h2 {
+      font-size:28px; font-weight:800; color:var(--navy);
+      margin-bottom:8px; display:flex; align-items:center; gap:10px;
+    }
+    .guide-content h2 .section-icon { font-size:24px; }
+    .guide-content .section-intro {
+      font-size:16px; color:var(--mid-text); margin-bottom:32px;
+      padding-bottom:24px; border-bottom:1px solid #eee;
+      line-height:1.7;
+    }
+    .guide-content h3 {
+      font-size:18px; font-weight:700; color:var(--navy);
+      margin:32px 0 12px;
+    }
+    .guide-content p {
+      font-size:15px; color:var(--dark-text); line-height:1.7; margin-bottom:14px;
+    }
+
+    /* Step lists */
+    .steps-list { list-style:none; margin:0 0 24px; }
+    .steps-list li {
+      display:flex; gap:14px;
+      padding:12px 0; border-bottom:1px solid #f5f5f5;
+      font-size:14px; color:var(--dark-text); line-height:1.6;
+    }
+    .steps-list li:last-child { border:none; }
+    .step-num {
+      width:26px; height:26px; border-radius:50%;
+      background:var(--teal-tint); color:var(--teal);
+      font-size:12px; font-weight:800;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; margin-top:1px;
+    }
+
+    /* Info boxes */
+    .info-box {
+      padding:16px 20px; border-radius:12px; margin:20px 0;
+      font-size:14px; line-height:1.6;
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .info-box.tip   { background:var(--teal-tint); color:var(--teal); }
+    .info-box.note  { background:rgba(26,31,54,0.06); color:var(--navy); }
+    .info-box.pro   { background:var(--yellow-tint); color:var(--orange); }
+    .info-box.warn  { background:rgba(231,76,60,0.08); color:var(--red); }
+
+    /* Feature table */
+    .feature-table { width:100%; border-collapse:collapse; margin:20px 0; font-size:14px; }
+    .feature-table th { background:var(--navy); color:#fff; padding:12px 16px; text-align:left; font-weight:700; }
+    .feature-table th:first-child { border-radius:10px 0 0 0; }
+    .feature-table th:last-child  { border-radius:0 10px 0 0; }
+    .feature-table td { padding:11px 16px; border-bottom:1px solid #f0f0f0; color:var(--dark-text); vertical-align:top; }
+    .feature-table tr:last-child td { border-bottom:none; }
+    .feature-table tr:hover td { background:#fafafa; }
+
+    /* Status chips */
+    .status-chip {
+      display:inline-block; padding:3px 10px; border-radius:6px;
+      font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;
+    }
+    .status-draft    { background:#f0f0f0; color:var(--mid-text); }
+    .status-sent     { background:rgba(0,194,168,0.1); color:var(--teal); }
+    .status-opened   { background:rgba(242,138,26,0.12); color:var(--orange); }
+    .status-accepted { background:rgba(39,174,96,0.12); color:var(--green); }
+    .status-declined { background:rgba(231,76,60,0.1); color:var(--red); }
+    .status-expired  { background:#f0f0f0; color:var(--mid-text); }
+
+    @media (max-width:900px) {
+      .guide-layout { grid-template-columns:1fr; }
+      .guide-sidebar { position:static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">YO<span>LEY</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="user-guide.html">User Guide</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="index.html" class="nav-cta">Download Free</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="guide-hero">
+    <div class="container">
+      <div class="guide-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span style="color:rgba(255,255,255,0.8)">Full User Guide</span>
+      </div>
+      <div class="section-tag" style="justify-content:center; margin-bottom:16px;">&#128218; Documentation</div>
+      <h1>Full User Guide</h1>
+      <p>Comprehensive reference for every feature in Yoley &mdash; from sending your first quote to managing CIS subcontractors.</p>
+      <div class="guide-nav-pills">
+        <a href="quick-guide.html">Quick Start</a>
+        <a href="user-guide.html" class="active">Full Guide</a>
+        <a href="faq.html">FAQ</a>
+        <a href="support.html">Get Help</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN LAYOUT -->
+  <div class="container">
+    <div class="guide-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="guide-sidebar">
+        <div class="sidebar-section-label">Getting Started</div>
+        <ul class="sidebar-nav">
+          <li><a href="#getting-started" class="nav-icon">&#128640;</a><a href="#getting-started">Getting Started</a></li>
+          <li><a href="#dashboard">&#128200; Dashboard</a></li>
+        </ul>
+        <div class="sidebar-section-label">Core Features</div>
+        <ul class="sidebar-nav">
+          <li><a href="#quotes">&#128221; Quotes</a></li>
+          <li><a href="#invoices">&#128176; Invoices</a></li>
+          <li><a href="#expenses">&#128247; Expenses</a></li>
+          <li><a href="#job-diary">&#128197; Job Diary</a></li>
+          <li><a href="#customers">&#128101; Customers</a></li>
+          <li><a href="#payments">&#128179; Payments</a></li>
+          <li><a href="#cis">&#127974; CIS</a></li>
+        </ul>
+        <div class="sidebar-section-label">Pro Features</div>
+        <ul class="sidebar-nav">
+          <li><a href="#tap-to-pay">&#128242; Tap to Pay</a></li>
+          <li><a href="#open-banking">&#127974; Open Banking</a></li>
+          <li><a href="#whatsapp">&#128172; WhatsApp</a></li>
+          <li><a href="#capital">&#128176; Yoley Capital</a></li>
+        </ul>
+        <div class="sidebar-section-label">Account</div>
+        <ul class="sidebar-nav">
+          <li><a href="#security">&#128274; Security</a></li>
+          <li><a href="#settings">&#9881;&#65039; Settings</a></li>
+          <li><a href="#pricing-plans">&#128176; Plans</a></li>
+        </ul>
+      </aside>
+
+      <!-- CONTENT -->
+      <article class="guide-content">
+
+        <!-- GETTING STARTED -->
+        <section id="getting-started">
+          <h2><span class="section-icon">&#128640;</span> Getting Started</h2>
+          <p class="section-intro">Yoley is a free iOS app for UK tradespeople. Download it from the App Store and you&rsquo;re ready in under two minutes — no forms, no sales calls, no credit card required.</p>
+
+          <h3>Download &amp; Install</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Open the <strong>App Store</strong> on your iPhone and search for <strong>Yoley</strong>.</li>
+            <li><span class="step-num">2</span>Tap <strong>Get</strong> (it&rsquo;s free). The app installs in seconds.</li>
+            <li><span class="step-num">3</span>Open Yoley and follow the brief onboarding — enter your name, business name, and pick your trade.</li>
+            <li><span class="step-num">4</span>That&rsquo;s it. You&rsquo;re in.</li>
+          </ol>
+          <div class="info-box note">&#128241; Yoley currently requires iPhone running iOS 16 or later. iPad support is coming soon.</div>
+
+          <h3>Setting Up Your Business Profile</h3>
+          <p>Tap the <strong>burger menu</strong> (three lines, top left on any screen) and select <strong>Settings</strong>. From here you can set:</p>
+          <ul class="steps-list">
+            <li><span class="step-num">&#9679;</span><div><strong>Business name</strong> &mdash; appears on all quotes and invoices.</div></li>
+            <li><span class="step-num">&#9679;</span><div><strong>Business address</strong> &mdash; shown on quote footers for HMRC compliance.</div></li>
+            <li><span class="step-num">&#9679;</span><div><strong>Logo</strong> &mdash; upload your company logo to brand your quotes and invoices.</div></li>
+            <li><span class="step-num">&#9679;</span><div><strong>VAT number</strong> &mdash; if you&rsquo;re VAT registered, add your number here and it appears on all documents.</div></li>
+            <li><span class="step-num">&#9679;</span><div><strong>Payment terms</strong> &mdash; set your default payment due date (e.g. 14 or 30 days).</div></li>
+          </ul>
+        </section>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard">
+          <h2><span class="section-icon">&#128200;</span> Dashboard</h2>
+          <p class="section-intro">The Dashboard is your home screen &mdash; a live overview of how your business is performing today, this week and this month.</p>
+
+          <h3>KPI Cards</h3>
+          <p>The four KPI tiles at the top show:</p>
+          <table class="feature-table">
+            <thead><tr><th>Tile</th><th>What it shows</th></tr></thead>
+            <tbody>
+              <tr><td>&#128176; This month</td><td>Total revenue invoiced (paid + outstanding) in the current calendar month.</td></tr>
+              <tr><td>&#128221; Open quotes</td><td>Quotes with status Sent or Opened that are awaiting customer response.</td></tr>
+              <tr><td>&#9989; Jobs done</td><td>Jobs marked as complete this month.</td></tr>
+              <tr><td>&#128184; Expenses</td><td>Total expenses logged this month across all categories.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Today&rsquo;s Jobs</h3>
+          <p>The lower section shows any jobs scheduled for today. Tap a job to open the full job detail, including map and commute time.</p>
+        </section>
+
+        <!-- QUOTES -->
+        <section id="quotes">
+          <h2><span class="section-icon">&#128221;</span> Quotes</h2>
+          <p class="section-intro">Create professional, branded quotes in seconds. Yoley tracks each quote through its full lifecycle from draft to accepted, and handles customer approval — even when it happens over the phone.</p>
+
+          <h3>Creating a Quote</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Tap the <strong>Quotes</strong> tab &rarr; <strong>+</strong> (top right).</li>
+            <li><span class="step-num">2</span>Search for an existing customer or tap <strong>New Customer</strong> to add one on the fly.</li>
+            <li><span class="step-num">3</span>Enter a job title (e.g. &ldquo;Full bathroom refit&rdquo;). Add a reference number if needed.</li>
+            <li><span class="step-num">4</span>Tap <strong>Add Line Item</strong> to add labour, materials, or use a <strong>Kit Bundle</strong>.</li>
+            <li><span class="step-num">5</span>Optionally add notes, photos or a validity expiry date.</li>
+            <li><span class="step-num">6</span>Tap <strong>Save</strong> to keep as a draft, or <strong>Send</strong> to deliver immediately.</li>
+          </ol>
+          <div class="info-box tip">&#128161; <span><strong>Kit Bundles</strong> let you save common job packages (e.g. &ldquo;Standard boiler service&rdquo;) and add them with a single tap. Set up bundles in Settings &rarr; Kit Bundles.</span></div>
+
+          <h3>Quote Statuses</h3>
+          <table class="feature-table">
+            <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td><span class="status-chip status-draft">Draft</span></td><td>Saved but not yet sent to the customer.</td></tr>
+              <tr><td><span class="status-chip status-sent">Sent</span></td><td>Delivered to the customer via email or SMS.</td></tr>
+              <tr><td><span class="status-chip status-opened">Opened</span></td><td>Customer has opened the quote link.</td></tr>
+              <tr><td><span class="status-chip status-accepted">Accepted</span></td><td>Customer has accepted &mdash; ready to schedule and invoice.</td></tr>
+              <tr><td><span class="status-chip status-declined">Declined</span></td><td>Customer declined the quote.</td></tr>
+              <tr><td><span class="status-chip status-expired">Expired</span></td><td>Past the validity date without response.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Manually Approving a Quote</h3>
+          <p>When a customer approves over the phone, via text or by any other method not captured in the app, you can record the approval manually:</p>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Open the quote from the Quotes list.</li>
+            <li><span class="step-num">2</span>Tap the green <strong>Manually Approve</strong> button next to the status badge at the top of the screen.</li>
+            <li><span class="step-num">3</span>Select how the customer approved: <strong>Phone, Text, Email,</strong> or <strong>Other</strong>.</li>
+            <li><span class="step-num">4</span>Optionally add a comment (e.g. &ldquo;Agreed to proceed, start date 15th&rdquo;).</li>
+            <li><span class="step-num">5</span>Tap <strong>Confirm Approval</strong>.</li>
+          </ol>
+          <div class="info-box tip">&#128161; <span>The comment you add during manual approval is automatically carried through as a note on the job when you schedule it.</span></div>
+
+          <h3>Sending a Quote</h3>
+          <p>From any quote, tap <strong>Send</strong>. Choose to deliver by:</p>
+          <ul class="steps-list">
+            <li><span class="step-num">&#9993;</span><strong>Email</strong> &mdash; sends a formatted email with a link to the branded quote page.</li>
+            <li><span class="step-num">&#128172;</span><strong>SMS</strong> &mdash; sends a short message with the quote link.</li>
+            <li><span class="step-num">&#128279;</span><strong>Share Link</strong> &mdash; copies the link so you can share via WhatsApp or any other channel.</li>
+          </ul>
+        </section>
+
+        <!-- INVOICES -->
+        <section id="invoices">
+          <h2><span class="section-icon">&#128176;</span> Invoices</h2>
+          <p class="section-intro">Invoices in Yoley include a payment link by default so customers can pay online as soon as they open the invoice &mdash; no chasing required.</p>
+
+          <h3>Converting a Quote to Invoice</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Open an <span class="status-chip status-accepted">Accepted</span> quote.</li>
+            <li><span class="step-num">2</span>Tap <strong>Convert to Invoice</strong> at the bottom of the screen.</li>
+            <li><span class="step-num">3</span>All line items, customer details and notes copy across automatically.</li>
+            <li><span class="step-num">4</span>Set a <strong>due date</strong> (your default payment terms apply, but you can override).</li>
+            <li><span class="step-num">5</span>Tap <strong>Send Invoice</strong>.</li>
+          </ol>
+
+          <h3>Creating a Standalone Invoice</h3>
+          <p>You don&rsquo;t need a quote first. Tap <strong>Invoices</strong> &rarr; <strong>+</strong> and fill in the customer and line items directly.</p>
+
+          <h3>Payment Links</h3>
+          <p>Every invoice includes a secure payment link. When your customer taps the link, they can pay by card at <strong>1.49%</strong> (Free plan) or <strong>0.99%</strong> (Pro). Funds settle within 1&ndash;2 working days.</p>
+          <div class="info-box note">&#128274; Payments are processed by Monek, a UK-regulated payment provider. Card data never touches Yoley&rsquo;s systems.</div>
+        </section>
+
+        <!-- EXPENSES -->
+        <section id="expenses">
+          <h2><span class="section-icon">&#128247;</span> Expenses</h2>
+          <p class="section-intro">Track every business expense. Snap a receipt and Yoley&rsquo;s on-device OCR extracts the amount, VAT and supplier &mdash; then files it under the correct HMRC SA103 box automatically.</p>
+
+          <h3>Scanning a Receipt</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Tap <strong>Expenses</strong> &rarr; <strong>Scan Receipt</strong> (camera icon).</li>
+            <li><span class="step-num">2</span>Hold your phone over the receipt. OCR runs on-device and extracts the total, VAT amount and supplier name.</li>
+            <li><span class="step-num">3</span>Review the extracted values &mdash; you can edit any field if the scan missed something.</li>
+            <li><span class="step-num">4</span>Choose an <strong>HMRC category</strong> from the list.</li>
+            <li><span class="step-num">5</span>Tap <strong>Save</strong>.</li>
+          </ol>
+          <div class="info-box tip">&#128247; <span>All OCR processing happens <strong>on your device</strong>. Your receipt images are not uploaded anywhere.</span></div>
+
+          <h3>HMRC SA103 Categories</h3>
+          <table class="feature-table">
+            <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td>Materials &amp; stock</td><td>Pipes, fittings, timber, electrical parts</td></tr>
+              <tr><td>Subcontractors</td><td>Labour payments to subbies</td></tr>
+              <tr><td>Fuel &amp; mileage</td><td>Diesel/petrol for work van</td></tr>
+              <tr><td>Tools &amp; equipment</td><td>Power tools, hand tools, safety gear</td></tr>
+              <tr><td>Vehicle costs</td><td>MOT, servicing, insurance</td></tr>
+              <tr><td>Phone &amp; internet</td><td>Mobile contract, broadband for work</td></tr>
+              <tr><td>Clothing &amp; PPE</td><td>Work wear, hi-vis, boots</td></tr>
+              <tr><td>Other expenses</td><td>Anything else that doesn&rsquo;t fit a specific box</td></tr>
+            </tbody>
+          </table>
+          <div class="info-box note">&#128221; <span>At tax time, Yoley produces an expense summary organised by SA103 box. Share it directly with your accountant or use it to complete your self-assessment.</span></div>
+        </section>
+
+        <!-- JOB DIARY -->
+        <section id="job-diary">
+          <h2><span class="section-icon">&#128197;</span> Job Diary</h2>
+          <p class="section-intro">The Job Diary shows a 14-day rolling calendar of your scheduled work. Schedule jobs from accepted quotes or create standalone appointments. Each job shows the customer location on a map with live commute time from where you are.</p>
+
+          <h3>Scheduling a Job</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Tap <strong>Job Diary</strong> &rarr; <strong>Schedule Job</strong> (top right).</li>
+            <li><span class="step-num">2</span>The sheet shows three options: accepted quotes ready to schedule, unaccepted quotes you can approve on the spot, and <strong>New Job (No Quote)</strong>.</li>
+            <li><span class="step-num">3</span>Select a quote or tap New Job.</li>
+            <li><span class="step-num">4</span>Set the <strong>start time</strong> and <strong>end time</strong>. Add or edit any job notes.</li>
+            <li><span class="step-num">5</span>Tap <strong>Save Job</strong>.</li>
+          </ol>
+
+          <h3>Approving a Quote from the Job Diary</h3>
+          <p>If a quote hasn&rsquo;t been accepted yet but the customer has verbally confirmed, tap it in the schedule sheet and choose <strong>Approve &amp; Schedule</strong>. Select the approval method (Phone, Text, Email, Other) and add a comment before continuing to the schedule form.</p>
+
+          <h3>Job Detail &amp; Map</h3>
+          <p>Tap any job in the diary to open its full detail view. This includes:</p>
+          <ul class="steps-list">
+            <li><span class="step-num">&#128205;</span>An <strong>interactive map</strong> showing the job&rsquo;s address (from the customer record).</li>
+            <li><span class="step-num">&#128664;</span><strong>Driving commute time</strong> from your current location, calculated via Apple Maps.</li>
+            <li><span class="step-num">&#128279;</span>An <strong>Open in Apple Maps</strong> button for turn-by-turn directions.</li>
+            <li><span class="step-num">&#128466;</span>Job notes, status, linked quote and customer details.</li>
+          </ul>
+
+          <h3>Weather Forecast</h3>
+          <div class="info-box pro">&#11088; Pro feature &mdash; <span>A 5-day weather forecast is shown at the top of the Job Diary. Each day shows the icon, high and low temperature. Useful for planning outdoor work in advance.</span></div>
+        </section>
+
+        <!-- CUSTOMERS -->
+        <section id="customers">
+          <h2><span class="section-icon">&#128101;</span> Customers</h2>
+          <p class="section-intro">Yoley&rsquo;s CRM keeps every customer&rsquo;s contact details, address, job history, quotes and invoices in one place.</p>
+
+          <h3>Adding a Customer</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Tap <strong>Customers</strong> &rarr; <strong>+</strong>.</li>
+            <li><span class="step-num">2</span>Enter first name, last name, phone number and email address.</li>
+            <li><span class="step-num">3</span>Add the customer&rsquo;s address (used for job location maps and quote footers).</li>
+            <li><span class="step-num">4</span>Tap <strong>Save</strong>.</li>
+          </ol>
+
+          <h3>Customer History</h3>
+          <p>Opening a customer record shows the full history: all quotes sent, all invoices raised, all jobs completed, and total revenue from that customer.</p>
+        </section>
+
+        <!-- PAYMENTS -->
+        <section id="payments">
+          <h2><span class="section-icon">&#128179;</span> Payments</h2>
+          <p class="section-intro">Yoley processes card payments via Monek, a UK FCA-regulated payment provider. You never need a card reader &mdash; payment links and Tap to Pay work entirely through your iPhone.</p>
+
+          <h3>Payment Rates</h3>
+          <table class="feature-table">
+            <thead><tr><th>Method</th><th>Free Plan</th><th>Pro Plan</th></tr></thead>
+            <tbody>
+              <tr><td>Payment link (card online)</td><td>1.49%</td><td>1.49%</td></tr>
+              <tr><td>Tap to Pay on iPhone</td><td>&mdash;</td><td>0.99%</td></tr>
+              <tr><td>Pay by Bank (Open Banking)</td><td>&mdash;</td><td>Free</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Setting Up Card Payments</h3>
+          <p>First-time setup requires identity verification (takes 2&ndash;3 minutes). Go to <strong>Settings &rarr; Card Payments</strong> and follow the prompts. Once verified, payment links and Tap to Pay are active immediately.</p>
+        </section>
+
+        <!-- CIS -->
+        <section id="cis">
+          <h2><span class="section-icon">&#127974;</span> CIS &mdash; Construction Industry Scheme</h2>
+          <p class="section-intro">Yoley supports CIS subcontractor management for contractors who engage other tradespeople on site. Track UTR numbers, deduction rates and payment records.</p>
+
+          <h3>Adding a CIS Subcontractor</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Tap <strong>Customers</strong> and find or add the subcontractor.</li>
+            <li><span class="step-num">2</span>Toggle <strong>CIS Subcontractor</strong> on.</li>
+            <li><span class="step-num">3</span>Enter their <strong>UTR number</strong> and select the deduction rate (20% standard, 30% unverified, or 0% gross payment status).</li>
+            <li><span class="step-num">4</span>Save. CIS deduction is calculated automatically on any invoice raised against them.</li>
+          </ol>
+          <div class="info-box warn">&#9888;&#65039; <span>Yoley helps you track CIS but does not submit returns to HMRC on your behalf. Consult an accountant for CIS submission.</span></div>
+        </section>
+
+        <!-- TAP TO PAY -->
+        <section id="tap-to-pay">
+          <h2><span class="section-icon">&#128242;</span> Tap to Pay on iPhone</h2>
+          <div class="info-box pro" style="margin-bottom:24px;">&#11088; Pro feature</div>
+          <p class="section-intro">Turn your iPhone into a card machine. Accept contactless Visa, Mastercard and Apple Pay at 0.99% &mdash; no card reader, no additional hardware.</p>
+
+          <h3>Taking a Payment on Site</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Open the invoice &rarr; tap <strong>Collect Payment</strong> &rarr; <strong>Tap to Pay</strong>.</li>
+            <li><span class="step-num">2</span>Enter the amount (defaults to the invoice total).</li>
+            <li><span class="step-num">3</span>Present your iPhone to the customer. They tap their card, phone or watch.</li>
+            <li><span class="step-num">4</span>Payment confirmed. Invoice automatically marks as Paid.</li>
+          </ol>
+          <div class="info-box note">&#128241; Tap to Pay requires iPhone XS or later running iOS 16+. No account or card reader is required beyond a Yoley Pro subscription.</div>
+        </section>
+
+        <!-- OPEN BANKING -->
+        <section id="open-banking">
+          <h2><span class="section-icon">&#127974;</span> Open Banking</h2>
+          <div class="info-box pro" style="margin-bottom:24px;">&#11088; Pro feature</div>
+          <p class="section-intro">Connect your business bank account to Yoley. Incoming payments are automatically matched to outstanding invoices so your books stay up to date without manual entry.</p>
+
+          <h3>Connecting Your Bank</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Go to <strong>Settings &rarr; Open Banking</strong>.</li>
+            <li><span class="step-num">2</span>Find your bank from the list (supports all major UK banks).</li>
+            <li><span class="step-num">3</span>Authorise read-only access via your bank&rsquo;s own app or website. Yoley never sees or stores your banking credentials.</li>
+            <li><span class="step-num">4</span>Transactions sync automatically. Yoley highlights any that match open invoices.</li>
+          </ol>
+        </section>
+
+        <!-- WHATSAPP -->
+        <section id="whatsapp">
+          <h2><span class="section-icon">&#128172;</span> WhatsApp &amp; Social Enquiries</h2>
+          <div class="info-box pro" style="margin-bottom:24px;">&#11088; Pro feature</div>
+          <p class="section-intro">Capture new job enquiries from WhatsApp, Facebook, Instagram and Google directly into your Yoley pipeline. Never lose a lead in a DM again.</p>
+          <p>Once configured, enquiries from connected channels appear as leads in the <strong>Pipeline</strong> view. Tap a lead to review the message, create a customer record and convert it into a quote &mdash; all without leaving Yoley.</p>
+        </section>
+
+        <!-- YOLEY CAPITAL -->
+        <section id="capital">
+          <h2><span class="section-icon">&#128176;</span> Yoley Capital</h2>
+          <div class="info-box pro" style="margin-bottom:24px;">&#11088; Pro feature</div>
+          <p class="section-intro">Yoley Capital provides short-term cash advances to help you bridge the gap between starting a big job and getting paid. Advances are based on your invoicing history within Yoley.</p>
+          <p>To see if you&rsquo;re eligible, go to <strong>Settings &rarr; Yoley Capital</strong>. Eligibility and available amounts update as your transaction history grows.</p>
+        </section>
+
+        <!-- SECURITY -->
+        <section id="security">
+          <h2><span class="section-icon">&#128274;</span> Security</h2>
+          <p class="section-intro">Yoley uses Apple&rsquo;s built-in security features to keep your business data private on your device.</p>
+
+          <h3>Face ID / Touch ID App Lock</h3>
+          <ol class="steps-list">
+            <li><span class="step-num">1</span>Tap the <strong>burger menu</strong> (top left) &rarr; scroll down to <strong>App Lock</strong>.</li>
+            <li><span class="step-num">2</span>Toggle <strong>App Lock</strong> on.</li>
+            <li><span class="step-num">3</span>Next time you open Yoley, you&rsquo;ll be asked to authenticate with Face ID or Touch ID before the app opens.</li>
+          </ol>
+          <div class="info-box tip">&#128274; <span>If biometrics fail (e.g. your face isn&rsquo;t recognised), the app falls back to your iPhone passcode.</span></div>
+
+          <h3>CloudKit Sync &amp; Backup</h3>
+          <p>All your data is automatically backed up and synced via <strong>Apple CloudKit</strong>. Your data is stored in your personal iCloud account &mdash; Yoley&rsquo;s servers never hold your business data. If you get a new iPhone, sign in with the same Apple ID and everything restores automatically.</p>
+        </section>
+
+        <!-- SETTINGS -->
+        <section id="settings">
+          <h2><span class="section-icon">&#9881;&#65039;</span> Settings</h2>
+          <p class="section-intro">Access Settings from the burger menu (top left on any screen).</p>
+          <table class="feature-table">
+            <thead><tr><th>Setting</th><th>What you can do</th></tr></thead>
+            <tbody>
+              <tr><td>Business Profile</td><td>Name, address, logo, VAT number, phone, email</td></tr>
+              <tr><td>Kit Bundles</td><td>Create, edit and delete saved job packages</td></tr>
+              <tr><td>Payment Terms</td><td>Default invoice payment period (days)</td></tr>
+              <tr><td>Card Payments</td><td>Onboard with Monek, view payout schedule</td></tr>
+              <tr><td>Open Banking</td><td>Connect / disconnect bank account (Pro)</td></tr>
+              <tr><td>App Lock</td><td>Enable / disable Face ID &amp; Touch ID protection</td></tr>
+              <tr><td>Notifications</td><td>Quote opened, invoice paid, job reminders</td></tr>
+              <tr><td>Subscription</td><td>Upgrade to Pro, manage or cancel subscription</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- PRICING PLANS -->
+        <section id="pricing-plans">
+          <h2><span class="section-icon">&#128176;</span> Plans &amp; Pricing</h2>
+          <p class="section-intro">Yoley has two plans. The Free plan gives you everything a sole trader needs. Pro adds Tap to Pay, Open Banking, WhatsApp enquiries and more.</p>
+          <table class="feature-table">
+            <thead><tr><th>Feature</th><th>Free</th><th>Pro &mdash; &pound;9.99/mo</th></tr></thead>
+            <tbody>
+              <tr><td>Unlimited quotes &amp; invoices</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Receipt OCR &amp; expenses</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Job diary &amp; scheduling</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Customer CRM</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>CIS management</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Payment links (1.49%)</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Face ID protection</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>CloudKit sync &amp; backup</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Weather forecast (5-day)</td><td>&mdash;</td><td>&#10003;</td></tr>
+              <tr><td>Tap to Pay (0.99%)</td><td>&mdash;</td><td>&#10003;</td></tr>
+              <tr><td>Open Banking</td><td>&mdash;</td><td>&#10003;</td></tr>
+              <tr><td>WhatsApp enquiries</td><td>&mdash;</td><td>&#10003;</td></tr>
+              <tr><td>Yoley Capital</td><td>&mdash;</td><td>&#10003;</td></tr>
+              <tr><td>Purchase orders</td><td>&mdash;</td><td>&#10003;</td></tr>
+              <tr><td>Priority support</td><td>&mdash;</td><td>&#10003;</td></tr>
+            </tbody>
+          </table>
+          <div class="info-box tip">&#128161; <span>Pro comes with a <strong>free trial</strong>. You can cancel any time through the App Store with no penalty &mdash; your data is always yours.</span></div>
+        </section>
+
+      </article>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">YO<span>LEY</span></a>
+          <p>The free business app built for UK tradespeople.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="quick-guide.html">Quick Start</a></li>
+            <li><a href="user-guide.html">Full User Guide</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="support.html">Support Agent</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#comparison">Compare</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/docs/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="/docs/terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Yoley Ltd. All rights reserved.</span>
+        <div class="footer-flag"><span>&#127468;&#127463;</span> Designed &amp; built in the UK</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Highlight active sidebar link on scroll
+    (function(){
+      var sections = document.querySelectorAll('.guide-content section[id]');
+      var links = document.querySelectorAll('.sidebar-nav a[href^="#"]');
+      window.addEventListener('scroll', function(){
+        var scrollPos = window.scrollY + 120;
+        sections.forEach(function(sec){
+          if(sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos){
+            links.forEach(function(l){ l.classList.remove('active'); });
+            var active = document.querySelector('.sidebar-nav a[href="#'+sec.id+'"]');
+            if(active) active.classList.add('active');
+          }
+        });
+      }, {passive:true});
+    })();
+  </script>
+</body>
+</html>

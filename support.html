@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yoley Support — ask our AI support agent anything about the app. Get instant answers about quotes, invoices, payments, CIS and more.">
+  <title>Support — Yoley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { overflow-x:hidden; }
+
+    /* Hero */
+    .support-hero {
+      background: linear-gradient(165deg, var(--navy) 0%, var(--navy-tint) 100%);
+      padding: 100px 0 40px;
+      text-align: center;
+    }
+    .support-hero h1 { color:#fff; font-size:clamp(24px,3.5vw,40px); font-weight:900; margin-bottom:8px; }
+    .support-hero p  { color:rgba(255,255,255,0.6); font-size:16px; }
+
+    .guide-breadcrumb {
+      display:flex; align-items:center; gap:8px;
+      font-size:13px; color:rgba(255,255,255,0.5);
+      margin-bottom:20px; justify-content:center;
+    }
+    .guide-breadcrumb a { color:var(--teal); }
+    .guide-breadcrumb span { color:rgba(255,255,255,0.3); }
+
+    /* Chat layout */
+    .chat-wrap {
+      max-width:780px; margin:0 auto;
+      padding:0 24px 100px;
+    }
+
+    /* Agent header card */
+    .agent-card {
+      display:flex; align-items:center; gap:16px;
+      background:#fff; border-radius:20px; padding:20px 24px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.08);
+      margin-top:-24px; margin-bottom:24px; position:relative; z-index:2;
+    }
+    .agent-avatar {
+      width:52px; height:52px; border-radius:50%;
+      background:linear-gradient(135deg, var(--teal), var(--navy));
+      display:flex; align-items:center; justify-content:center;
+      font-size:22px; flex-shrink:0;
+    }
+    .agent-info h3 { font-size:16px; font-weight:800; color:var(--navy); margin-bottom:2px; }
+    .agent-info p  { font-size:13px; color:var(--mid-text); }
+    .agent-status {
+      margin-left:auto; display:flex; align-items:center; gap:6px;
+      font-size:12px; font-weight:600; color:var(--green);
+    }
+    .agent-status::before {
+      content:''; width:8px; height:8px; border-radius:50%;
+      background:var(--green); display:inline-block;
+      box-shadow:0 0 0 2px rgba(39,174,96,0.2);
+    }
+
+    /* Chat window */
+    .chat-window {
+      background:#fff; border-radius:20px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.06);
+      min-height:420px; max-height:520px;
+      overflow-y:auto; padding:24px;
+      display:flex; flex-direction:column; gap:16px;
+      scroll-behavior:smooth;
+    }
+
+    /* Messages */
+    .msg {
+      display:flex; gap:12px; align-items:flex-start;
+      max-width:88%;
+    }
+    .msg.user { flex-direction:row-reverse; margin-left:auto; }
+
+    .msg-avatar {
+      width:32px; height:32px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:14px;
+    }
+    .msg.agent .msg-avatar {
+      background:linear-gradient(135deg, var(--teal), var(--navy));
+    }
+    .msg.user .msg-avatar {
+      background:var(--yellow); color:var(--navy); font-size:12px; font-weight:800;
+    }
+
+    .msg-bubble {
+      padding:14px 18px; border-radius:18px;
+      font-size:14px; line-height:1.65;
+    }
+    .msg.agent .msg-bubble {
+      background:var(--light-grey); color:var(--dark-text);
+      border-top-left-radius:4px;
+    }
+    .msg.user .msg-bubble {
+      background:var(--navy); color:#fff;
+      border-top-right-radius:4px;
+    }
+    .msg-bubble strong { font-weight:700; }
+    .msg-bubble ul { padding-left:18px; margin:8px 0; }
+    .msg-bubble li { margin-bottom:4px; }
+    .msg-bubble .guide-link {
+      display:inline-flex; align-items:center; gap:4px;
+      color:var(--teal); font-weight:600; margin-top:8px;
+      font-size:13px; text-decoration:underline;
+    }
+
+    /* Typing indicator */
+    .typing-bubble {
+      background:var(--light-grey); border-radius:18px;
+      border-top-left-radius:4px;
+      padding:14px 18px; width:60px;
+      display:none;
+    }
+    .typing-dots {
+      display:flex; gap:5px; align-items:center;
+    }
+    .typing-dots span {
+      width:7px; height:7px; border-radius:50%;
+      background:var(--mid-text); animation:bounce 1.2s infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay:0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay:0.4s; }
+    @keyframes bounce {
+      0%,80%,100% { transform:translateY(0); }
+      40%          { transform:translateY(-7px); }
+    }
+
+    /* Quick replies */
+    .quick-replies {
+      display:flex; flex-wrap:wrap; gap:8px;
+      padding:12px 0 4px;
+    }
+    .qr-btn {
+      padding:9px 16px; border-radius:100px;
+      font-size:13px; font-weight:600;
+      border:1.5px solid var(--teal); color:var(--teal);
+      background:#fff; cursor:pointer; font-family:var(--font);
+      transition:all 0.2s; white-space:nowrap;
+    }
+    .qr-btn:hover { background:var(--teal); color:#fff; }
+
+    /* Category chips */
+    .topic-chips {
+      margin:0 0 12px;
+    }
+    .topic-chips p {
+      font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px;
+      color:var(--mid-text); margin-bottom:10px;
+    }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; }
+    .chip {
+      padding:7px 14px; border-radius:10px;
+      font-size:12px; font-weight:600;
+      background:var(--light-grey); color:var(--dark-text);
+      cursor:pointer; font-family:var(--font);
+      border:1.5px solid transparent;
+      transition:all 0.2s;
+    }
+    .chip:hover { border-color:var(--teal); color:var(--teal); }
+
+    /* Input area */
+    .chat-input-wrap {
+      background:#fff; border-radius:20px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.06);
+      padding:16px 20px; margin-top:12px;
+      display:flex; gap:12px; align-items:flex-end;
+    }
+    .chat-input {
+      flex:1; border:none; outline:none; resize:none;
+      font-size:15px; font-family:var(--font); color:var(--dark-text);
+      background:transparent; max-height:120px; line-height:1.5;
+      min-height:24px;
+    }
+    .chat-input::placeholder { color:var(--mid-text); }
+    .send-btn {
+      width:44px; height:44px; border-radius:14px;
+      background:var(--teal); border:none; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px; flex-shrink:0; transition:background 0.2s, transform 0.1s;
+    }
+    .send-btn:hover { background:#00a891; }
+    .send-btn:active { transform:scale(0.95); }
+    .send-btn:disabled { background:var(--light-grey); cursor:not-allowed; }
+
+    /* Related links */
+    .related-resources {
+      background:#fff; border-radius:20px; padding:24px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.06); margin-top:24px;
+    }
+    .related-resources h4 {
+      font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:1.5px;
+      color:var(--mid-text); margin-bottom:16px;
+    }
+    .resource-links { display:flex; flex-wrap:wrap; gap:10px; }
+    .resource-link {
+      display:flex; align-items:center; gap:8px;
+      padding:10px 16px; border-radius:12px;
+      background:var(--light-grey); color:var(--dark-text);
+      font-size:13px; font-weight:600; transition:all 0.2s;
+    }
+    .resource-link:hover { background:var(--teal-tint); color:var(--teal); }
+
+    @media(max-width:600px){
+      .agent-status { display:none; }
+      .chat-window { max-height:380px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">YO<span>LEY</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="user-guide.html">User Guide</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="index.html" class="nav-cta">Download Free</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="support-hero">
+    <div class="container">
+      <div class="guide-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span style="color:rgba(255,255,255,0.8)">Support</span>
+      </div>
+      <div class="section-tag" style="justify-content:center; margin-bottom:12px;">&#129302; AI Support</div>
+      <h1>Ask Yoley Support</h1>
+      <p>Instant answers about any feature &mdash; quotes, invoices, payments, CIS and more.</p>
+    </div>
+  </section>
+
+  <!-- CHAT -->
+  <div class="chat-wrap">
+
+    <!-- Agent header -->
+    <div class="agent-card">
+      <div class="agent-avatar">&#129302;</div>
+      <div class="agent-info">
+        <h3>Yoley Support Agent</h3>
+        <p>Knows every feature in the app &mdash; ask me anything</p>
+      </div>
+      <div class="agent-status">Online</div>
+    </div>
+
+    <!-- Topic chips -->
+    <div class="topic-chips">
+      <p>Browse by topic</p>
+      <div class="chips" id="topicChips">
+        <span class="chip" data-q="How do I create a quote?">&#128221; Quotes</span>
+        <span class="chip" data-q="How do I convert a quote to an invoice?">&#128176; Invoices</span>
+        <span class="chip" data-q="How do I scan a receipt?">&#128247; Expenses</span>
+        <span class="chip" data-q="How do I schedule a job?">&#128197; Job Diary</span>
+        <span class="chip" data-q="What are the card payment rates?">&#128179; Payments</span>
+        <span class="chip" data-q="How does Tap to Pay work?">&#128242; Tap to Pay</span>
+        <span class="chip" data-q="Does Yoley support CIS?">&#127974; CIS</span>
+        <span class="chip" data-q="How do I enable Face ID?">&#128274; Security</span>
+        <span class="chip" data-q="What is included in Pro?">&#11088; Pro Plan</span>
+        <span class="chip" data-q="Is Yoley free?">&#128176; Pricing</span>
+      </div>
+    </div>
+
+    <!-- Chat window -->
+    <div class="chat-window" id="chatWindow">
+      <!-- Initial message injected by JS -->
+    </div>
+
+    <!-- Quick replies -->
+    <div class="quick-replies" id="quickReplies">
+      <button class="qr-btn" data-q="How do I create a quote?">Create a quote</button>
+      <button class="qr-btn" data-q="What is the card processing rate?">Card rates</button>
+      <button class="qr-btn" data-q="Is Yoley free?">Is it free?</button>
+      <button class="qr-btn" data-q="How do I approve a quote on behalf of a customer?">Approve a quote</button>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input-wrap">
+      <textarea
+        class="chat-input"
+        id="chatInput"
+        placeholder="Ask me anything about Yoley..."
+        rows="1"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" title="Send">&#8593;</button>
+    </div>
+
+    <!-- Related resources -->
+    <div class="related-resources">
+      <h4>Helpful Resources</h4>
+      <div class="resource-links">
+        <a href="quick-guide.html" class="resource-link">&#9889; Quick Start Guide</a>
+        <a href="user-guide.html" class="resource-link">&#128218; Full User Guide</a>
+        <a href="faq.html" class="resource-link">&#128172; FAQ</a>
+        <a href="index.html#pricing" class="resource-link">&#128176; Pricing</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">YO<span>LEY</span></a>
+          <p>The free business app built for UK tradespeople.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="quick-guide.html">Quick Start</a></li>
+            <li><a href="user-guide.html">Full User Guide</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="support.html">Support Agent</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#comparison">Compare</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/docs/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="/docs/terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Yoley Ltd. All rights reserved.</span>
+        <div class="footer-flag"><span>&#127468;&#127463;</span> Designed &amp; built in the UK</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+  (function(){
+    'use strict';
+
+    /* =========================================================
+       KNOWLEDGE BASE
+       Each entry: { tags:[], q:'', a:'' (HTML allowed) }
+    ========================================================= */
+    var KB = [
+      // Getting started
+      { tags:['download','install','app store','get yoley','get started','new'],
+        q:'How do I download Yoley?',
+        a:'Yoley is <strong>free to download</strong> from the Apple App Store. Search for "Yoley" and tap Get. Once installed, the onboarding takes under two minutes — just enter your name, business name and trade. No credit card required.' },
+
+      { tags:['setup','set up','onboard','configure','first time','begin','start','profile','business name'],
+        q:'How do I set up my business profile?',
+        a:'Tap the <strong>burger menu</strong> (three lines, top left) → <strong>Settings</strong> → <strong>Business Profile</strong>. From there you can set your business name, address, VAT number, logo and payment terms. These appear on all your quotes and invoices.' },
+
+      { tags:['free','cost','price','charge','subscription','pay','how much','money'],
+        q:'Is Yoley really free?',
+        a:'Yes — the core app is completely <strong>free forever</strong>. You only pay when you collect a card payment (1.49% per transaction). There are no monthly fees, no lock-in, and no hidden charges.\n\nThe optional <strong>Pro plan</strong> at £9.99/month adds Tap to Pay, Open Banking, WhatsApp enquiries and more — but you can run a full trade business on Free.' },
+
+      { tags:['ipad','android','tablet','device','compatible','ios','iphone','version'],
+        q:'What devices does Yoley work on?',
+        a:'Yoley currently requires an <strong>iPhone running iOS 16 or later</strong>. iPad support is planned for a future update. Android is not currently supported — Yoley uses Apple-specific features like Face ID, Tap to Pay and iCloud to deliver the best experience.' },
+
+      { tags:['trade','electrician','plumber','builder','joiner','roofer','gas','painter','decorator','landscaper','who'],
+        q:'What trades does Yoley support?',
+        a:'Yoley works for any UK tradesperson — electricians, plumbers, gas engineers, builders, joiners, painters & decorators, roofers, tilers, landscapers, HVAC engineers, and more. If you quote jobs, raise invoices and track expenses, Yoley is built for you.' },
+
+      // Quotes
+      { tags:['create quote','new quote','make quote','write quote','quote'],
+        q:'How do I create a quote?',
+        a:'Tap the <strong>Quotes</strong> tab → tap the <strong>+</strong> button (top right). Choose or add a customer, enter a job title, then tap <strong>Add Line Item</strong> to add labour, materials or a Kit Bundle. Tap <strong>Send</strong> to deliver immediately, or <strong>Save</strong> to keep as a draft.\n\nThe whole process takes under 30 seconds.' },
+
+      { tags:['send quote','email quote','share quote','deliver quote','quote customer'],
+        q:'How do I send a quote?',
+        a:'From any quote, tap <strong>Send</strong>. You can deliver by:\n<ul><li><strong>Email</strong> — sends a formatted email with a branded quote link</li><li><strong>SMS</strong> — sends a short message with the quote link</li><li><strong>Share Link</strong> — copy the link to share via WhatsApp or any channel</li></ul>' },
+
+      { tags:['approve quote','accept quote','manual approve','phone approval','customer approved','behalf','customer said yes','verbally'],
+        q:'Can I approve a quote on behalf of a customer?',
+        a:'Yes. Open the quote, then tap the green <strong>Manually Approve</strong> button next to the status badge at the top of the screen.\n\nSelect how the customer approved:\n<ul><li>Approved by Phone</li><li>Approved by Text</li><li>Approved by Email</li><li>Approved by Other</li></ul>\nAdd an optional comment (e.g. "Confirmed by phone, start date 15th"). Tap <strong>Confirm Approval</strong>. The quote moves to Accepted.' },
+
+      { tags:['quote status','draft','sent','opened','accepted','declined','expired','what does','status mean'],
+        q:'What do the quote statuses mean?',
+        a:'<ul><li><strong>Draft</strong> — saved but not yet sent</li><li><strong>Sent</strong> — delivered to the customer</li><li><strong>Opened</strong> — the customer has opened the link</li><li><strong>Accepted</strong> — confirmed by customer or manually approved</li><li><strong>Declined</strong> — customer said no</li><li><strong>Expired</strong> — validity date passed</li></ul>' },
+
+      { tags:['comment','approval comment','note quote','notes','carry through','carries through'],
+        q:'Does the comment I add when approving carry into the job?',
+        a:'Yes — any comment you add during manual approval (or that the customer added when they accepted online) is <strong>automatically pre-filled</strong> into the job notes when you schedule the job. You can edit it in the schedule form before saving.' },
+
+      { tags:['kit bundle','bundle','template','job template','package','line item'],
+        q:'What are Kit Bundles?',
+        a:'Kit Bundles are saved groups of line items for jobs you do regularly. For example, a "Standard boiler service" might include 1hr labour + service kit + travel. Instead of entering each line individually, you add the whole bundle with one tap.\n\nSet them up in <strong>Settings → Kit Bundles</strong>.' },
+
+      { tags:['line item','add item','material','labour','parts'],
+        q:'How do I add line items to a quote?',
+        a:'In the quote editor, tap <strong>Add Line Item</strong>. Enter a description, quantity and unit price. You can add as many lines as you need. To use a saved package, tap <strong>Add Kit Bundle</strong> instead.' },
+
+      // Invoices
+      { tags:['invoice','create invoice','new invoice','raise invoice'],
+        q:'How do I create an invoice?',
+        a:'You can create an invoice two ways:\n<ul><li><strong>From a quote:</strong> open an Accepted quote → tap <strong>Convert to Invoice</strong>. Everything copies across automatically.</li><li><strong>From scratch:</strong> Tap the <strong>Invoices</strong> tab → <strong>+</strong> → fill in the customer and line items directly.</li></ul>' },
+
+      { tags:['convert','quote to invoice','turn quote','from quote to invoice'],
+        q:'How do I convert a quote to an invoice?',
+        a:'Open an <strong>Accepted</strong> quote and tap <strong>Convert to Invoice</strong>. All line items, customer details and notes copy across. Set a due date and tap <strong>Send Invoice</strong>. A payment link is included automatically.' },
+
+      { tags:['payment link','pay online','online payment','link to pay','invoice link'],
+        q:'How do payment links work?',
+        a:'Every invoice includes a secure payment link. Your customer taps it, enters their card details and pays. Funds arrive in your bank within <strong>1–2 working days</strong> at <strong>1.49%</strong> (Free plan). Pro users can also offer Pay by Bank at no fee.' },
+
+      { tags:['due date','payment terms','when due','invoice due'],
+        q:'How do I set payment terms on an invoice?',
+        a:'When creating or editing an invoice, you can set the due date directly. Your default payment terms (e.g. 14 days or 30 days) can be set in <strong>Settings → Payment Terms</strong> so every new invoice uses them automatically.' },
+
+      // Expenses
+      { tags:['scan receipt','receipt','ocr','camera','photo receipt','expense'],
+        q:'How do I scan a receipt?',
+        a:'Tap the <strong>Expenses</strong> tab → <strong>Scan Receipt</strong> (camera icon). Hold your phone over the receipt — Yoley&rsquo;s on-device OCR extracts the total, VAT and supplier automatically. Review the values, choose an HMRC category, and tap <strong>Save</strong>.\n\nAll processing happens on your device — images are never uploaded.' },
+
+      { tags:['hmrc','sa103','category','tax','expense category','self assessment','box'],
+        q:'What HMRC SA103 categories are available?',
+        a:'Yoley maps expenses to standard SA103 boxes:\n<ul><li>Materials & stock</li><li>Subcontractors</li><li>Fuel & mileage</li><li>Tools & equipment</li><li>Vehicle costs</li><li>Phone & internet</li><li>Clothing & PPE</li><li>Other expenses</li></ul>\nAt tax time, export a summary organised by SA103 box to share with your accountant.' },
+
+      { tags:['vat','tax amount','ocr extract','scanner pick up','accurate'],
+        q:'Does the receipt scanner pick up VAT?',
+        a:'Yes — the OCR extracts the gross total, VAT amount and supplier name. You can review and correct any field before saving if the scan misses something (e.g. very faded thermal paper).' },
+
+      { tags:['export expenses','accountant','tax return','share expenses','download'],
+        q:'How do I share expenses with my accountant?',
+        a:'Go to <strong>Expenses → Export</strong>. You can export a PDF or spreadsheet summary organised by SA103 box for any date range. This is exactly what your accountant needs for your self-assessment return.' },
+
+      { tags:['manual expense','enter manually','type expense','add expense'],
+        q:'Can I enter an expense without scanning a receipt?',
+        a:'Yes — tap <strong>Add Manually</strong> from the Expenses screen. Enter the amount, supplier, date and HMRC category. Useful for cash purchases or expenses where you don&rsquo;t have a physical receipt.' },
+
+      // Job Diary
+      { tags:['schedule job','diary','calendar','book job','add job','appointment'],
+        q:'How do I schedule a job?',
+        a:'Tap the <strong>Job Diary</strong> tab → <strong>Schedule Job</strong> (top right). The sheet shows:\n<ul><li>Accepted quotes ready to book</li><li>Unaccepted quotes you can approve on the spot</li><li><strong>New Job (No Quote)</strong> for a standalone appointment</li></ul>\nSelect an option, set the start and end time, review the notes and tap <strong>Save Job</strong>.' },
+
+      { tags:['weather','forecast','rain','weather diary','outdoor','5 day'],
+        q:'Where does the weather forecast come from?',
+        a:'The 5-day weather forecast in the Job Diary is a <strong>Pro feature</strong>. It uses your location to pull the local forecast, showing each day&rsquo;s icon, high and low temperature — useful for planning outdoor work. Upgrade to Pro from Settings to unlock it.' },
+
+      { tags:['map','commute','travel time','drive time','directions','location','distance'],
+        q:'Can I see commute time to a job?',
+        a:'Yes. Open any job in the diary — at the bottom you&rsquo;ll see a map with the job address and estimated <strong>driving time from your current location</strong>. Tap <strong>Open in Apple Maps</strong> for full turn-by-turn navigation.' },
+
+      { tags:['job notes','notes job','add note','job comment'],
+        q:'How do I add notes to a job?',
+        a:'Notes can be added when you schedule the job (pre-filled from the quote if one is linked). To edit notes on an existing job, open the job and tap the notes field — it&rsquo;s editable inline.' },
+
+      { tags:['mark complete','job complete','complete job','finish job','job status'],
+        q:'How do I mark a job as complete?',
+        a:'Open the job from the Job Diary and tap <strong>Mark as Complete</strong> (or change the status from the status dropdown). Completed jobs are still visible in the diary and in the customer&rsquo;s history.' },
+
+      // Customers
+      { tags:['add customer','new customer','customer','client','contact'],
+        q:'How do I add a customer?',
+        a:'Tap the <strong>Customers</strong> tab → <strong>+</strong>. Enter the customer&rsquo;s name, phone, email and address. The address is used for job location maps and appears on quotes and invoices. You can also add customers on the fly when creating a quote.' },
+
+      { tags:['customer history','past jobs','job history','previous work','customer record'],
+        q:'How do I see a customer\'s history?',
+        a:'Open any customer from the Customers list. You&rsquo;ll see all their quotes, invoices, jobs and total revenue at a glance. Tap any item to open its detail.' },
+
+      // Payments
+      { tags:['card rate','processing rate','percentage','fee','how much','1.49','0.99'],
+        q:'What are the card processing rates?',
+        a:'<ul><li><strong>Payment links (Free & Pro):</strong> 1.49% per transaction</li><li><strong>Tap to Pay on iPhone (Pro only):</strong> 0.99% per transaction</li><li><strong>Pay by Bank (Pro only):</strong> Free for both you and your customer</li></ul>\nNo monthly fees, setup fees or minimum volumes — you only pay when you get paid.' },
+
+      { tags:['tap to pay','card machine','contactless','iphone payment','on site payment','nfc'],
+        q:'How does Tap to Pay work?',
+        a:'Tap to Pay turns your iPhone into a contactless card terminal — no card reader needed. Open the invoice → tap <strong>Collect Payment → Tap to Pay</strong> → present your iPhone to the customer&rsquo;s card or phone. Done.\n\nRate: <strong>0.99%</strong>. Requires iPhone XS or later + Pro plan.' },
+
+      { tags:['pay by bank','bank transfer','open banking payment','instant transfer'],
+        q:'What is Pay by Bank?',
+        a:'Pay by Bank is a Pro feature that lets customers pay you via instant bank transfer directly from their banking app. There&rsquo;s no transaction fee for either party, and you receive the funds immediately.' },
+
+      { tags:['who processes','monek','payment provider','safe','secure payment','fca'],
+        q:'Who processes card payments — is it safe?',
+        a:'Payments are processed by <strong>Monek</strong>, a UK FCA-regulated payment provider. Card data is encrypted end-to-end and never passes through Yoley&rsquo;s systems. Monek is PCI-DSS compliant. Your customers&rsquo; card data is protected to the highest UK standard.' },
+
+      { tags:['settlement','when paid','how long','receive money','payout','bank'],
+        q:'How quickly do I receive my money?',
+        a:'Card payments typically settle to your bank account within <strong>1–2 working days</strong>. This applies to both payment links and Tap to Pay transactions.' },
+
+      { tags:['set up payments','card setup','payment onboard','monek setup','verify'],
+        q:'How do I set up card payments?',
+        a:'Go to <strong>Settings → Card Payments</strong> and follow the prompts. You&rsquo;ll need to complete a quick identity verification (2–3 minutes) as required by UK financial regulations. Once done, payment links and Tap to Pay are active immediately.' },
+
+      // CIS
+      { tags:['cis','construction industry scheme','subcontractor','subbies','deduction'],
+        q:'Does Yoley support CIS?',
+        a:'Yes — CIS subcontractor management is included on the <strong>Free plan</strong>. You can add subcontractors with their UTR numbers and deduction rates (20%, 30% or 0%). CIS deductions are calculated automatically on invoices raised against them.' },
+
+      { tags:['utr','utr number','subcontractor utr','add utr'],
+        q:'How do I manage UTR numbers?',
+        a:'Open the subcontractor&rsquo;s customer record and toggle on <strong>CIS Subcontractor</strong>. Enter their UTR number and select their deduction rate. This is stored against the subcontractor and applied automatically to any CIS invoice.' },
+
+      { tags:['cis return','hmrc submit','cis submission','file cis'],
+        q:'Does Yoley submit CIS returns to HMRC?',
+        a:'Not currently. Yoley helps you track CIS deductions accurately, but monthly CIS returns still need to be submitted to HMRC via their online portal or through your accountant. Direct HMRC submission is being explored for a future update.' },
+
+      // Open Banking
+      { tags:['open banking','connect bank','bank account','auto match','transaction match','reconcile'],
+        q:'How does Open Banking work?',
+        a:'Go to <strong>Settings → Open Banking</strong>, find your bank and authorise read-only access via your bank&rsquo;s app. Transactions sync automatically, and Yoley highlights any incoming payments that match your open invoices — making reconciliation instant.\n\nYoley never sees or stores your banking credentials. This is a <strong>Pro feature</strong>.' },
+
+      // WhatsApp
+      { tags:['whatsapp','enquiry','lead','social media','instagram','facebook','google','message'],
+        q:'How does WhatsApp enquiry capture work?',
+        a:'Yoley Pro can capture job enquiries from WhatsApp, Facebook, Instagram and Google directly into your pipeline. Enquiries appear as leads — tap to review, create a customer record and convert to a quote without leaving the app.\n\nThis is a <strong>Pro feature</strong>.' },
+
+      // Yoley Capital
+      { tags:['yoley capital','cash advance','loan','finance','advance','capital'],
+        q:'What is Yoley Capital?',
+        a:'Yoley Capital offers short-term cash advances based on your invoicing history in the app — useful for bridging the gap between starting a big job and getting paid. Go to <strong>Settings → Yoley Capital</strong> to check your eligibility.\n\nThis is a <strong>Pro feature</strong>.' },
+
+      // Face ID / Security
+      { tags:['face id','touch id','biometric','lock','app lock','secure','pin','passcode'],
+        q:'How do I enable Face ID to lock the app?',
+        a:'Tap the <strong>burger menu</strong> → scroll to <strong>App Lock</strong> → toggle on. From the next open, you&rsquo;ll need Face ID or Touch ID to get in. If biometrics fail, it falls back to your iPhone passcode.' },
+
+      { tags:['backup','sync','icloud','cloudkit','data safe','lost phone','new phone'],
+        q:'Is my data backed up?',
+        a:'Yes — all data is stored in your personal <strong>iCloud account</strong> via Apple CloudKit. Yoley&rsquo;s servers never hold your business data. If you get a new iPhone, reinstall Yoley, sign in with the same Apple ID and everything restores automatically.' },
+
+      { tags:['lost phone','stolen','wipe','find my','delete data'],
+        q:'What if I lose my phone?',
+        a:'Your data is safe in iCloud — nothing is lost. Use Apple&rsquo;s <strong>Find My</strong> app to lock or remotely wipe the device. Install Yoley on a new phone, sign in with the same Apple ID, and all your data will be there.' },
+
+      // Pro Plan
+      { tags:['pro','upgrade','pro features','premium','pro plan','what is pro'],
+        q:'What is included in Pro?',
+        a:'Pro includes everything in Free, plus:\n<ul><li>Tap to Pay on iPhone (0.99%)</li><li>Open Banking — auto-match payments</li><li>Pay by Bank (free instant transfers)</li><li>WhatsApp & social enquiry capture</li><li>Yoley Capital (cash advances)</li><li>5-day weather forecast in Job Diary</li><li>Purchase order management</li><li>Priority support</li></ul>' },
+
+      { tags:['pro cost','pro price','9.99','monthly','how much is pro'],
+        q:'How much does Pro cost?',
+        a:'Pro costs <strong>£9.99 per month</strong>. It comes with a free trial so you can explore all features before being charged. Cancel any time through the App Store — no penalty, no hassle.' },
+
+      { tags:['free trial','trial','try pro','trial period'],
+        q:'Is there a free trial for Pro?',
+        a:'Yes — Pro comes with a free trial (duration shown in the app when you upgrade). You won&rsquo;t be charged until the trial ends. Cancel before it ends and you&rsquo;ll never pay a penny.' },
+
+      { tags:['cancel','cancel pro','downgrade','cancel subscription','stop pro'],
+        q:'How do I cancel Pro?',
+        a:'Go to your iPhone <strong>Settings → tap your name → Subscriptions → Yoley → Cancel Subscription</strong>. Pro features stay active until the end of your billing period. Your data is never deleted — you simply revert to the Free plan.' },
+
+      { tags:['data after cancel','downgrade data','lose data','data safe'],
+        q:'What happens to my data if I cancel Pro?',
+        a:'Nothing changes. All your quotes, invoices, expenses, customers and jobs remain exactly as they were. You lose access to Pro-only features (Tap to Pay, Open Banking, etc.) but your data is always yours.' },
+
+      // Fallback
+      { tags:['help','support','contact','problem','issue','not working','bug','error'],
+        q:'How do I contact support?',
+        a:'You&rsquo;re in the right place! Try describing your issue and I&rsquo;ll do my best to help. You can also:\n<ul><li>Browse the <a href="user-guide.html" class="guide-link">Full User Guide ↗</a></li><li>Check the <a href="faq.html" class="guide-link">FAQ ↗</a> for common questions</li></ul>' }
+    ];
+
+    /* =========================================================
+       MATCHING ENGINE
+    ========================================================= */
+    function scoreEntry(entry, tokens) {
+      var score = 0;
+      tokens.forEach(function(token) {
+        if (token.length < 2) return;
+        entry.tags.forEach(function(tag) {
+          if (tag === token) { score += 4; }
+          else if (tag.includes(token)) { score += 2; }
+          else if (token.includes(tag) && tag.length > 3) { score += 1.5; }
+        });
+        // Also check question text
+        if (entry.q.toLowerCase().includes(token)) score += 1;
+      });
+      return score;
+    }
+
+    function findBestMatch(input) {
+      var cleaned = input.toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
+      var stopWords = ['the','is','are','how','do','i','can','what','does','my','a','an','to','for','it','on','in','at','of','and','or','with','be','was','have'];
+      var tokens = cleaned.split(/\s+/).filter(function(t) {
+        return t.length > 1 && stopWords.indexOf(t) === -1;
+      });
+
+      if (tokens.length === 0) return null;
+
+      var best = null, bestScore = 0;
+      KB.forEach(function(entry) {
+        var s = scoreEntry(entry, tokens);
+        if (s > bestScore) { bestScore = s; best = entry; }
+      });
+
+      return bestScore >= 2 ? best : null;
+    }
+
+    /* =========================================================
+       CHAT UI
+    ========================================================= */
+    var chatWindow = document.getElementById('chatWindow');
+    var chatInput  = document.getElementById('chatInput');
+    var sendBtn    = document.getElementById('sendBtn');
+
+    function scrollBottom() {
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    function addMessage(type, html) {
+      var msg = document.createElement('div');
+      msg.className = 'msg ' + type;
+      var avatarContent = type === 'agent' ? '&#129302;' : 'ME';
+      msg.innerHTML = '<div class="msg-avatar">' + avatarContent + '</div>'
+        + '<div class="msg-bubble">' + html + '</div>';
+      chatWindow.appendChild(msg);
+      scrollBottom();
+    }
+
+    function showTyping() {
+      var typing = document.createElement('div');
+      typing.className = 'msg agent';
+      typing.id = 'typingIndicator';
+      typing.innerHTML = '<div class="msg-avatar">&#129302;</div>'
+        + '<div class="typing-bubble" style="display:block">'
+        + '<div class="typing-dots"><span></span><span></span><span></span></div>'
+        + '</div>';
+      chatWindow.appendChild(typing);
+      scrollBottom();
+    }
+
+    function hideTyping() {
+      var el = document.getElementById('typingIndicator');
+      if (el) el.remove();
+    }
+
+    function handleUserInput(text) {
+      text = text.trim();
+      if (!text) return;
+
+      addMessage('user', text);
+      chatInput.value = '';
+      chatInput.style.height = 'auto';
+      sendBtn.disabled = true;
+
+      showTyping();
+
+      setTimeout(function() {
+        hideTyping();
+        var match = findBestMatch(text);
+        if (match) {
+          var answerHtml = match.a.replace(/\n/g, '<br>');
+          addMessage('agent', answerHtml);
+        } else {
+          addMessage('agent',
+            'I&rsquo;m not sure about that one — here are some options that might help:<br><br>'
+            + '<a href="user-guide.html" class="guide-link">&#128218; Full User Guide ↗</a><br>'
+            + '<a href="faq.html" class="guide-link">&#128172; Browse FAQ ↗</a><br><br>'
+            + 'Or try rephrasing your question — I know all of Yoley&rsquo;s features!'
+          );
+        }
+        sendBtn.disabled = false;
+      }, 900 + Math.random() * 500);
+    }
+
+    // Send on button click
+    sendBtn.addEventListener('click', function() {
+      handleUserInput(chatInput.value);
+    });
+
+    // Send on Enter (shift+enter for newline)
+    chatInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        handleUserInput(this.value);
+      }
+    });
+
+    // Auto-resize textarea
+    chatInput.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+    });
+
+    // Quick reply buttons
+    document.querySelectorAll('.qr-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        handleUserInput(this.getAttribute('data-q'));
+      });
+    });
+
+    // Topic chips
+    document.querySelectorAll('#topicChips .chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        handleUserInput(this.getAttribute('data-q'));
+      });
+    });
+
+    // Initial greeting
+    setTimeout(function() {
+      addMessage('agent',
+        'Hi there! &#128075; I&rsquo;m the Yoley support agent. I know everything about the app — from sending quotes to setting up Face ID.\n\nAsk me anything, or tap a topic above to get started!'
+          .replace(/\n/g, '<br>')
+      );
+    }, 200);
+
+  })();
+  </script>
+</body>
+</html>

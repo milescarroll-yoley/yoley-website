@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yoley Quick Start Guide — get up and running in minutes. Send quotes, scan receipts, schedule jobs and take payments.">
+  <title>Quick Start Guide — Yoley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Guide-specific styles ── */
+    .guide-hero {
+      background: linear-gradient(165deg, var(--navy) 0%, var(--navy-tint) 100%);
+      padding: 120px 0 64px;
+      text-align: center;
+    }
+    .guide-hero h1 { color: #fff; font-size: clamp(28px, 4vw, 48px); font-weight: 900; margin-bottom: 12px; }
+    .guide-hero p  { color: rgba(255,255,255,0.65); font-size: 18px; max-width: 560px; margin: 0 auto; }
+
+    .guide-body { padding: 80px 0 120px; }
+
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .task-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .task-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .task-card.teal::before  { background: linear-gradient(90deg, var(--teal), #00e5c6); }
+    .task-card.yellow::before { background: linear-gradient(90deg, var(--yellow), #ffe566); }
+    .task-card.navy::before  { background: linear-gradient(90deg, var(--navy), var(--navy-tint)); }
+    .task-card.green::before { background: linear-gradient(90deg, var(--green), #2ecc71); }
+    .task-card.orange::before { background: linear-gradient(90deg, var(--orange), #f5a642); }
+
+    .task-number {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 900;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .teal   .task-number { background: var(--teal); }
+    .yellow .task-number { background: var(--yellow); color: var(--navy); }
+    .navy   .task-number { background: var(--navy); }
+    .green  .task-number { background: var(--green); }
+    .orange .task-number { background: var(--orange); }
+
+    .task-card h3 {
+      font-size: 20px; font-weight: 800;
+      color: var(--navy); margin-bottom: 8px;
+    }
+    .task-card .task-tagline {
+      font-size: 13px; color: var(--mid-text); margin-bottom: 24px;
+    }
+
+    .task-steps { list-style: none; }
+    .task-steps li {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 14px; color: var(--dark-text); line-height: 1.55;
+    }
+    .task-steps li:last-child { border: none; }
+    .step-badge {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--teal-tint); color: var(--teal);
+      font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .task-card.yellow .step-badge { background: var(--yellow-tint); color: var(--orange); }
+    .task-card.navy   .step-badge { background: rgba(26,31,54,0.08); color: var(--navy); }
+    .task-card.green  .step-badge { background: rgba(39,174,96,0.1); color: var(--green); }
+    .task-card.orange .step-badge { background: rgba(242,138,26,0.1); color: var(--orange); }
+
+    .task-tip {
+      margin-top: 20px; padding: 12px 16px;
+      background: var(--teal-tint); border-radius: 10px;
+      font-size: 13px; color: var(--teal); font-weight: 500;
+      display: flex; gap: 8px; align-items: flex-start;
+    }
+    .task-card.yellow .task-tip { background: var(--yellow-tint); color: var(--orange); }
+    .task-card.navy   .task-tip { background: rgba(26,31,54,0.06); color: var(--navy); }
+    .task-card.green  .task-tip { background: rgba(39,174,96,0.1); color: var(--green); }
+    .task-card.orange .task-tip { background: rgba(242,138,26,0.1); color: var(--orange); }
+
+    .guide-intro {
+      text-align: center; margin-bottom: 8px;
+    }
+    .guide-intro .section-subtitle { margin: 0 auto; }
+
+    .download-cta {
+      text-align: center;
+      margin-top: 80px;
+      padding: 64px 40px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-tint));
+      border-radius: 24px;
+    }
+    .download-cta h2 { color: #fff; font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+    .download-cta p  { color: rgba(255,255,255,0.6); margin-bottom: 28px; }
+
+    .guide-nav-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      margin-bottom: 24px; justify-content: center;
+    }
+    .guide-nav-breadcrumb a { color: var(--teal); }
+    .guide-nav-breadcrumb span { color: rgba(255,255,255,0.3); }
+
+    .nav-guide-links {
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+      margin-top: 32px; justify-content: center;
+    }
+    .nav-guide-links a {
+      padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7);
+      transition: all 0.2s;
+    }
+    .nav-guide-links a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .nav-guide-links a.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">YO<span>LEY</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="user-guide.html">User Guide</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="index.html" class="nav-cta">Download Free</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="guide-hero">
+    <div class="container">
+      <div class="guide-nav-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span style="color:rgba(255,255,255,0.8)">Quick Start Guide</span>
+      </div>
+      <div class="section-tag" style="justify-content:center; margin-bottom:16px;">&#9889; Quick Start</div>
+      <h1>Up and running in 5 minutes</h1>
+      <p>The five core tasks you need to know to start running your trade business with Yoley.</p>
+      <div class="nav-guide-links">
+        <a href="quick-guide.html" class="active">Quick Start</a>
+        <a href="user-guide.html">Full Guide</a>
+        <a href="faq.html">FAQ</a>
+        <a href="support.html">Get Help</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="guide-body">
+    <div class="container">
+      <div class="guide-intro reveal">
+        <div class="section-tag" style="justify-content:center">&#127775; Five things that matter most</div>
+        <h2 class="section-title">The essentials, step by step</h2>
+        <p class="section-subtitle">Master these five tasks and you have everything you need to quote jobs, get paid, track expenses and stay organised.</p>
+      </div>
+
+      <div class="task-grid">
+
+        <!-- TASK 1: Send a Quote -->
+        <div class="task-card teal reveal reveal-delay-1">
+          <div class="task-number">1</div>
+          <h3>Send a Professional Quote</h3>
+          <p class="task-tagline">From job enquiry to branded quote in under 30 seconds.</p>
+          <ol class="task-steps">
+            <li>
+              <span class="step-badge">1</span>
+              Tap the <strong>Quotes</strong> tab at the bottom of the screen, then tap the <strong>+</strong> button in the top right.
+            </li>
+            <li>
+              <span class="step-badge">2</span>
+              Select an existing customer or tap <strong>New Customer</strong> to add their name, phone and address.
+            </li>
+            <li>
+              <span class="step-badge">3</span>
+              Give the quote a title (e.g. "Bathroom Refit"), then tap <strong>Add Line Item</strong> to add labour, materials or kit bundles.
+            </li>
+            <li>
+              <span class="step-badge">4</span>
+              Tap <strong>Send</strong> &mdash; choose email or SMS. Your customer receives a branded quote they can accept with one tap.
+            </li>
+          </ol>
+          <div class="task-tip">&#128161; <span>Use <strong>Kit Bundles</strong> to save your most common job packages. Tap once to add them as a group instead of entering lines individually.</span></div>
+        </div>
+
+        <!-- TASK 2: Convert Quote to Invoice -->
+        <div class="task-card yellow reveal reveal-delay-2">
+          <div class="task-number">2</div>
+          <h3>Convert a Quote to Invoice</h3>
+          <p class="task-tagline">One tap turns an accepted quote into a ready-to-pay invoice.</p>
+          <ol class="task-steps">
+            <li>
+              <span class="step-badge">1</span>
+              Go to <strong>Quotes</strong> and find the quote with <strong>Accepted</strong> status (shown in green).
+            </li>
+            <li>
+              <span class="step-badge">2</span>
+              Open the quote and tap <strong>Convert to Invoice</strong> at the bottom of the screen.
+            </li>
+            <li>
+              <span class="step-badge">3</span>
+              Review the invoice details — add any extra line items or adjust the payment due date if needed.
+            </li>
+            <li>
+              <span class="step-badge">4</span>
+              Tap <strong>Send Invoice</strong>. A payment link is included automatically so your customer can pay by card online.
+            </li>
+          </ol>
+          <div class="task-tip">&#128176; <span>Card payments via the payment link are charged at <strong>1.49%</strong> with no monthly fee. With Pro, Tap to Pay on site drops to <strong>0.99%</strong>.</span></div>
+        </div>
+
+        <!-- TASK 3: Scan an Expense Receipt -->
+        <div class="task-card navy reveal reveal-delay-3">
+          <div class="task-number">3</div>
+          <h3>Scan an Expense Receipt</h3>
+          <p class="task-tagline">Point your camera at any receipt. Yoley files it for you.</p>
+          <ol class="task-steps">
+            <li>
+              <span class="step-badge">1</span>
+              Tap the <strong>Expenses</strong> tab, then tap <strong>Scan Receipt</strong> (the camera icon).
+            </li>
+            <li>
+              <span class="step-badge">2</span>
+              Hold your phone over the receipt. Yoley&rsquo;s on-device OCR automatically extracts the total, VAT and supplier name.
+            </li>
+            <li>
+              <span class="step-badge">3</span>
+              Check the extracted values, then pick an <strong>HMRC SA103 category</strong> from the dropdown (e.g. Materials, Fuel, Subcontractors).
+            </li>
+            <li>
+              <span class="step-badge">4</span>
+              Tap <strong>Save</strong>. The expense is stored and filed against the correct tax box, ready for your self-assessment.
+            </li>
+          </ol>
+          <div class="task-tip">&#128247; <span>All processing happens <strong>on your device</strong> &mdash; your receipts are never sent to a third-party server.</span></div>
+        </div>
+
+        <!-- TASK 4: Schedule a Job -->
+        <div class="task-card green reveal reveal-delay-1">
+          <div class="task-number">4</div>
+          <h3>Schedule a Job</h3>
+          <p class="task-tagline">Book a job from an accepted quote or create a standalone appointment.</p>
+          <ol class="task-steps">
+            <li>
+              <span class="step-badge">1</span>
+              Tap the <strong>Job Diary</strong> tab. Tap the <strong>Schedule Job</strong> button in the top right.
+            </li>
+            <li>
+              <span class="step-badge">2</span>
+              Pick an accepted quote from the list to link the job to it, or tap <strong>New Job (No Quote)</strong> to create a standalone appointment.
+            </li>
+            <li>
+              <span class="step-badge">3</span>
+              Set the <strong>Start</strong> and <strong>End</strong> time using the date and time pickers. Add any job notes &mdash; these carry across from the quote automatically.
+            </li>
+            <li>
+              <span class="step-badge">4</span>
+              Tap <strong>Save Job</strong>. The job appears on the calendar strip. Tap it any time to see the location map and commute time.
+            </li>
+          </ol>
+          <div class="task-tip">&#9729;&#65039; <span><strong>Pro users</strong> see a 5-day weather forecast on the Job Diary — great for planning outdoor work in advance.</span></div>
+        </div>
+
+        <!-- TASK 5: Take a Card Payment -->
+        <div class="task-card orange reveal reveal-delay-2">
+          <div class="task-number">5</div>
+          <h3>Accept a Card Payment</h3>
+          <p class="task-tagline">Get paid on site or send a payment link &mdash; no card reader needed.</p>
+          <ol class="task-steps">
+            <li>
+              <span class="step-badge">1</span>
+              Open the invoice you want to collect payment for. Tap <strong>Payment Link</strong> to share it via SMS, WhatsApp or email.
+            </li>
+            <li>
+              <span class="step-badge">2</span>
+              Your customer taps the link and pays by card online. Funds settle within 1&ndash;2 business days at <strong>1.49%</strong>.
+            </li>
+            <li>
+              <span class="step-badge">3</span>
+              <strong>Pro only &mdash; Tap to Pay:</strong> Open the invoice and tap <strong>Collect Payment</strong> &rarr; <strong>Tap to Pay</strong>. Hold your iPhone to the customer&rsquo;s card or phone. Done.
+            </li>
+            <li>
+              <span class="step-badge">4</span>
+              The invoice automatically updates to <strong>Paid</strong> and the payment is recorded against the customer.
+            </li>
+          </ol>
+          <div class="task-tip">&#128242; <span><strong>Tap to Pay</strong> uses your iPhone&rsquo;s NFC chip. No card reader or extra hardware required &mdash; just your phone.</span></div>
+        </div>
+
+      </div>
+
+      <!-- Approve on behalf section -->
+      <div class="task-card teal reveal" style="margin-top:32px;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+          <div class="task-number" style="margin-bottom:0; flex-shrink:0;">&#10003;</div>
+          <div>
+            <h3 style="margin-bottom:4px;">Approve a Quote on Behalf of a Customer</h3>
+            <p class="task-tagline" style="margin-bottom:0;">Customer said yes on the phone? Record the approval in Yoley.</p>
+          </div>
+        </div>
+        <ol class="task-steps">
+          <li><span class="step-badge">1</span>Open the quote from the <strong>Quotes</strong> list. Tap <strong>Manually Approve</strong> (the green button next to the status badge at the top).</li>
+          <li><span class="step-badge">2</span>Select how the customer gave approval: <strong>Approved by Phone</strong>, Text, Email, or Other.</li>
+          <li><span class="step-badge">3</span>Add an optional comment (e.g. &ldquo;Spoke with Mrs Jones at 2pm, confirmed budget&rdquo;). This comment carries through into the job notes automatically.</li>
+          <li><span class="step-badge">4</span>Tap <strong>Confirm Approval</strong>. The quote status changes to Accepted and you can now schedule the job.</li>
+        </ol>
+      </div>
+
+      <!-- Download CTA -->
+      <div class="download-cta reveal">
+        <h2>Ready to get started?</h2>
+        <p>Download Yoley free from the App Store. No credit card, no contract.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="#" class="btn-appstore" style="background:#fff; color:var(--navy);">
+            <span class="apple-icon">&#63743;</span>
+            <div><small>Download on the</small>App Store</div>
+          </a>
+          <a href="user-guide.html" class="btn-secondary" style="border-color:rgba(255,255,255,0.25);">
+            Full User Guide &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">YO<span>LEY</span></a>
+          <p>The free business app built for UK tradespeople.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="quick-guide.html">Quick Start</a></li>
+            <li><a href="user-guide.html">Full User Guide</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="support.html">Support Agent</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#comparison">Compare</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/docs/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="/docs/terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Yoley Ltd. All rights reserved.</span>
+        <div class="footer-flag"><span>&#127468;&#127463;</span> Designed &amp; built in the UK</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

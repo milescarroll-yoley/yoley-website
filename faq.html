@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yoley FAQ — answers to the most common questions about quotes, invoices, expenses, card payments, CIS, and more.">
+  <title>FAQ — Yoley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .guide-hero {
+      background: linear-gradient(165deg, var(--navy) 0%, var(--navy-tint) 100%);
+      padding: 120px 0 64px;
+      text-align: center;
+    }
+    .guide-hero h1 { color:#fff; font-size:clamp(28px,4vw,48px); font-weight:900; margin-bottom:12px; }
+    .guide-hero p  { color:rgba(255,255,255,0.65); font-size:18px; max-width:560px; margin:0 auto; }
+
+    .guide-breadcrumb {
+      display:flex; align-items:center; gap:8px;
+      font-size:13px; color:rgba(255,255,255,0.5);
+      margin-bottom:24px; justify-content:center;
+    }
+    .guide-breadcrumb a { color:var(--teal); }
+    .guide-breadcrumb span { color:rgba(255,255,255,0.3); }
+
+    .guide-nav-pills {
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:28px; justify-content:center;
+    }
+    .guide-nav-pills a {
+      padding:7px 18px; border-radius:100px; font-size:13px; font-weight:600;
+      border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7);
+      transition:all 0.2s;
+    }
+    .guide-nav-pills a:hover { background:rgba(255,255,255,0.1); color:#fff; }
+    .guide-nav-pills a.active { background:var(--teal); color:#fff; border-color:var(--teal); }
+
+    /* Search bar */
+    .faq-search-wrap { padding: 40px 0 0; }
+    .faq-search {
+      max-width:600px; margin:0 auto;
+      display:flex; gap:12px; align-items:center;
+      background:#fff; border-radius:16px; padding:8px 8px 8px 20px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.07);
+    }
+    .faq-search input {
+      flex:1; border:none; outline:none; font-size:15px;
+      font-family:var(--font); color:var(--dark-text);
+      background:transparent;
+    }
+    .faq-search input::placeholder { color:var(--mid-text); }
+    .faq-search button {
+      background:var(--teal); color:#fff; border:none; cursor:pointer;
+      padding:10px 20px; border-radius:10px; font-size:14px; font-weight:700;
+      font-family:var(--font); transition:background 0.2s;
+    }
+    .faq-search button:hover { background:#00a891; }
+
+    /* Category tabs */
+    .faq-categories {
+      display:flex; gap:8px; flex-wrap:wrap;
+      padding: 32px 0 0;
+    }
+    .faq-cat-btn {
+      padding:8px 18px; border-radius:100px; font-size:13px; font-weight:600;
+      border:1.5px solid #e5e5e5; color:var(--mid-text);
+      background:#fff; cursor:pointer; transition:all 0.2s; font-family:var(--font);
+    }
+    .faq-cat-btn:hover  { border-color:var(--teal); color:var(--teal); }
+    .faq-cat-btn.active { background:var(--teal); color:#fff; border-color:var(--teal); }
+
+    /* FAQ body */
+    .faq-body { padding: 40px 0 120px; }
+
+    .faq-group { margin-bottom:48px; }
+    .faq-group-title {
+      font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:2px;
+      color:var(--teal); margin-bottom:20px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .faq-group-title::after {
+      content:''; flex:1; height:1px; background:var(--teal-tint);
+    }
+
+    /* Accordion */
+    .faq-item {
+      background:#fff; border-radius:14px;
+      margin-bottom:8px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.04);
+      overflow:hidden;
+    }
+    .faq-question {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:18px 24px; cursor:pointer;
+      font-size:15px; font-weight:600; color:var(--navy);
+      gap:16px; user-select:none;
+    }
+    .faq-question:hover { background:#fafafa; }
+    .faq-chevron {
+      width:28px; height:28px; border-radius:50%;
+      background:var(--teal-tint); color:var(--teal);
+      display:flex; align-items:center; justify-content:center;
+      font-size:13px; flex-shrink:0;
+      transition:transform 0.3s, background 0.2s;
+    }
+    .faq-item.open .faq-chevron {
+      transform:rotate(180deg);
+      background:var(--teal); color:#fff;
+    }
+    .faq-answer {
+      max-height:0; overflow:hidden;
+      transition:max-height 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .faq-answer-inner {
+      padding:0 24px 20px;
+      font-size:14px; color:var(--dark-text); line-height:1.75;
+    }
+    .faq-answer-inner p { margin-bottom:10px; }
+    .faq-answer-inner p:last-child { margin-bottom:0; }
+    .faq-answer-inner strong { color:var(--navy); }
+    .faq-answer-inner ul { padding-left:20px; margin:8px 0 12px; }
+    .faq-answer-inner li { margin-bottom:6px; }
+    .faq-answer-inner .pro-tag {
+      display:inline-block; padding:2px 8px; border-radius:6px;
+      background:var(--yellow-tint); color:var(--orange);
+      font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;
+    }
+
+    /* No results */
+    .faq-no-results {
+      text-align:center; padding:60px 0;
+      display:none;
+    }
+    .faq-no-results p { color:var(--mid-text); font-size:16px; margin-bottom:16px; }
+
+    /* Still need help */
+    .faq-cta {
+      text-align:center;
+      padding:64px 40px;
+      background:linear-gradient(135deg, var(--navy), var(--navy-tint));
+      border-radius:24px; margin-top:64px;
+    }
+    .faq-cta h2 { color:#fff; font-size:26px; font-weight:800; margin-bottom:8px; }
+    .faq-cta p  { color:rgba(255,255,255,0.6); margin-bottom:28px; }
+    .faq-cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .btn-teal {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--teal); color:#fff; padding:14px 28px;
+      border-radius:14px; font-weight:700; font-size:15px;
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-teal:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,194,168,0.3); }
+    .btn-outline-white {
+      display:inline-flex; align-items:center; gap:8px;
+      color:rgba(255,255,255,0.7); padding:14px 28px;
+      border-radius:14px; font-weight:600; font-size:15px;
+      border:1px solid rgba(255,255,255,0.2);
+      transition:all 0.2s;
+    }
+    .btn-outline-white:hover { color:#fff; border-color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">YO<span>LEY</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="user-guide.html">User Guide</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="index.html" class="nav-cta">Download Free</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="guide-hero">
+    <div class="container">
+      <div class="guide-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span style="color:rgba(255,255,255,0.8)">FAQ</span>
+      </div>
+      <div class="section-tag" style="justify-content:center; margin-bottom:16px;">&#128172; FAQ</div>
+      <h1>Frequently Asked Questions</h1>
+      <p>Quick answers to the most common questions about Yoley.</p>
+      <div class="guide-nav-pills">
+        <a href="quick-guide.html">Quick Start</a>
+        <a href="user-guide.html">Full Guide</a>
+        <a href="faq.html" class="active">FAQ</a>
+        <a href="support.html">Get Help</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <div class="container">
+    <div class="faq-search-wrap">
+      <div class="faq-search">
+        <input type="text" id="faqSearch" placeholder="Search questions..." autocomplete="off">
+        <button type="button">Search</button>
+      </div>
+    </div>
+
+    <!-- CATEGORY TABS -->
+    <div class="faq-categories">
+      <button class="faq-cat-btn active" data-cat="all">All</button>
+      <button class="faq-cat-btn" data-cat="getting-started">Getting Started</button>
+      <button class="faq-cat-btn" data-cat="quotes">Quotes</button>
+      <button class="faq-cat-btn" data-cat="invoices">Invoices</button>
+      <button class="faq-cat-btn" data-cat="expenses">Expenses</button>
+      <button class="faq-cat-btn" data-cat="job-diary">Job Diary</button>
+      <button class="faq-cat-btn" data-cat="payments">Payments</button>
+      <button class="faq-cat-btn" data-cat="cis">CIS</button>
+      <button class="faq-cat-btn" data-cat="pro">Pro Plan</button>
+      <button class="faq-cat-btn" data-cat="security">Security</button>
+    </div>
+  </div>
+
+  <!-- FAQ BODY -->
+  <div class="faq-body">
+    <div class="container">
+
+      <div id="faqNoResults" class="faq-no-results">
+        <p>No questions matched your search.</p>
+        <a href="support.html" class="btn-teal">Ask our support agent &rarr;</a>
+      </div>
+
+      <!-- GETTING STARTED -->
+      <div class="faq-group" data-category="getting-started">
+        <div class="faq-group-title">&#128640; Getting Started</div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is Yoley really free? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes — the core Yoley app is completely free, forever. There is no monthly subscription and no hidden fees. You only pay when you collect a card payment, and that rate is just <strong>1.49%</strong> per transaction.</p>
+            <p>The optional <strong>Pro plan</strong> at £9.99/month unlocks advanced features like Tap to Pay on iPhone, Open Banking, WhatsApp enquiries and Yoley Capital. But you can run a full trade business on the Free plan with unlimited quotes, invoices and expenses.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What devices does Yoley work on? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yoley is currently available on <strong>iPhone</strong> running iOS 16 or later. iPad support is planned for a future update. There is no Android version at this time — Yoley is built specifically for Apple devices to take advantage of features like Face ID, Tap to Pay and iCloud Keychain.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How long does setup take? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Under two minutes. Download from the App Store, enter your name, business name and pick your trade — and you&rsquo;re done. No forms, no sales calls, no credit card required to start.</p>
+            <p>Setting up card payments for the first time takes an extra 2–3 minutes for identity verification (required by UK financial regulations).</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What trades does Yoley support? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yoley works for any UK tradesperson, including electricians, plumbers, gas engineers, builders, joiners, painters and decorators, roofers, tilers, landscapers, HVAC engineers, and more. If you run a trade business and need to quote, invoice and track expenses, Yoley is for you.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- QUOTES -->
+      <div class="faq-group" data-category="quotes">
+        <div class="faq-group-title">&#128221; Quotes</div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I create and send a quote? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Tap the <strong>Quotes</strong> tab &rarr; tap the <strong>+</strong> button &rarr; choose or add a customer &rarr; add a title and line items &rarr; tap <strong>Send</strong>. Your customer gets an email or SMS with a branded quote they can accept with one tap.</p>
+            <p>The whole process takes under 30 seconds once your customer and kit bundles are set up.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I approve a quote on behalf of a customer? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Open the quote, then tap the green <strong>Manually Approve</strong> button next to the status badge at the top of the screen. Select how the customer confirmed — <strong>Phone, Text, Email,</strong> or <strong>Other</strong> — and optionally add a comment (e.g. "Confirmed via phone, start date 20th").</p>
+            <p>The comment you add is automatically carried through as a note on the job when you schedule it.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What do the different quote statuses mean? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <ul>
+              <li><strong>Draft</strong> — saved but not yet sent.</li>
+              <li><strong>Sent</strong> — delivered to the customer.</li>
+              <li><strong>Opened</strong> — the customer has clicked the link.</li>
+              <li><strong>Accepted</strong> — the customer confirmed (digitally or manually approved by you).</li>
+              <li><strong>Declined</strong> — the customer said no.</li>
+              <li><strong>Expired</strong> — validity date passed without response.</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What are Kit Bundles? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Kit Bundles are pre-saved groups of line items for jobs you do regularly — for example, a "Standard boiler service" might include 1 hour labour + service kit + travel. Instead of entering each line individually, you add the whole bundle with one tap.</p>
+            <p>Set up bundles in <strong>Settings &rarr; Kit Bundles</strong>.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Does the comment I add when approving a quote carry into the job? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Any comment you add during manual approval (or that was added by the customer when they accepted the quote digitally) is automatically pre-filled into the job notes when you schedule the job from that quote.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- INVOICES -->
+      <div class="faq-group" data-category="invoices">
+        <div class="faq-group-title">&#128176; Invoices</div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I convert a quote to an invoice? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Open an accepted quote and tap <strong>Convert to Invoice</strong>. All line items, customer details and notes copy across automatically. Set a due date and tap <strong>Send Invoice</strong>. The invoice arrives with a payment link so the customer can pay by card immediately.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I raise an invoice without a quote? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes — tap <strong>Invoices</strong> &rarr; <strong>+</strong> and fill in the customer and line items directly. You don&rsquo;t need to go through the quote flow if the job is straightforward.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What payment methods do customers have on an invoice? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>By default, customers can pay by <strong>card</strong> (Visa, Mastercard, American Express) via the secure payment link at 1.49%. Pro users can also offer <strong>Pay by Bank</strong> (instant bank transfer via Open Banking) at no transaction fee.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- EXPENSES -->
+      <div class="faq-group" data-category="expenses">
+        <div class="faq-group-title">&#128247; Expenses</div>
+
+        <div class="faq-item">
+          <div class="faq-question">How accurate is the receipt scanner? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Very. Yoley uses Apple&rsquo;s Vision framework for on-device OCR and it handles most printed receipts extremely well &mdash; extracting totals, VAT amounts and supplier names automatically. You can always review and correct the extracted values before saving.</p>
+            <p>Handwritten receipts or very faded thermal paper may require manual entry.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Does Yoley upload my receipt images to a server? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>No. All OCR processing happens on your device. Receipt images and extracted data are stored only in your iCloud account (via CloudKit) and are never sent to Yoley&rsquo;s servers or any third-party OCR service.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I share my expenses with my accountant? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Go to <strong>Expenses &rarr; Export</strong>. You can export a summary organised by HMRC SA103 box as a PDF or spreadsheet. This is exactly what your accountant needs for your self-assessment return. The export covers any date range you choose.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What is SA103? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>SA103 is the HMRC self-employment supplementary page of your self-assessment tax return. It has specific boxes for different expense categories (materials, vehicle costs, subcontractors, etc.). Yoley maps each expense you log to its corresponding SA103 box, so completing your tax return is straightforward.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- JOB DIARY -->
+      <div class="faq-group" data-category="job-diary">
+        <div class="faq-group-title">&#128197; Job Diary</div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I schedule a job from a quote? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Tap the <strong>Job Diary</strong> tab &rarr; <strong>Schedule Job</strong> (top right). The sheet shows your accepted quotes ready to book. Select the quote, set the start and end time, review the pre-filled notes and tap <strong>Save Job</strong>.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How does the commute time feature work? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>When you open a job in the diary, Yoley gets your current location (using Apple&rsquo;s Location Services), geocodes the customer&rsquo;s address, and calculates the estimated driving time via Apple Maps. It shows the travel time and distance in miles. Tap <strong>Open in Apple Maps</strong> to get full turn-by-turn directions.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Why isn&rsquo;t the weather showing in my Job Diary? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>The 5-day weather forecast in the Job Diary is a <strong class="pro-tag">Pro</strong> feature. If you&rsquo;re on the Free plan, you&rsquo;ll see a &ldquo;Upgrade to Pro&rdquo; prompt in the weather section. Upgrade to Pro to unlock the forecast.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I schedule a job without a quote? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Tap <strong>Schedule Job</strong> and choose <strong>New Job (No Quote)</strong>. Enter the job title, customer, date and time. It&rsquo;s a standalone appointment not linked to a quote.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- PAYMENTS -->
+      <div class="faq-group" data-category="payments">
+        <div class="faq-group-title">&#128179; Payments</div>
+
+        <div class="faq-item">
+          <div class="faq-question">What are the card processing fees? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Card payments via the payment link cost <strong>1.49%</strong> on both Free and Pro plans. Tap to Pay on iPhone (Pro only) costs <strong>0.99%</strong>. There are no monthly fees, setup fees or minimum volumes. You only pay when you get paid.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How quickly do I receive my money? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Funds from card payments typically settle to your bank account within <strong>1–2 working days</strong>. Tap to Pay payments and payment link payments follow the same settlement schedule.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Do I need a card reader for Tap to Pay? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>No — Tap to Pay uses your iPhone&rsquo;s built-in NFC chip to accept contactless cards and Apple Pay. No card reader or additional hardware is needed. Tap to Pay requires an iPhone XS or later and is a <strong class="pro-tag">Pro</strong> feature.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What is Pay by Bank? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Pay by Bank is an Open Banking payment method available on the <strong class="pro-tag">Pro</strong> plan. Instead of a card, your customer authorises an instant bank transfer directly from their bank app. The money lands in your account immediately, and there&rsquo;s no transaction fee &mdash; it&rsquo;s free for both you and your customer.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Who processes payments — is it safe? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Payments are processed by <strong>Monek</strong>, a UK-regulated payment provider authorised by the Financial Conduct Authority (FCA). Card data is encrypted end-to-end and never touches Yoley&rsquo;s systems. Monek is PCI-DSS compliant.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- CIS -->
+      <div class="faq-group" data-category="cis">
+        <div class="faq-group-title">&#127974; CIS</div>
+
+        <div class="faq-item">
+          <div class="faq-question">Does Yoley support CIS? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Yoley includes CIS subcontractor management on the Free plan. You can add CIS subcontractors with their UTR numbers and deduction rates (20% standard, 30% unverified, or 0% for gross payment status). CIS deductions are calculated automatically on invoices raised against them.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Does Yoley submit CIS returns to HMRC? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Not currently. Yoley helps you track CIS deductions accurately, but CIS monthly returns must still be submitted to HMRC via their online portal or through your accountant. We&rsquo;re exploring direct HMRC submission as a future feature.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- PRO PLAN -->
+      <div class="faq-group" data-category="pro">
+        <div class="faq-group-title">&#11088; Pro Plan</div>
+
+        <div class="faq-item">
+          <div class="faq-question">What&rsquo;s included in Pro? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Pro includes everything in the Free plan, plus:</p>
+            <ul>
+              <li>Tap to Pay on iPhone (0.99% rate)</li>
+              <li>Open Banking &mdash; connect your bank, auto-match payments</li>
+              <li>Pay by Bank (instant bank transfers, no fee)</li>
+              <li>WhatsApp &amp; social media enquiry capture</li>
+              <li>Yoley Capital (cash advances)</li>
+              <li>5-day weather forecast in Job Diary</li>
+              <li>Purchase order management</li>
+              <li>Priority support</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is there a free trial for Pro? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes — Pro comes with a free trial period so you can experience all the features before being charged. The trial length is shown in the app when you upgrade. You can cancel any time before the trial ends and you won&rsquo;t be charged.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I cancel my Pro subscription? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Subscriptions are managed through the <strong>App Store</strong>. Go to your iPhone Settings &rarr; tap your name &rarr; Subscriptions &rarr; Yoley &rarr; Cancel Subscription. Your Pro features remain active until the end of your current billing period. Your data is never deleted.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What happens to my data if I downgrade from Pro? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Nothing. All your quotes, invoices, expenses, customers and jobs remain exactly as they were. You&rsquo;ll simply lose access to the Pro-only features (Tap to Pay, Open Banking, etc.) after your billing period ends. Your data is always yours.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- SECURITY -->
+      <div class="faq-group" data-category="security">
+        <div class="faq-group-title">&#128274; Security &amp; Account</div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I enable Face ID to lock the app? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Tap the <strong>burger menu</strong> (three lines, top left) and scroll to <strong>App Lock</strong>. Toggle it on. From the next time you open Yoley, you&rsquo;ll be prompted to authenticate with Face ID or Touch ID before the app opens. If biometrics fail, it falls back to your iPhone passcode.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Where is my data stored? Is it backed up? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>All your data is stored in your personal <strong>iCloud account</strong> via Apple CloudKit. Yoley&rsquo;s own servers never hold your business data. If you upgrade to a new iPhone or reinstall the app, everything restores automatically when you sign in with the same Apple ID.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What happens if I lose my phone? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Your data is safe in iCloud — nothing is lost. Use Apple&rsquo;s <strong>Find My</strong> app to lock or remotely wipe the device if needed. Install Yoley on a new phone, sign in with the same Apple ID, and all your data will be there.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I change my business name or logo? <span class="faq-chevron">&#9660;</span></div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Tap the <strong>burger menu</strong> &rarr; <strong>Settings</strong> &rarr; <strong>Business Profile</strong>. From here you can update your business name, address, logo, VAT number and contact details. Changes take effect on all new quotes and invoices immediately.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- STILL NEED HELP -->
+      <div class="faq-cta reveal">
+        <h2>Can&rsquo;t find your answer?</h2>
+        <p>Our support agent knows Yoley inside and out &mdash; ask it anything.</p>
+        <div class="faq-cta-btns">
+          <a href="support.html" class="btn-teal">&#129302; Ask Support Agent</a>
+          <a href="user-guide.html" class="btn-outline-white">Read Full Guide &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">YO<span>LEY</span></a>
+          <p>The free business app built for UK tradespeople.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="quick-guide.html">Quick Start</a></li>
+            <li><a href="user-guide.html">Full User Guide</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="support.html">Support Agent</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#comparison">Compare</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/docs/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="/docs/terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Yoley Ltd. All rights reserved.</span>
+        <div class="footer-flag"><span>&#127468;&#127463;</span> Designed &amp; built in the UK</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function(){
+      // Accordion
+      document.querySelectorAll('.faq-question').forEach(function(q){
+        q.addEventListener('click', function(){
+          var item = this.closest('.faq-item');
+          var answer = item.querySelector('.faq-answer');
+          var isOpen = item.classList.contains('open');
+          // Close all
+          document.querySelectorAll('.faq-item.open').forEach(function(i){
+            i.classList.remove('open');
+            i.querySelector('.faq-answer').style.maxHeight = '0';
+          });
+          // Open clicked if it was closed
+          if(!isOpen){
+            item.classList.add('open');
+            answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
+          }
+        });
+      });
+
+      // Category filter
+      document.querySelectorAll('.faq-cat-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          document.querySelectorAll('.faq-cat-btn').forEach(function(b){ b.classList.remove('active'); });
+          this.classList.add('active');
+          var cat = this.getAttribute('data-cat');
+          document.querySelectorAll('.faq-group').forEach(function(g){
+            if(cat === 'all' || g.getAttribute('data-category') === cat){
+              g.style.display = '';
+            } else {
+              g.style.display = 'none';
+            }
+          });
+          // Re-run search if there's a query
+          filterSearch(document.getElementById('faqSearch').value);
+        });
+      });
+
+      // Search
+      function filterSearch(query){
+        var q = query.toLowerCase().trim();
+        var anyVisible = false;
+        document.querySelectorAll('.faq-item').forEach(function(item){
+          if(item.closest('.faq-group').style.display === 'none') return;
+          var text = item.textContent.toLowerCase();
+          if(!q || text.includes(q)){
+            item.style.display = '';
+            anyVisible = true;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        document.getElementById('faqNoResults').style.display = anyVisible ? 'none' : 'block';
+      }
+
+      document.getElementById('faqSearch').addEventListener('input', function(){
+        filterSearch(this.value);
+      });
+    })();
+  </script>
+</body>
+</html>
