@@ -1,0 +1,311 @@
+{
+  "version": "296484ae97e7",
+  "latest_updated": "2026-04-17",
+  "content_hash": "sha256:296484ae97e7c6bfa4d6f9704a9e0ecb0b9708dac09b431b101db3019544c607",
+  "sections": [
+    {
+      "id": "getting-started",
+      "title": "Getting Started",
+      "order": 1
+    },
+    {
+      "id": "quotes",
+      "title": "Quotes",
+      "order": 2
+    },
+    {
+      "id": "invoices",
+      "title": "Invoices",
+      "order": 3
+    },
+    {
+      "id": "job-diary",
+      "title": "Job Diary",
+      "order": 4
+    },
+    {
+      "id": "customers",
+      "title": "Customers",
+      "order": 5
+    },
+    {
+      "id": "expenses",
+      "title": "Expenses",
+      "order": 6
+    },
+    {
+      "id": "payments",
+      "title": "Payments",
+      "order": 7
+    },
+    {
+      "id": "settings",
+      "title": "Settings & Security",
+      "order": 8
+    }
+  ],
+  "topics": [
+    {
+      "id": "quotes.approval-phone",
+      "section": "quotes",
+      "title": "Record a verbal (phone) approval",
+      "summary": "Open the quote, tap Manually Approve, choose Phone, add a note like \"Spoke to John at 2pm\", then tap Confirm Approval. This logs the approval with a timestamp.",
+      "questions": [
+        "Can I record a verbal approval by phone?",
+        "How do I record a phone approval?",
+        "How do I log a spoken yes from the customer?"
+      ],
+      "tags": [
+        "phone",
+        "verbal",
+        "call",
+        "phone-approval",
+        "verbal-approval"
+      ],
+      "related": [
+        "quotes.manual-approval",
+        "quotes.approval-text"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nFollow the standard manual approval flow and pick **Phone** as the method. Add a short note describing the call — who you spoke to, when, and any specifics they confirmed. The timestamp is recorded automatically.\n",
+      "body_hash": "sha256:86bed1f8e4d5c9bc229ac5f330c02a10c12c142b5891f1201d41c68e18d68ca4",
+      "screen": "quotes"
+    },
+    {
+      "id": "quotes.approval-text",
+      "section": "quotes",
+      "title": "Record an approval by text or WhatsApp",
+      "summary": "Open the quote, tap Manually Approve, choose Text, add a note (you can paste the customer's message), then tap Confirm Approval.",
+      "questions": [
+        "Can I record approval given by text or WhatsApp?",
+        "How do I log a WhatsApp approval?",
+        "How do I record an SMS acceptance?"
+      ],
+      "tags": [
+        "text",
+        "sms",
+        "whatsapp",
+        "message",
+        "text-approval",
+        "message-approval"
+      ],
+      "related": [
+        "quotes.manual-approval",
+        "quotes.approval-phone"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nFollow the standard manual approval flow and pick **Text** as the method. Paste the customer's message into the note field if you want a record of the exact wording, then tap **Confirm Approval**.\n",
+      "body_hash": "sha256:907f59df3b001c394956c282913040e5165a4c14e074e3eec421df0ff43fafbf",
+      "screen": "quotes"
+    },
+    {
+      "id": "quotes.comments-to-invoice",
+      "section": "quotes",
+      "title": "Quote comments carry through",
+      "summary": "Yes. Any comment added to a quote — including the note you add during manual approval — is automatically carried through as notes on the job when scheduled and on the invoice when converted.",
+      "questions": [
+        "Do quote comments carry through to the invoice?",
+        "Does the comment I add when approving a quote carry into the job?",
+        "Are quote notes copied to the invoice?"
+      ],
+      "tags": [
+        "comment",
+        "comments",
+        "note",
+        "notes",
+        "carry",
+        "carries",
+        "quote-note"
+      ],
+      "related": [
+        "quotes.manual-approval",
+        "quotes.convert-to-invoice"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nComments and notes on a quote flow through two places:\n\n- **Into the job** — when you schedule a job from an accepted quote, the approval comment is pre-filled as the job note.\n- **Into the invoice** — when you convert an accepted quote to an invoice, the quote's notes copy across so the customer sees the same information.\n\nYou can always edit or remove them before sending.\n",
+      "body_hash": "sha256:c22db6027e82c2082fb0e844743061af75125738af77474a708f113fb05e82fa",
+      "screen": "quotes"
+    },
+    {
+      "id": "quotes.convert-to-invoice",
+      "section": "quotes",
+      "title": "Convert a quote to an invoice",
+      "summary": "Open an Accepted quote and tap Convert to Invoice. Line items, customer details and notes copy across automatically. Set a due date (your default payment terms apply) and tap Send Invoice. The invoice arrives with a Pay Now link.",
+      "questions": [
+        "How do I convert a quote to an invoice?",
+        "Can I turn an accepted quote into an invoice?",
+        "How do I invoice a finished job from its quote?"
+      ],
+      "tags": [
+        "convert",
+        "invoice",
+        "quote-to-invoice",
+        "convert-to-invoice",
+        "turn-into-invoice"
+      ],
+      "related": [
+        "quotes.statuses",
+        "quotes.comments-to-invoice"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\n1. Open an `status:accepted` Accepted quote.\n2. Tap **Convert to Invoice** at the bottom of the screen.\n3. All line items, customer details and notes copy across automatically.\n4. Set a **due date** (your default payment terms apply, but you can override).\n5. Tap **Send Invoice**.\n\nThe customer receives the invoice with a Pay Now link so they can pay by card immediately. Funds settle to your bank account within 1–2 working days.\n",
+      "body_hash": "sha256:1cc5be6986f295fab328cebf8d27df74174ce2eb067eb16a8b22f73392612d5a",
+      "screen": "quotes"
+    },
+    {
+      "id": "quotes.create",
+      "section": "quotes",
+      "title": "Create a quote",
+      "summary": "Tap the Quotes tab → + → pick or add a customer → enter a job title → add line items (including Kit Bundles) → tap Save to keep as a draft or Send to deliver by email or SMS.",
+      "questions": [
+        "How do I create a quote?",
+        "How do I make a new quote?",
+        "How do I start a quote?",
+        "How do I add a quote?",
+        "How do I create and send a quote?"
+      ],
+      "tags": [
+        "quote",
+        "create",
+        "new",
+        "add",
+        "new-quote"
+      ],
+      "related": [
+        "quotes.kit-bundles",
+        "quotes.send",
+        "quotes.statuses"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\n1. Tap the **Quotes** tab → **+** (top right).\n2. Search for an existing customer or tap **New Customer** to add one on the fly.\n3. Enter a job title (e.g. \"Full bathroom refit\"). Add a reference number if needed.\n4. Tap **Add Line Item** to add labour, materials, or use a **Kit Bundle**.\n5. Optionally add notes, photos or a validity expiry date.\n6. Tap **Save** to keep as a draft, or **Send** to deliver immediately.\n\n> **Tip:** Kit Bundles let you save common job packages (e.g. \"Standard boiler service\") and add them with a single tap. Set up bundles in **Settings → Kit Bundles**.\n\nYour customer gets a branded quote by email or SMS they can accept with one tap. The whole process takes under 30 seconds once your customer and Kit Bundles are set up.\n",
+      "body_hash": "sha256:0eba288d9ab6730ebb8a302b51b498e75ba8a4562cd9fce0db581d4aec6bb8e9",
+      "screen": "quotes"
+    },
+    {
+      "id": "quotes.kit-bundles",
+      "section": "quotes",
+      "title": "Kit Bundles",
+      "summary": "Kit Bundles are pre-saved groups of line items for jobs you do regularly — for example a \"Standard boiler service\" that includes 1 hour labour + service kit + travel. Add the whole bundle to a quote with one tap. Set up bundles in Settings → Kit Bundles.",
+      "questions": [
+        "What are Kit Bundles?",
+        "What are kit bundles?",
+        "How do kit bundles work?",
+        "Where do I set up Kit Bundles?"
+      ],
+      "tags": [
+        "kit",
+        "kits",
+        "bundle",
+        "bundles",
+        "kit-bundle",
+        "kit-bundles",
+        "parts-kit"
+      ],
+      "related": [
+        "quotes.create"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nKit Bundles save time on jobs you quote for repeatedly. Instead of entering each line item manually, bundle them into a named package and add the whole thing in one tap.\n\nSet up bundles in **Settings → Kit Bundles**. Each bundle can mix labour, materials and travel lines. When you add a bundle to a quote you can still edit individual lines — the bundle is a starting point, not a lock.\n",
+      "body_hash": "sha256:542b976e0841908429e11311246d0d9a18dae1fd5484f57d324e06474c719899",
+      "screen": "quotes"
+    },
+    {
+      "id": "quotes.manual-approval",
+      "section": "quotes",
+      "title": "Manually approve a quote",
+      "summary": "Open the quote and tap the green Manually Approve button next to the status badge. Pick how the customer confirmed (Phone, Text, Email or Other), add an optional comment, then tap Confirm Approval. The comment carries through as a note on the scheduled job.",
+      "questions": [
+        "How does manual quote approval work?",
+        "Can I approve a quote on behalf of a customer?",
+        "How do I record a customer's approval manually?",
+        "How do I mark a quote as accepted myself?"
+      ],
+      "tags": [
+        "approve",
+        "approval",
+        "manual-approval",
+        "manually-approve",
+        "approve-on-behalf",
+        "on-behalf"
+      ],
+      "related": [
+        "quotes.approval-phone",
+        "quotes.approval-text",
+        "quotes.comments-to-invoice",
+        "quotes.statuses"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nWhen a customer approves over the phone, via text or by any other method not captured in the app, you can record the approval manually.\n\n1. Open the quote from the Quotes list.\n2. Tap the green **Manually Approve** button next to the status badge at the top of the screen.\n3. Select how the customer approved: **Phone**, **Text**, **Email**, or **Other**.\n4. Optionally add a comment (e.g. \"Agreed to proceed, start date 15th\").\n5. Tap **Confirm Approval**.\n\n> **Tip:** The comment you add during manual approval is automatically carried through as a note on the job when you schedule it.\n",
+      "body_hash": "sha256:73944375ab5a4e45f85af2394ca1de195306b23f2ad8abcd49312e3f6da107ef",
+      "screen": "quotes"
+    },
+    {
+      "id": "quotes.send",
+      "section": "quotes",
+      "title": "Send a quote to a customer",
+      "summary": "Open the quote and tap Send. Choose Email, SMS or Share Link. The customer receives a branded quote they can accept with one tap.",
+      "questions": [
+        "How do I send a quote to a customer?",
+        "How do I email a quote?",
+        "Can I send a quote by text?",
+        "How do I share a quote link?"
+      ],
+      "tags": [
+        "send",
+        "send-quote",
+        "email",
+        "sms",
+        "share",
+        "share-link",
+        "whatsapp"
+      ],
+      "related": [
+        "quotes.create",
+        "quotes.statuses"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nFrom any quote, tap **Send**. Choose to deliver by:\n\n- **Email** — sends a formatted email with a link to the branded quote page.\n- **SMS** — sends a short message with the quote link.\n- **Share Link** — copies the link so you can share via WhatsApp or any other channel.\n\nThe customer sees a professional-looking quote with your branding and a one-tap accept button.\n",
+      "body_hash": "sha256:9221354aa1a18b988d31ab114808b5806fb5468084637119662c664e34a49f55",
+      "screen": "quotes"
+    },
+    {
+      "id": "quotes.statuses",
+      "section": "quotes",
+      "title": "Quote statuses",
+      "summary": "Draft = saved, not sent. Sent = delivered to the customer. Opened = customer has opened the link. Accepted = customer confirmed (digitally or via manual approval). Declined = customer said no. Expired = past the validity date without response.",
+      "questions": [
+        "What do the quote statuses mean?",
+        "What do the different quote statuses mean?",
+        "What does Opened mean on a quote?",
+        "What does Accepted mean on a quote?"
+      ],
+      "tags": [
+        "status",
+        "statuses",
+        "draft",
+        "sent",
+        "opened",
+        "accepted",
+        "declined",
+        "expired"
+      ],
+      "related": [
+        "quotes.create",
+        "quotes.manual-approval"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\n| Status | Meaning |\n|---|---|\n| `status:draft` Draft | Saved but not yet sent to the customer. |\n| `status:sent` Sent | Delivered to the customer via email or SMS. |\n| `status:opened` Opened | Customer has opened the quote link. |\n| `status:accepted` Accepted | Customer has accepted — ready to schedule and invoice. |\n| `status:declined` Declined | Customer declined the quote. |\n| `status:expired` Expired | Past the validity date without response. |\n",
+      "body_hash": "sha256:b00a8febd457b14148b2ba020e445bb82f935ccdca7357d18cd391d3a2ffd8cc",
+      "screen": "quotes"
+    }
+  ]
+}
