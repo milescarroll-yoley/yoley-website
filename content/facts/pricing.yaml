@@ -1,0 +1,31 @@
+# Pricing facts — single source of truth for every rate, fee, and plan price
+# mentioned on the website, the guides, and the in-app KB.
+#
+# Changing a number here regenerates it on every surface via the
+# <!-- FACT:pricing.<path> -->…<!-- /FACT --> marker substitution.
+#
+# Keep values short — they're substituted inline. For metadata / description
+# sentences that embed a rate inside a fuller phrase, prefer rewriting the
+# phrase to place the rate in a fact marker rather than recomposing the whole
+# sentence from parts.
+
+free:
+  card_rate: "1.49%"                 # "Card payments at 1.49%"
+  card_rate_short: "1.49%"           # same; kept as alias for future typographic variants
+  plan_name: "Free"
+  plan_cost: "free forever"          # "Free forever, no card required"
+  invoices: "unlimited"
+
+pro:
+  price: "£9.99/mo"                  # compact marketing form
+  price_long: "£9.99/month"          # prose form
+  price_bare: "9.99"                 # number only — for templates that format the £ and /month separately
+  card_rate: "0.99%"                 # "Tap to Pay at 0.99%"
+  tap_to_pay_rate: "0.99%"
+  pay_by_bank_rate: "no transaction fee"
+  plan_name: "Yoley Pro"
+  trial: "14-day free trial"
+
+settlement:
+  days: "1–2 working days"
+  provider: "Monek"

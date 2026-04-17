@@ -1,0 +1,74 @@
+# Ordered list of help sections. The user-guide TOC, FAQ category buttons, and
+# in-app section grouping all derive from this file.
+#
+# id           — must match the folder name under content/ and AppScreen enum where applicable.
+# title        — display name on the website.
+# screen       — AppScreen case (iOS) this section maps to. Omit for non-screen sections.
+# icon         — emoji glyph used in the user-guide section header.
+# summary      — short description shown at the top of each section page.
+# faq_visible  — whether to render a category button for this section on faq.html.
+# order        — render order across all surfaces. Lower numbers first.
+
+sections:
+  - id: getting-started
+    title: Getting Started
+    icon: "🚀"
+    summary: Download Yoley, set up your account and send your first quote in minutes.
+    faq_visible: true
+    order: 1
+
+  - id: quotes
+    title: Quotes
+    screen: quotes
+    icon: "📝"
+    summary: Create branded quotes, track them through their lifecycle, and record approvals from any channel.
+    faq_visible: true
+    order: 2
+
+  - id: invoices
+    title: Invoices
+    screen: invoices
+    icon: "💰"
+    summary: Raise invoices with a Pay Now link by default and track what's paid, sent and overdue.
+    faq_visible: true
+    order: 3
+
+  - id: job-diary
+    title: Job Diary
+    screen: jobDiary
+    icon: "📅"
+    summary: A 14-day rolling calendar with commute times, maps and (on Pro) weather forecasts.
+    faq_visible: true
+    order: 4
+
+  - id: customers
+    title: Customers
+    screen: customers
+    icon: "👥"
+    summary: One place for every customer's contact details, job history, quotes and invoices — including CIS subcontractors.
+    faq_visible: true
+    order: 5
+
+  - id: expenses
+    title: Expenses
+    screen: expenses
+    icon: "🧾"
+    summary: Scan receipts with on-device OCR and categorise against HMRC SA103 trade expenses.
+    faq_visible: true
+    order: 6
+
+  - id: payments
+    title: Payments
+    screen: payments
+    icon: "💳"
+    summary: Card payments at 1.49% (Free) or 0.99% (Pro), Tap to Pay on iPhone, and Monek processing.
+    faq_visible: true
+    order: 7
+
+  - id: settings
+    title: Settings & Security
+    screen: settings
+    icon: "⚙️"
+    summary: Business profile, Face ID / app lock, CloudKit sync, Pro plan and Open Banking.
+    faq_visible: true
+    order: 8

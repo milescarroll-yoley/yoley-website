@@ -1,0 +1,19 @@
+{
+  "name": "yoley-content-generator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Generates website HTML, knowledge.json and the iOS Swift help KB from content/.",
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.js",
+    "validate": "node generate.js --validate-only"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "marked": "^12.0.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

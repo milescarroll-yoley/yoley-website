@@ -1,0 +1,10 @@
+# Generator tool — keep package-lock.json, ignore installed modules
+tools/node_modules/
+tools/dist/
+
+# Legacy generator output location (before --ios-out default pointed at the
+# YoleyApp repo). Safe to delete if present.
+dist/
+
+# macOS
+.DS_Store

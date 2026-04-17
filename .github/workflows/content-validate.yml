@@ -1,0 +1,62 @@
+name: Validate content
+
+# Runs on every PR that touches content/ or the generator. Blocks merge if the
+# content fails schema validation (unknown screen, missing required field,
+# duplicate quick_start_order, unresolvable `related` id, unresolved FACT path,
+# etc.). Fast — usually finishes in under 30 seconds.
+#
+# This workflow does NOT regenerate and commit. That happens on push to main
+# via a separate workflow the user adds when ready to automate deploys.
+
+on:
+  pull_request:
+    paths:
+      - 'content/**'
+      - 'tools/**'
+      - '.github/workflows/content-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'tools/**'
+  workflow_dispatch:
+
+concurrency:
+  group: content-validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: tools/package-lock.json
+
+      - name: Install generator deps
+        working-directory: tools
+        run: npm ci
+
+      - name: Validate content
+        working-directory: tools
+        run: node generate.js --validate-only
+
+      - name: Generator is idempotent
+        # Runs a full generation pass, then confirms nothing changed. If it
+        # did, someone has edited a generated artefact by hand — reject.
+        working-directory: tools
+        run: |
+          node generate.js --ios-out /tmp/HelpKnowledgeBase.generated.swift
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "::error::Generator produced changes that aren't committed:"
+            git status --porcelain
+            git diff
+            exit 1
+          fi
