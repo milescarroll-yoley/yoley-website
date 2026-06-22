@@ -11,7 +11,7 @@ questions:
   - How does receipt scanning work in Yoley?
 tags: [receipt, scan, ocr, camera, expenses, photo, offline, document]
 audiences: [user-guide, faq, quick-guide, in-app, bot]
-updated: 2025-07-14
+updated: 2026-06-22
 order: 10
 quick_start_order: 5
 ---
