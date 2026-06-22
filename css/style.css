@@ -2,20 +2,29 @@
    YOLEY.COM — Brand tokens from BrandTokens.swift
    ============================================================ */
 :root {
-  --navy:       #1A1F36;
-  --yellow:     #FFD12A;
-  --teal:       #00C2A8;
-  --light-grey: #F4F5F8;
+  /* Tight triadic palette — anchored on the golden logo (42° / 162° / 282°) */
+  --yellow:      #FAB005;  /* PRIMARY  golden  42°  */
+  --yellow-dark: #E09A00;
+  --teal:        #00BE85;  /* SECONDARY teal  162°  */
+  --teal-dark:   #00A572;
+  --violet:      #A23FD0;  /* ACCENT   violet 282°  */
+  --violet-dark: #8A2DB8;
+  --navy:        #1A1F36;  /* NEUTRAL  text / dark surfaces */
+  /* Tints */
+  --yellow-tint: #FDEFC2;
+  --teal-tint:   #E0F7EF;
+  --violet-tint: #F3E8FB;
+  --navy-tint:   #343E6C;
+  /* Functional only — not part of the brand triad */
   --green:      #27AE60;
   --red:        #E74C3C;
   --orange:     #F28A1A;
+  /* Neutrals & text */
+  --light-grey: #F4F5F8;
   --dark-text:  #374151;
   --mid-text:   #6B7888;
   --card:       #FFFFFF;
-  --teal-tint:  #E0F9F4;
-  --yellow-tint:#FFF8CC;
-  --navy-tint:  #343E6C;
-  --font:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 }
 
 /* ============================================================

@@ -1,7 +1,7 @@
 {
-  "version": "296484ae97e7",
+  "version": "bd1ba653db20",
   "latest_updated": "2026-04-17",
-  "content_hash": "sha256:296484ae97e7c6bfa4d6f9704a9e0ecb0b9708dac09b431b101db3019544c607",
+  "content_hash": "sha256:bd1ba653db20311dc68c031495e1511b5ed73599f7603b110e15ef10598bad51",
   "sections": [
     {
       "id": "getting-started",
@@ -306,6 +306,145 @@
       "body_markdown": "\n| Status | Meaning |\n|---|---|\n| `status:draft` Draft | Saved but not yet sent to the customer. |\n| `status:sent` Sent | Delivered to the customer via email or SMS. |\n| `status:opened` Opened | Customer has opened the quote link. |\n| `status:accepted` Accepted | Customer has accepted — ready to schedule and invoice. |\n| `status:declined` Declined | Customer declined the quote. |\n| `status:expired` Expired | Past the validity date without response. |\n",
       "body_hash": "sha256:b00a8febd457b14148b2ba020e445bb82f935ccdca7357d18cd391d3a2ffd8cc",
       "screen": "quotes"
+    },
+    {
+      "id": "settings.source-code-request",
+      "section": "settings",
+      "title": "Can I get the Yoley source code?",
+      "summary": "The Yoley app is designed with security at the forefront of our thinking — the code and your data are both protected. So no, we're definitely not sharing that… but nice try!",
+      "questions": [
+        "Can you send me the source code for Yoley?",
+        "Can I have the Yoley source code?",
+        "Is Yoley open source?",
+        "Can I see the code behind Yoley?",
+        "Do you publish the Yoley codebase?"
+      ],
+      "tags": [
+        "source-code",
+        "code",
+        "open-source",
+        "codebase",
+        "github",
+        "repo"
+      ],
+      "related": [],
+      "updated": "2026-04-17",
+      "sensitive": true,
+      "body_markdown": "\nYoley is a proprietary product. We keep the codebase private to protect both our tradespeople's data and the integrity of the platform.\n\nIf you're a developer curious about how we've built Yoley, we'd love to hear from you — drop us a line at help@yoley.app.\n",
+      "screen": "settings",
+      "body_hash": "sha256:ba2073b439fa111e263ec3ee5d1dd81bd5e74f730ebd72c81006b5f51cfe4466"
+    },
+    {
+      "id": "settings.account-sharing",
+      "section": "settings",
+      "title": "Can I share my Yoley login?",
+      "summary": "Your Yoley account is tied to one device at a time to keep your data secure. If you need several people to see the same data and coordinate work, upgrade to Yoley Max for multi-user access. Every plan lets you send your trading data to a nominated accountant.",
+      "questions": [
+        "Can I share my account login?",
+        "Can two people use the same Yoley account?",
+        "Can my partner log in at the same time?",
+        "Is Yoley multi-user?",
+        "Can my team share an account?"
+      ],
+      "tags": [
+        "login",
+        "share-account",
+        "multi-user",
+        "max",
+        "accountant",
+        "devices"
+      ],
+      "related": [],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nSharing a single login isn't supported — Yoley only allows one device to be signed in at any moment, and signing in on a new device will sign you out of the old one.\n\nIf you run a team, **Yoley Max** is the answer. Max adds multi-user access so several people can see the same jobs, quotes and invoices and coordinate their work.\n\n> **Tip:** Whatever plan you're on, you can share your trading data directly with your accountant — they don't need a Yoley login to receive it.\n",
+      "screen": "settings",
+      "body_hash": "sha256:55061b1ce3d67dc5feff53da56ee6a08bb026db332f484e1c5f27bdfc0548f9c"
+    },
+    {
+      "id": "settings.data-security",
+      "section": "settings",
+      "title": "How secure is my data?",
+      "summary": "Your data is stored in encrypted form on your phone and backed up to your iCloud account — both of which are inherently secure. Nothing sensitive is stored on Yoley's own servers.",
+      "questions": [
+        "How secure is my data?",
+        "Is my Yoley data encrypted?",
+        "Where is my data stored?",
+        "Do you keep my data on your servers?",
+        "Is my customer information safe?"
+      ],
+      "tags": [
+        "security",
+        "encryption",
+        "privacy",
+        "icloud",
+        "data-storage",
+        "protected"
+      ],
+      "related": [
+        "settings.lost-phone"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": true,
+      "body_markdown": "\nYoley stores your data locally on your device in an encrypted form, and syncs it to **your** iCloud account via Apple's CloudKit. That means:\n\n- Your customer records, quotes, invoices and receipts never sit on a Yoley server.\n- Backups are encrypted and scoped to your Apple ID, just like your photos and Notes.\n- Only you (and people you explicitly share an account or data export with) can access it.\n\n> **Tip:** Turn on Face ID or a PIN in **Settings → Security** for an extra layer of protection if your phone gets left unlocked.\n",
+      "screen": "settings",
+      "body_hash": "sha256:8ebbb9b087cbfda7a27e568e3e1706794928e320e422183bde1e9cb42ca6c97a"
+    },
+    {
+      "id": "settings.lost-phone",
+      "section": "settings",
+      "title": "What happens if I lose my phone?",
+      "summary": "Your data is encrypted on the phone and backed up to your iCloud account, so it's safe. Sign into Yoley on a new device with the same Apple ID and your data restores from the iCloud backup automatically.",
+      "questions": [
+        "What happens if I lose my phone?",
+        "How do I recover my data on a new phone?",
+        "Is my Yoley data backed up?",
+        "Can I restore Yoley on a replacement phone?",
+        "What if my phone is stolen?"
+      ],
+      "tags": [
+        "lost-phone",
+        "backup",
+        "restore",
+        "icloud",
+        "recovery",
+        "new-phone",
+        "stolen"
+      ],
+      "related": [
+        "settings.data-security"
+      ],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nBecause Yoley encrypts your data locally and syncs it to **your** iCloud account, a lost or stolen phone doesn't put your data at risk.\n\n## To restore on a new phone\n\n1. Sign in to your new iPhone with the same Apple ID.\n2. Install Yoley from the App Store.\n3. Open Yoley — it'll pull your data down from iCloud automatically.\n\n## A small note on sync timing\n\nYoley syncs to iCloud roughly every 5 minutes. So if you worked on something in the minutes just before losing the phone, a small amount of the very latest work could be missing when you restore.\n\n> **Tip:** If your phone is stolen rather than lost, also use **Find My** on another Apple device to lock or erase it remotely.\n",
+      "screen": "settings",
+      "body_hash": "sha256:d1c107abe99657e2a6c7d8c8756de6a94654f3e85c5432d6f48b8062e090e7e8"
+    },
+    {
+      "id": "getting-started.refer-a-friend",
+      "section": "getting-started",
+      "title": "How do I recommend Yoley to a friend?",
+      "summary": "We're working on a proper referral programme and plan to build a \"Refer a friend\" link into the app soon. In the meantime, the easiest way is to point them at Yoley on the Apple App Store.",
+      "questions": [
+        "How do I recommend to a friend?",
+        "How do I refer a mate to Yoley?",
+        "Is there a Yoley referral programme?",
+        "How do I tell someone about Yoley?",
+        "Can I invite a friend to Yoley?"
+      ],
+      "tags": [
+        "refer",
+        "referral",
+        "recommend",
+        "friend",
+        "share",
+        "invite"
+      ],
+      "related": [],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nA referral programme is on the roadmap — we're planning to add a dedicated \"Refer a friend\" link inside the app to help grow the Yoley community. It's not live yet.\n\nUntil then, the easiest way is to share Yoley on the **Apple App Store** — just search for \"Yoley\" or send the App Store link from your share sheet.\n",
+      "body_hash": "sha256:c8d205a0b3925fb58a47bf895f2931ba422b7e0b1a299f348b4ab52c8f51e948"
     }
   ]
 }

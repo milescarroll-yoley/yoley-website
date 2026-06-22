@@ -34,11 +34,16 @@ const KNOWLEDGE_JSON = join(WEBSITE_ROOT, 'knowledge.json');
 // next Xcode build picks up the new KB. In CI (where YoleyApp isn't checked out
 // alongside) the fallback is website/dist/, which the docs-sync workflow then
 // lifts into the app repo via a cross-repo PR. Override with --ios-out.
+// Xcode placed the Resources group under Services (because the folder was
+// dragged onto that group), so the file lives at Services/Resources/... on
+// disk. Keep the generator in step — next time the group is reorganised in
+// Xcode, update this path too.
 const SIBLING_APP_RESOURCES = resolve(
   WEBSITE_ROOT,
   '..',
   'YoleyApp',
   'YoleyApp',
+  'Services',
   'Resources',
   'HelpKnowledgeBase.generated.swift',
 );
