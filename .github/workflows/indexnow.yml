@@ -1,0 +1,80 @@
+name: IndexNow ping
+
+# Notifies IndexNow-enabled search engines (Bing, Yandex, DuckDuckGo, etc.)
+# whenever HTML pages change. Google does not use IndexNow — it relies on the
+# sitemap — so this complements, not replaces, Search Console.
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/*.html"
+  workflow_dispatch:
+    inputs:
+      submit_all:
+        description: "Submit every .html page on the site (not just changed ones)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+env:
+  HOST: yoley.com
+  KEY: 7efc27e390dc6ed29df65d740804bf69
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Build list of changed (or all) HTML pages
+        id: urls
+        run: |
+          set -e
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.submit_all }}" = "true" ]; then
+            FILES=$(find . -path ./.git -prune -o -name '*.html' -print | sed 's|^\./||')
+          else
+            FILES=$(git diff --name-only --diff-filter=ACMR ${{ github.event.before }} ${{ github.sha }} -- '*.html' || true)
+          fi
+          : > urls.txt
+          for f in $FILES; do
+            # Map repo path -> public URL. Root index.html collapses to the homepage.
+            if [ "$f" = "index.html" ]; then
+              echo "https://${HOST}/" >> urls.txt
+            else
+              echo "https://${HOST}/${f}" >> urls.txt
+            fi
+          done
+          COUNT=$(wc -l < urls.txt | tr -d ' ')
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Pages to submit: $COUNT"
+          cat urls.txt
+
+      - name: Submit to IndexNow
+        if: steps.urls.outputs.count != '0'
+        run: |
+          set -e
+          # Build JSON body with jq from urls.txt
+          URLLIST=$(jq -R . urls.txt | jq -s .)
+          BODY=$(jq -n \
+            --arg host "$HOST" \
+            --arg key "$KEY" \
+            --arg keyloc "https://${HOST}/${KEY}.txt" \
+            --argjson urls "$URLLIST" \
+            '{host:$host, key:$key, keyLocation:$keyloc, urlList:$urls}')
+          echo "$BODY"
+          HTTP=$(curl -s -o resp.txt -w "%{http_code}" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -X POST "https://api.indexnow.org/IndexNow" \
+            -d "$BODY")
+          echo "IndexNow responded: $HTTP"
+          cat resp.txt || true
+          # 200 and 202 are both success per IndexNow spec
+          if [ "$HTTP" != "200" ] && [ "$HTTP" != "202" ]; then
+            echo "::warning::IndexNow returned $HTTP"
+          fi
