@@ -1,7 +1,7 @@
 {
-  "version": "bd1ba653db20",
-  "latest_updated": "2026-04-17",
-  "content_hash": "sha256:bd1ba653db20311dc68c031495e1511b5ed73599f7603b110e15ef10598bad51",
+  "version": "91b34a57ccd7",
+  "latest_updated": "2026-06-22",
+  "content_hash": "sha256:91b34a57ccd77ddc6fecd4ca81a36125ddfcfc9e1c40dcfe3ca70e59ff8d5169",
   "sections": [
     {
       "id": "getting-started",
@@ -45,6 +45,60 @@
     }
   ],
   "topics": [
+    {
+      "id": "expenses.scan-receipts",
+      "section": "expenses",
+      "title": "Scan a receipt",
+      "summary": "Open Expenses → tap + → Scan Receipt. Point the camera at your receipt — Yoley's document scanner detects edges and corrects perspective automatically. Once captured, it reads the amount, VAT, supplier and date on-device (no internet needed) and lets you review before saving.",
+      "questions": [
+        "How do I scan a receipt?",
+        "How do I add a receipt by taking a photo?",
+        "Can I scan receipts offline?",
+        "How does receipt scanning work in Yoley?"
+      ],
+      "tags": [
+        "receipt",
+        "scan",
+        "ocr",
+        "camera",
+        "expenses",
+        "photo",
+        "offline",
+        "document"
+      ],
+      "related": [],
+      "updated": "2026-06-22",
+      "sensitive": false,
+      "body_markdown": "\n## Steps\n\n1. Tap the **Expenses** tab → **+**.\n2. Choose **Scan Receipt** to open the document scanner.\n3. Hold your phone over the receipt — the scanner highlights the document outline automatically.\n4. Tap the shutter (or let the scanner capture automatically when it's happy with the frame).\n5. Review the scanned image; tap **Retake** if needed, then confirm.\n6. Yoley reads the receipt on-device and fills in the **Amount**, **VAT**, **Supplier** and **Date** fields for you.\n7. Check the pre-filled details, adjust any field if needed, pick a category, then tap **Save**.\n\n> **Tip:** Scanning works entirely on your device — no internet connection is required and your receipt images are never sent to a server.\n\n> **Note:** If the scanner can't confidently detect a total from a label (e.g. \"Total\" or \"Grand Total\"), it falls back to the largest monetary figure on the receipt. Always double-check the **Amount** field before saving.\n",
+      "body_hash": "sha256:bce807e6dbbc5e5b7846df52b486e8614a39e638cce9a08ed0d059d242d29fe5",
+      "screen": "expenses"
+    },
+    {
+      "id": "getting-started.refer-a-friend",
+      "section": "getting-started",
+      "title": "How do I recommend Yoley to a friend?",
+      "summary": "We're working on a proper referral programme and plan to build a \"Refer a friend\" link into the app soon. In the meantime, the easiest way is to point them at Yoley on the Apple App Store.",
+      "questions": [
+        "How do I recommend to a friend?",
+        "How do I refer a mate to Yoley?",
+        "Is there a Yoley referral programme?",
+        "How do I tell someone about Yoley?",
+        "Can I invite a friend to Yoley?"
+      ],
+      "tags": [
+        "refer",
+        "referral",
+        "recommend",
+        "friend",
+        "share",
+        "invite"
+      ],
+      "related": [],
+      "updated": "2026-04-17",
+      "sensitive": false,
+      "body_markdown": "\nA referral programme is on the roadmap — we're planning to add a dedicated \"Refer a friend\" link inside the app to help grow the Yoley community. It's not live yet.\n\nUntil then, the easiest way is to share Yoley on the **Apple App Store** — just search for \"Yoley\" or send the App Store link from your share sheet. Word of mouth from another tradesperson is still the best recommendation a new user can get.\n\n> **Note:** When the referral programme launches we'll reach out to everyone using Yoley — so keep your email address up to date in **Settings → Business Profile**.\n",
+      "body_hash": "sha256:76ca75e2ec2aa85c2f5a4b6f6eba63d92c19726e98bc39b7035c0e6c71e1b10a"
+    },
     {
       "id": "quotes.approval-phone",
       "section": "quotes",
@@ -308,33 +362,6 @@
       "screen": "quotes"
     },
     {
-      "id": "settings.source-code-request",
-      "section": "settings",
-      "title": "Can I get the Yoley source code?",
-      "summary": "The Yoley app is designed with security at the forefront of our thinking — the code and your data are both protected. So no, we're definitely not sharing that… but nice try!",
-      "questions": [
-        "Can you send me the source code for Yoley?",
-        "Can I have the Yoley source code?",
-        "Is Yoley open source?",
-        "Can I see the code behind Yoley?",
-        "Do you publish the Yoley codebase?"
-      ],
-      "tags": [
-        "source-code",
-        "code",
-        "open-source",
-        "codebase",
-        "github",
-        "repo"
-      ],
-      "related": [],
-      "updated": "2026-04-17",
-      "sensitive": true,
-      "body_markdown": "\nYoley is a proprietary product. We keep the codebase private to protect both our tradespeople's data and the integrity of the platform.\n\nIf you're a developer curious about how we've built Yoley, we'd love to hear from you — drop us a line at help@yoley.app.\n",
-      "screen": "settings",
-      "body_hash": "sha256:ba2073b439fa111e263ec3ee5d1dd81bd5e74f730ebd72c81006b5f51cfe4466"
-    },
-    {
       "id": "settings.account-sharing",
       "section": "settings",
       "title": "Can I share my Yoley login?",
@@ -358,8 +385,8 @@
       "updated": "2026-04-17",
       "sensitive": false,
       "body_markdown": "\nSharing a single login isn't supported — Yoley only allows one device to be signed in at any moment, and signing in on a new device will sign you out of the old one.\n\nIf you run a team, **Yoley Max** is the answer. Max adds multi-user access so several people can see the same jobs, quotes and invoices and coordinate their work.\n\n> **Tip:** Whatever plan you're on, you can share your trading data directly with your accountant — they don't need a Yoley login to receive it.\n",
-      "screen": "settings",
-      "body_hash": "sha256:55061b1ce3d67dc5feff53da56ee6a08bb026db332f484e1c5f27bdfc0548f9c"
+      "body_hash": "sha256:55061b1ce3d67dc5feff53da56ee6a08bb026db332f484e1c5f27bdfc0548f9c",
+      "screen": "settings"
     },
     {
       "id": "settings.data-security",
@@ -381,14 +408,12 @@
         "data-storage",
         "protected"
       ],
-      "related": [
-        "settings.lost-phone"
-      ],
+      "related": [],
       "updated": "2026-04-17",
       "sensitive": true,
       "body_markdown": "\nYoley stores your data locally on your device in an encrypted form, and syncs it to **your** iCloud account via Apple's CloudKit. That means:\n\n- Your customer records, quotes, invoices and receipts never sit on a Yoley server.\n- Backups are encrypted and scoped to your Apple ID, just like your photos and Notes.\n- Only you (and people you explicitly share an account or data export with) can access it.\n\n> **Tip:** Turn on Face ID or a PIN in **Settings → Security** for an extra layer of protection if your phone gets left unlocked.\n",
-      "screen": "settings",
-      "body_hash": "sha256:8ebbb9b087cbfda7a27e568e3e1706794928e320e422183bde1e9cb42ca6c97a"
+      "body_hash": "sha256:8ebbb9b087cbfda7a27e568e3e1706794928e320e422183bde1e9cb42ca6c97a",
+      "screen": "settings"
     },
     {
       "id": "settings.lost-phone",
@@ -416,35 +441,36 @@
       ],
       "updated": "2026-04-17",
       "sensitive": false,
-      "body_markdown": "\nBecause Yoley encrypts your data locally and syncs it to **your** iCloud account, a lost or stolen phone doesn't put your data at risk.\n\n## To restore on a new phone\n\n1. Sign in to your new iPhone with the same Apple ID.\n2. Install Yoley from the App Store.\n3. Open Yoley — it'll pull your data down from iCloud automatically.\n\n## A small note on sync timing\n\nYoley syncs to iCloud roughly every 5 minutes. So if you worked on something in the minutes just before losing the phone, a small amount of the very latest work could be missing when you restore.\n\n> **Tip:** If your phone is stolen rather than lost, also use **Find My** on another Apple device to lock or erase it remotely.\n",
-      "screen": "settings",
-      "body_hash": "sha256:d1c107abe99657e2a6c7d8c8756de6a94654f3e85c5432d6f48b8062e090e7e8"
+      "body_markdown": "\nBecause Yoley encrypts your data locally and syncs it to **your** iCloud account, a lost or stolen phone doesn't put your data at risk.\n\n## To restore on a new phone\n\n1. Sign in to your new iPhone with the same Apple ID.\n2. Install Yoley from the App Store.\n3. Open Yoley — it'll pull your data down from iCloud automatically.\n\n## A small note on sync timing\n\nYoley syncs to iCloud roughly every 5 minutes. So if you worked on something in the minutes just before losing the phone, a small amount of the very latest work could be missing when you restore.\n\n> **Tip:** If your phone is stolen rather than lost, also use **Find My** on another Apple device to lock or erase it remotely. That doesn't affect your iCloud backup — your Yoley data will still restore onto your replacement handset.\n",
+      "body_hash": "sha256:3ee1b173a7f5a8863bdf5e0d1074a4b1d0116b4c10ab68978a2502a834973d5d",
+      "screen": "settings"
     },
     {
-      "id": "getting-started.refer-a-friend",
-      "section": "getting-started",
-      "title": "How do I recommend Yoley to a friend?",
-      "summary": "We're working on a proper referral programme and plan to build a \"Refer a friend\" link into the app soon. In the meantime, the easiest way is to point them at Yoley on the Apple App Store.",
+      "id": "settings.source-code-request",
+      "section": "settings",
+      "title": "Can I get the Yoley source code?",
+      "summary": "The Yoley app is designed with security at the forefront of our thinking — the code and your data are both protected. So no, we're definitely not sharing that… but nice try!",
       "questions": [
-        "How do I recommend to a friend?",
-        "How do I refer a mate to Yoley?",
-        "Is there a Yoley referral programme?",
-        "How do I tell someone about Yoley?",
-        "Can I invite a friend to Yoley?"
+        "Can you send me the source code for Yoley?",
+        "Can I have the Yoley source code?",
+        "Is Yoley open source?",
+        "Can I see the code behind Yoley?",
+        "Do you publish the Yoley codebase?"
       ],
       "tags": [
-        "refer",
-        "referral",
-        "recommend",
-        "friend",
-        "share",
-        "invite"
+        "source-code",
+        "code",
+        "open-source",
+        "codebase",
+        "github",
+        "repo"
       ],
       "related": [],
       "updated": "2026-04-17",
-      "sensitive": false,
-      "body_markdown": "\nA referral programme is on the roadmap — we're planning to add a dedicated \"Refer a friend\" link inside the app to help grow the Yoley community. It's not live yet.\n\nUntil then, the easiest way is to share Yoley on the **Apple App Store** — just search for \"Yoley\" or send the App Store link from your share sheet.\n",
-      "body_hash": "sha256:c8d205a0b3925fb58a47bf895f2931ba422b7e0b1a299f348b4ab52c8f51e948"
+      "sensitive": true,
+      "body_markdown": "\nYoley is a proprietary product. We keep the codebase private to protect both our tradespeople's data and the integrity of the platform.\n\nIf you're a developer curious about how we've built Yoley, we'd love to hear from you — drop us a line at help@yoley.app.\n",
+      "body_hash": "sha256:ba2073b439fa111e263ec3ee5d1dd81bd5e74f730ebd72c81006b5f51cfe4466",
+      "screen": "settings"
     }
   ]
 }
