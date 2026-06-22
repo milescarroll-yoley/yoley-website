@@ -3,7 +3,7 @@
   <!-- Core pages -->
   <url>
     <loc>https://yoley.com/</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -105,8 +105,20 @@
   <!-- Blog -->
   <url>
     <loc>https://yoley.com/blog/index.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yoley.com/blog/how-much-tradesman-charge-day-rate-2026.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yoley.com/blog/vat-registration-sole-trader-tradesman-2026.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
