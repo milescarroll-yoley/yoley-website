@@ -290,7 +290,7 @@
       <!-- CONSENT -->
       <div class="ap-consent">
         <strong>Consent &amp; declaration</strong>
-        <p style="margin-top:8px;">By submitting this form you confirm the information is accurate, and you consent to Yoley Limited sharing it with <strong>Monek Group Limited</strong> so they can assess and process your application for a merchant account. Monek will handle your data under their own privacy terms; Yoley handles it under our <a href="../privacy-policy.html">Privacy Policy</a>. Yoley acts as an introducer and is an Introducer Appointed Representative arrangement with Monek; the decision to open an account rests with Monek.</p>
+        <p style="margin-top:8px;">By submitting this form you confirm the information is accurate, and you consent to Yoley Limited sharing it with <strong>Monek Group Limited</strong> so they can assess and process your application for a merchant account. Monek will handle your data under their own privacy terms; Yoley handles it under our <a href="../privacy-policy.html">Privacy Policy</a>. Yoley acts as an introducer and is an Introducer Appointed Representative arrangement with Monek; the decision to open an account rests with Monek. We also collect basic technical information about your device and connection (such as device type and IP address) for fraud prevention and security, which is shared with Monek as part of your application.</p>
         <label><input type="checkbox" id="apConsent" required> I have read the above and consent to my information being shared with Monek to process my application.</label>
       </div>
 
@@ -322,12 +322,48 @@
 
   <script>
   (function(){
-    // ===== Secure submission endpoint. Empty until Monek's secure intake / API is wired. =====
-    // When set, the form POSTs JSON over HTTPS to this endpoint. We never plaintext-email this data.
-    var SUBMIT_ENDPOINT = ""; // e.g. "https://api.monek.com/intake/yoley"  (TBC)
+    // ===== Submission: Salesforce Web-to-Lead (Monek's CRM). No email — posts directly to Salesforce over HTTPS. =====
+    var SF_OID = "";  // <-- Monek's Salesforce Org ID. Until this is set, the form HOLDS and sends nothing.
+    var SF_ENDPOINT = "https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8";
+    var SF_RETURL = "https://yoley.com/apply/thank-you.html";
+    // Map our field names -> Salesforce Web-to-Lead field names/IDs.
+    // Standard Lead fields are named below; custom fields use Monek's 00N... IDs (add as Monek supplies them).
+    // Anything NOT mapped here is still sent inside the bundled 'description', so no data is lost.
+    var FIELD_MAP = {
+      contactFirstName: "first_name",
+      contactLastName:  "last_name",
+      companyLegalName: "company",
+      contactEmail:     "email",
+      contactMobile:    "phone",
+      websiteUrl:       "url"
+      // e.g. annualCardTurnover: "00N1x000000ABCD",  (add Monek's custom field IDs here)
+    };
 
     var form = document.getElementById('apForm');
     var msg = document.getElementById('apMsg');
+
+    // ---- Capture browser/session info (for Monek's fraud / risk profiling) ----
+    var SESSION = {};
+    (function captureSession(){
+      var ua = navigator.userAgent || "";
+      var device = /Mobi|Android|iPhone/i.test(ua) ? "Mobile" : (/iPad|Tablet/i.test(ua) ? "Tablet" : "Desktop");
+      SESSION = {
+        deviceType: device, userAgent: ua, platform: navigator.platform || "",
+        language: navigator.language || "", screen: screen.width+"x"+screen.height,
+        viewport: window.innerWidth+"x"+window.innerHeight,
+        timezone: (Intl.DateTimeFormat().resolvedOptions().timeZone || ""),
+        referrer: document.referrer || "", landingPage: location.href, ip: ""
+      };
+      // IP is not available in-browser; best-effort lookup (non-blocking). Server-side capture is more reliable if you move to an API.
+      try { fetch("https://api.ipify.org?format=json").then(function(r){return r.json();}).then(function(j){ SESSION.ip = j.ip || ""; }).catch(function(){}); } catch(e){}
+    })();
+
+    // ---- Hidden iframe target + anti-spam honeypot ----
+    (function(){
+      var hp = document.createElement('input'); hp.type='text'; hp.name='_hp'; hp.tabIndex=-1; hp.autocomplete='off';
+      hp.style.position='absolute'; hp.style.left='-9999px'; hp.setAttribute('aria-hidden','true'); form.appendChild(hp);
+      var fr = document.createElement('iframe'); fr.name='sfFrame'; fr.id='sfFrame'; fr.style.display='none'; document.body.appendChild(fr);
+    })();
 
     // ---- Director block template (also reused for sole-trader owner) ----
     function directorHTML(n, isOwner){
@@ -413,21 +449,49 @@
       });
       if(missing.length){ msg.className='ap-msg err'; msg.textContent='Please complete the required fields highlighted with *.'; window.scrollTo({top:0,behavior:'smooth'}); return; }
 
+      // anti-spam honeypot — bots fill hidden fields
+      var hp = form.querySelector('[name="_hp"]'); if(hp && hp.value){ return; }
+
       var payload = collect();
-      if(!SUBMIT_ENDPOINT){
-        // Secure channel not yet wired — do NOT plaintext-email. Hold and inform.
+      payload._session = SESSION;
+
+      if(!SF_OID){
+        // Salesforce Org ID not yet configured — HOLD, send nothing.
         msg.className='ap-msg ok';
-        msg.innerHTML='Thanks — your application is ready. Secure submission to Monek is being switched on; we’ll be in touch shortly. (No data has been sent yet.)';
+        msg.innerHTML='Thanks — your application is ready. We are switching on the secure connection to Monek and will be in touch shortly. (No data has been sent yet.)';
         window.scrollTo({top:0,behavior:'smooth'});
-        console.log('Yoley/Monek application payload (not sent — endpoint not configured):', payload);
+        console.log('Yoley/Monek application (not sent — SF_OID not set):', payload);
         return;
       }
+
+      var desc = buildDescription(payload);
+      var sf = document.createElement('form');
+      sf.method='POST'; sf.action=SF_ENDPOINT; sf.target='sfFrame'; sf.style.display='none';
+      function add(name,val){ var i=document.createElement('input'); i.type='hidden'; i.name=name; i.value=(val==null?'':String(val)); sf.appendChild(i); }
+      add('oid', SF_OID);
+      add('retURL', SF_RETURL);
+      add('lead_source', 'Yoley');
+      Object.keys(FIELD_MAP).forEach(function(our){ if(payload[our]) add(FIELD_MAP[our], payload[our]); });
+      if(!payload.companyLegalName && payload.tradingName){ add('company', payload.tradingName); }
+      add('description', desc); // full application + session bundled here until Monek maps custom fields
+      document.body.appendChild(sf);
+
       var btn=document.getElementById('apSubmit'); btn.disabled=true; btn.textContent='Sending securely…';
-      fetch(SUBMIT_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
-        .then(function(r){ if(!r.ok) throw new Error('bad status'); msg.className='ap-msg ok'; msg.textContent='Thanks — your application has been sent securely to Monek. They’ll be in touch to complete setup.'; form.reset(); applyConditions(); })
-        .catch(function(){ msg.className='ap-msg err'; msg.textContent='Something went wrong sending your application. Please try again, or contact support@yoley.com.'; })
-        .finally(function(){ btn.disabled=false; btn.textContent='Submit application to Monek'; window.scrollTo({top:0,behavior:'smooth'}); });
+      var frame=document.getElementById('sfFrame'); var done=false;
+      frame.onload=function(){ if(done) return; done=true; msg.className='ap-msg ok'; msg.textContent='Thanks — your application has been sent to Monek. They will be in touch to complete your setup.'; form.reset(); applyConditions(); btn.disabled=false; btn.textContent='Submit application to Monek'; window.scrollTo({top:0,behavior:'smooth'}); };
+      sf.submit();
     });
+
+    function buildDescription(d){
+      var lines = ['=== YOLEY MERCHANT APPLICATION ===',''];
+      Object.keys(d).forEach(function(k){
+        if(k==='_session'||k==='_hp') return;
+        var v=d[k]; if(v==null||v==='') return; if(Array.isArray(v)){ if(!v.length) return; v=v.join(', '); }
+        lines.push(k+': '+v);
+      });
+      if(d._session){ lines.push('','--- browser / session ---'); Object.keys(d._session).forEach(function(k){ if(d._session[k]) lines.push(k+': '+d._session[k]); }); }
+      return lines.join('\n');
+    }
   })();
   </script>
   <script src="../js/main.js"></script>
