@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply for card payments with Monek | Yoley</title>
+  <meta name="description" content="Apply for a Monek merchant account through Yoley. Take card payments for your trade business.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://yoley.com/apply/index.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .ap-hero { background:linear-gradient(165deg,var(--navy) 0%,var(--navy-tint) 100%); padding:110px 0 48px; text-align:center; }
+    .ap-hero .container { max-width:780px; }
+    .ap-hero h1 { color:#fff; font-size:clamp(28px,4.4vw,42px); font-weight:900; margin-bottom:14px; }
+    .ap-hero p { color:rgba(255,255,255,0.78); font-size:17px; line-height:1.6; max-width:620px; margin:0 auto; }
+    .ap-hero .pp { color:rgba(255,255,255,0.55); font-size:13px; margin-top:18px; }
+    .ap-hero .pp a { color:var(--teal); }
+
+    .ap-wrap { background:var(--light-grey); padding:48px 0 80px; }
+    .ap-form { max-width:780px; margin:0 auto; padding:0 20px; }
+    .ap-card { background:#fff; border:1px solid #eef0f4; border-radius:16px; padding:28px; margin-bottom:22px; }
+    .ap-card h2 { font-size:20px; font-weight:800; color:var(--navy); margin-bottom:4px; }
+    .ap-card .desc { font-size:14px; color:var(--mid-text); margin-bottom:20px; }
+    .ap-field { margin-bottom:18px; }
+    .ap-field.half { display:inline-block; width:calc(50% - 8px); vertical-align:top; }
+    .ap-field.half:nth-child(odd) { margin-right:14px; }
+    @media(max-width:560px){ .ap-field.half{ width:100%; margin-right:0 !important; } }
+    .ap-field label { display:block; font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px; }
+    .ap-field .hint { font-weight:400; color:var(--mid-text); font-size:12px; }
+    .ap-field input[type=text], .ap-field input[type=email], .ap-field input[type=tel], .ap-field input[type=number], .ap-field input[type=date], .ap-field input[type=url], .ap-field select, .ap-field textarea {
+      width:100%; padding:12px 14px; border:1px solid #d7dbe3; border-radius:10px; font:inherit; font-size:15px; color:var(--dark-text); background:#fff;
+    }
+    .ap-field textarea { min-height:90px; resize:vertical; }
+    .ap-field input:focus, .ap-field select:focus, .ap-field textarea:focus { outline:none; border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-tint); }
+    .ap-choice { display:flex; gap:10px; flex-wrap:wrap; }
+    .ap-choice label { display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border:1px solid #d7dbe3; border-radius:100px; cursor:pointer; font-weight:600; font-size:14px; color:var(--navy); background:#fff; margin:0; }
+    .ap-choice input { accent-color:var(--teal); }
+    .ap-choice label:hover { border-color:var(--teal); }
+    .ap-req { color:#E74C3C; }
+    .ap-hidden { display:none !important; }
+    .ap-addbtn { background:var(--teal-tint); color:var(--teal-dark); border:0; border-radius:100px; padding:10px 18px; font-weight:700; font-size:14px; cursor:pointer; }
+    .ap-director { border:1px dashed #d7dbe3; border-radius:12px; padding:20px; margin-bottom:16px; }
+    .ap-director h3 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:14px; }
+    .ap-consent { background:#fff; border:1px solid #eef0f4; border-radius:16px; padding:24px; margin-bottom:22px; font-size:14px; color:var(--dark-text); line-height:1.6; }
+    .ap-consent label { display:flex; gap:10px; align-items:flex-start; margin-top:12px; font-weight:600; color:var(--navy); }
+    .ap-submit { background:var(--yellow); color:var(--navy); border:0; border-radius:100px; padding:16px 34px; font-weight:800; font-size:17px; cursor:pointer; width:100%; }
+    .ap-submit:disabled { opacity:0.5; cursor:not-allowed; }
+    .ap-note { font-size:13px; color:var(--mid-text); text-align:center; margin-top:14px; line-height:1.6; }
+    .ap-msg { display:none; border-radius:12px; padding:16px 18px; margin-bottom:20px; font-size:15px; }
+    .ap-msg.ok { display:block; background:var(--teal-tint); color:var(--teal-dark); border-left:4px solid var(--teal); }
+    .ap-msg.err { display:block; background:#fef2f2; color:#b3261e; border-left:4px solid #E74C3C; }
+    .ap-pre { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--teal); margin-bottom:4px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo" aria-label="Yoley home"><img src="../yoley-logo-navbar.png" alt="Yoley logo" height="80" width="200"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#features">Features</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="../tool-talk/index.html">Tool Talk</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../index.html" class="nav-cta">Download Free</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="ap-hero">
+    <div class="container">
+      <h1>Apply to take card payments</h1>
+      <p>Yoley partners with <strong style="color:#fff;">Monek Merchant Services Limited</strong>, an FCA-authorised payment institution, to set up your card payments. Complete this application and we'll pass it securely to Monek to process. It takes about 10 minutes.</p>
+      <p class="pp">Your information is shared with Monek Group Limited to assess your application. See our <a href="../privacy-policy.html">Privacy Policy</a>.</p>
+    </div>
+  </section>
+
+  <div class="ap-wrap">
+    <form class="ap-form" id="apForm" novalidate>
+      <div class="ap-msg" id="apMsg"></div>
+
+      <!-- BUSINESS / LEGAL -->
+      <div class="ap-card">
+        <h2>Your business</h2>
+        <p class="desc">Tell us how your business is set up. We'll only ask for what's relevant.</p>
+        <div class="ap-field">
+          <label>Business legal type <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="legalType">
+            <label><input type="radio" name="legalType" value="Self-Employed or Sole Trader" required> Self-employed / sole trader</label>
+            <label><input type="radio" name="legalType" value="Limited Company"> Limited company</label>
+            <label><input type="radio" name="legalType" value="Partnership"> Partnership</label>
+          </div>
+        </div>
+        <div data-when="legalType=Limited Company,Partnership">
+          <div class="ap-field"><label>Company legal name <span class="ap-req">*</span></label><input type="text" name="companyLegalName"></div>
+          <div class="ap-field"><label>Company registered address <span class="ap-req">*</span></label><textarea name="companyRegisteredAddress"></textarea></div>
+          <div class="ap-field half"><label>Company registration number</label><input type="text" name="companyNumber" placeholder="e.g. 12345678"></div>
+          <div class="ap-field half"><label>Incorporated date</label><input type="date" name="incorporatedDate"></div>
+        </div>
+        <div class="ap-field">
+          <label>Trading name <span class="ap-req">*</span> <span class="hint">— the name your customers know you by</span></label>
+          <input type="text" name="tradingName">
+        </div>
+        <div class="ap-field"><label>Trading address <span class="hint">(if different from above)</span></label><textarea name="tradingAddress"></textarea></div>
+        <div class="ap-field half"><label>Business telephone <span class="ap-req">*</span></label><input type="tel" name="businessTelephone"></div>
+        <div class="ap-field half"><label>Business email <span class="ap-req">*</span></label><input type="email" name="businessEmail"></div>
+      </div>
+
+      <!-- ENQUIRER / CONTACT -->
+      <div class="ap-card">
+        <h2>Main contact</h2>
+        <p class="desc">The person we should deal with about this application.</p>
+        <div class="ap-field half"><label>First name <span class="ap-req">*</span></label><input type="text" name="contactFirstName"></div>
+        <div class="ap-field half"><label>Last name <span class="ap-req">*</span></label><input type="text" name="contactLastName"></div>
+        <div class="ap-field half"><label>Email <span class="ap-req">*</span></label><input type="email" name="contactEmail"></div>
+        <div class="ap-field half"><label>Mobile <span class="ap-req">*</span></label><input type="tel" name="contactMobile"></div>
+        <div class="ap-field half"><label>Role</label><input type="text" name="contactRole" placeholder="e.g. Owner, Director"></div>
+        <div class="ap-field half"><label>Buying role <span class="hint">— are you the decision maker?</span></label>
+          <select name="contactBuyingRole"><option value="">Select…</option><option>Decision maker</option><option>Influencer</option><option>Gatekeeper</option><option>Other</option></select>
+        </div>
+      </div>
+
+      <!-- BUSINESS OVERVIEW -->
+      <div class="ap-card">
+        <h2>About your trade</h2>
+        <p class="desc">A bit about what you do and how you'll take payments.</p>
+        <div class="ap-field"><label>What does your business do? <span class="ap-req">*</span> <span class="hint">— your trade / type of work</span></label><input type="text" name="mcc" placeholder="e.g. Plumbing &amp; heating, electrical, building"></div>
+        <div class="ap-field"><label>Full description of your business, the services you offer and what payments are for <span class="ap-req">*</span></label><textarea name="businessDescription"></textarea></div>
+        <div class="ap-field half"><label>How long have you been in business?</label><input type="text" name="timeInBusiness" placeholder="e.g. 3 years"></div>
+        <div class="ap-field half"><label>Is this a startup? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="isStartup">
+            <label><input type="radio" name="isStartup" value="No"> No</label>
+            <label><input type="radio" name="isStartup" value="Yes"> Yes</label>
+          </div>
+        </div>
+        <div data-when="isStartup=No">
+          <div class="ap-field half"><label>How long have you been taking card payments?</label><input type="text" name="cardHistory" placeholder="e.g. 2 years / Not yet"></div>
+          <div class="ap-field half"><label>Who is your current card provider(s)?</label><input type="text" name="currentAcquirer"></div>
+          <div class="ap-field half"><label>How long with your current provider(s)?</label><input type="text" name="acquirerLength"></div>
+        </div>
+        <div class="ap-field">
+          <label>How will you take payments? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="channels">
+            <label><input type="checkbox" name="channels" value="Card Present"> In person (card machine / Tap to Pay)</label>
+            <label><input type="checkbox" name="channels" value="Ecommerce"> Online (website)</label>
+            <label><input type="checkbox" name="channels" value="MOTO"> Over the phone (MOTO)</label>
+          </div>
+        </div>
+        <div data-when="channels=Card Present"><div class="ap-field half"><label>% of sales in person</label><input type="number" name="pctCardPresent" min="0" max="100"></div></div>
+        <div data-when="channels=Ecommerce"><div class="ap-field half"><label>% of sales online</label><input type="number" name="pctEcommerce" min="0" max="100"></div></div>
+        <div data-when="channels=MOTO"><div class="ap-field half"><label>% of sales over the phone</label><input type="number" name="pctMoto" min="0" max="100"></div></div>
+        <div class="ap-field half"><label>Average transaction value (ATV)</label><input type="number" name="atv" placeholder="£"></div>
+        <div class="ap-field half"><label>Minimum transaction value</label><input type="number" name="minTxn" placeholder="£"></div>
+        <div class="ap-field half"><label>Maximum transaction value</label><input type="number" name="maxTxn" placeholder="£"></div>
+        <div class="ap-field half"><label>Expected annual card turnover <span class="ap-req">*</span></label><input type="number" name="annualCardTurnover" placeholder="£"></div>
+        <div class="ap-field half"><label>Expected total annual turnover <span class="hint">(not just card)</span></label><input type="number" name="annualTotalTurnover" placeholder="£"></div>
+      </div>
+
+      <!-- STORE DETAILS (card present) -->
+      <div class="ap-card ap-hidden" data-when="channels=Card Present">
+        <h2>Where you trade</h2>
+        <div class="ap-field"><label>Where should card machines be delivered?</label><textarea name="terminalDeliveryAddress" placeholder="Leave blank to use your trading address"></textarea></div>
+      </div>
+
+      <!-- ONLINE (ecommerce) -->
+      <div class="ap-card ap-hidden" data-when="channels=Ecommerce">
+        <h2>Your website</h2>
+        <div class="ap-field"><label>Website URL <span class="ap-req">*</span></label><input type="url" name="websiteUrl" placeholder="https://"></div>
+      </div>
+
+      <!-- DEPOSITS & SUBSCRIPTIONS -->
+      <div class="ap-card">
+        <h2>How you charge</h2>
+        <p class="desc">Deposits, advance payments and any recurring billing.</p>
+        <div class="ap-field"><label>Do you take deposits from customers? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="takesDeposits">
+            <label><input type="radio" name="takesDeposits" value="No"> No</label>
+            <label><input type="radio" name="takesDeposits" value="Yes"> Yes</label>
+          </div>
+        </div>
+        <div data-when="takesDeposits=Yes">
+          <div class="ap-field half"><label>Days from deposit to job completion?</label><input type="number" name="depositToFulfilment"></div>
+          <div class="ap-field half"><label>% of turnover taken as deposit</label><input type="number" name="pctTurnoverDeposit" min="0" max="100"></div>
+          <div class="ap-field half"><label>% of a job's total taken as deposit</label><input type="number" name="pctValueDeposit" min="0" max="100"></div>
+        </div>
+        <div class="ap-field"><label>Can goods/services be paid in full before delivery? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="paidInFull">
+            <label><input type="radio" name="paidInFull" value="No"> No</label>
+            <label><input type="radio" name="paidInFull" value="Yes"> Yes</label>
+          </div>
+        </div>
+        <div data-when="paidInFull=Yes">
+          <div class="ap-field half"><label>% of annual turnover paid in full in advance</label><input type="number" name="pctFullAdvance" min="0" max="100"></div>
+          <div class="ap-field half"><label>When paid in full, how long until you deliver?</label><input type="text" name="fullAdvanceLeadTime"></div>
+        </div>
+        <div class="ap-field"><label>Do you take (or plan to take) memberships / subscriptions? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="subscriptions">
+            <label><input type="radio" name="subscriptions" value="No"> No</label>
+            <label><input type="radio" name="subscriptions" value="Yes"> Yes</label>
+          </div>
+        </div>
+        <div data-when="subscriptions=Yes">
+          <div class="ap-field"><label>How do you take subscription payments?</label><input type="text" name="subsHow"></div>
+          <div class="ap-field"><label>Payment periods available</label>
+            <div class="ap-choice">
+              <label><input type="checkbox" name="subsPeriods" value="Monthly"> Monthly</label>
+              <label><input type="checkbox" name="subsPeriods" value="Quarterly"> Quarterly</label>
+              <label><input type="checkbox" name="subsPeriods" value="Annually"> Annually</label>
+            </div>
+          </div>
+          <div class="ap-field half"><label>Do these involve automatic renewals / recurring transactions?</label>
+            <select name="subsRecurring"><option value="">Select…</option><option>Yes</option><option>No</option></select>
+          </div>
+          <div class="ap-field half"><label>% of card turnover from subscriptions</label><input type="number" name="pctSubs" min="0" max="100"></div>
+        </div>
+      </div>
+
+      <!-- GENERAL / STATEMENT -->
+      <div class="ap-card">
+        <h2>Statement &amp; correspondence</h2>
+        <div class="ap-field half"><label>Name to appear on customer card statements <span class="ap-req">*</span></label><input type="text" name="statementName"></div>
+        <div class="ap-field half"><label>Email for correspondence once live <span class="ap-req">*</span></label><input type="email" name="liveEmail"></div>
+      </div>
+
+      <!-- RISK PROFILE -->
+      <div class="ap-card">
+        <h2>Background checks</h2>
+        <p class="desc">Monek is FCA-regulated and must ask these of every applicant. Answer honestly — a "yes" doesn't automatically mean a no.</p>
+        <div class="ap-field"><label>Any history of director disqualification or restriction? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="dirDisqual"><label><input type="radio" name="dirDisqual" value="No"> No</label><label><input type="radio" name="dirDisqual" value="Yes"> Yes</label></div>
+        </div>
+        <div data-when="dirDisqual=Yes"><div class="ap-field"><label>Please provide details</label><textarea name="dirDisqualDetails"></textarea></div></div>
+        <div class="ap-field"><label>Any pending legal actions or investigations against a director/owner or the business? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="pendingLegal"><label><input type="radio" name="pendingLegal" value="No"> No</label><label><input type="radio" name="pendingLegal" value="Yes"> Yes</label></div>
+        </div>
+        <div data-when="pendingLegal=Yes"><div class="ap-field"><label>Please provide details</label><textarea name="pendingLegalDetails"></textarea></div></div>
+        <div class="ap-field"><label>Any history of liquidations or insolvency proceedings? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="insolvency"><label><input type="radio" name="insolvency" value="No"> No</label><label><input type="radio" name="insolvency" value="Yes"> Yes</label></div>
+        </div>
+        <div data-when="insolvency=Yes"><div class="ap-field"><label>Please provide details</label><textarea name="insolvencyDetails"></textarea></div></div>
+        <div class="ap-field"><label>Any history of bankruptcy or individual voluntary arrangements (IVAs)? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="bankruptcy"><label><input type="radio" name="bankruptcy" value="No"> No</label><label><input type="radio" name="bankruptcy" value="Yes"> Yes</label></div>
+        </div>
+        <div data-when="bankruptcy=Yes"><div class="ap-field"><label>Please provide details</label><textarea name="bankruptcyDetails"></textarea></div></div>
+        <div class="ap-field"><label>Have any directors/owners been convicted of a criminal offence? <span class="ap-req">*</span></label>
+          <div class="ap-choice" data-controls="convictions"><label><input type="radio" name="convictions" value="No"> No</label><label><input type="radio" name="convictions" value="Yes"> Yes</label></div>
+        </div>
+        <div data-when="convictions=Yes"><div class="ap-field"><label>Please provide details (nature of offences and outcomes)</label><textarea name="convictionsDetails"></textarea></div></div>
+      </div>
+
+      <!-- BANKING -->
+      <div class="ap-card">
+        <h2>Where to pay your money</h2>
+        <p class="desc">The business bank account your card takings will be settled to.</p>
+        <div class="ap-field"><label>Account name <span class="ap-req">*</span></label><input type="text" name="bankAccountName"></div>
+        <div class="ap-field half"><label>Sort code <span class="ap-req">*</span></label><input type="text" name="bankSortCode" placeholder="00-00-00"></div>
+        <div class="ap-field half"><label>Account number <span class="ap-req">*</span></label><input type="text" name="bankAccountNumber" placeholder="8 digits"></div>
+      </div>
+
+      <!-- BILLING -->
+      <div class="ap-card">
+        <h2>How you'd like to be billed</h2>
+        <div class="ap-field">
+          <div class="ap-choice" style="flex-direction:column; align-items:stretch;">
+            <label style="border-radius:12px;"><input type="radio" name="billing" value="Gross"> <span><strong>Gross</strong> — billed monthly. We take the month's total fees automatically from your settlement on the first of the next month.</span></label>
+            <label style="border-radius:12px;"><input type="radio" name="billing" value="Net"> <span><strong>Net</strong> — billed daily. We take each day's fees automatically from that day's settlement.</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIRECTORS -->
+      <div class="ap-card ap-hidden" id="directorsCard" data-when="legalType=Limited Company,Partnership">
+        <h2>Directors / shareholders</h2>
+        <p class="desc">We need details for the directors / significant shareholders. Add up to three.</p>
+        <div id="directorsList"></div>
+        <button type="button" class="ap-addbtn" id="addDirector">+ Add another director</button>
+      </div>
+
+      <!-- SOLE TRADER OWNER -->
+      <div class="ap-card ap-hidden" id="ownerCard" data-when="legalType=Self-Employed or Sole Trader">
+        <h2>About you (business owner)</h2>
+        <p class="desc">As a sole trader we just need your details as the owner.</p>
+        <div id="ownerHost"></div>
+      </div>
+
+      <!-- CONSENT -->
+      <div class="ap-consent">
+        <strong>Consent &amp; declaration</strong>
+        <p style="margin-top:8px;">By submitting this form you confirm the information is accurate, and you consent to Yoley Limited sharing it with <strong>Monek Group Limited</strong> so they can assess and process your application for a merchant account. Monek will handle your data under their own privacy terms; Yoley handles it under our <a href="../privacy-policy.html">Privacy Policy</a>. Yoley acts as an introducer and is an Introducer Appointed Representative arrangement with Monek; the decision to open an account rests with Monek.</p>
+        <label><input type="checkbox" id="apConsent" required> I have read the above and consent to my information being shared with Monek to process my application.</label>
+      </div>
+
+      <button type="submit" class="ap-submit" id="apSubmit">Submit application to Monek</button>
+      <p class="ap-note">We pass your application to Monek over a secure connection. We never store your card customers' details, and your bank details are used only to set up your account.</p>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" aria-label="Yoley home"><img src="../yoley-logo-navbar.png" alt="Yoley logo" height="80" width="200"></a>
+          <p>The free business app built for UK tradespeople.</p>
+        </div>
+        <div class="footer-col"><h4>More</h4><ul>
+          <li><a href="../tool-talk/index.html">Tool Talk</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../terms-of-service.html">Terms of Service</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Yoley Limited. All rights reserved.</span>
+        <div class="footer-flag"><span>&#127468;&#127463;</span> Designed &amp; built in the UK</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    // ===== Secure submission endpoint. Empty until Monek's secure intake / API is wired. =====
+    // When set, the form POSTs JSON over HTTPS to this endpoint. We never plaintext-email this data.
+    var SUBMIT_ENDPOINT = ""; // e.g. "https://api.monek.com/intake/yoley"  (TBC)
+
+    var form = document.getElementById('apForm');
+    var msg = document.getElementById('apMsg');
+
+    // ---- Director block template (also reused for sole-trader owner) ----
+    function directorHTML(n, isOwner){
+      var title = isOwner ? "Your details" : ("Director " + n);
+      var pfx = isOwner ? "owner" : ("director"+n);
+      return '<div class="ap-director" data-block="'+pfx+'">'
+        + (isOwner?'':'<h3>'+title+'</h3>')
+        + '<div class="ap-field half"><label>First name</label><input type="text" name="'+pfx+'_firstName"></div>'
+        + '<div class="ap-field half"><label>Middle names</label><input type="text" name="'+pfx+'_middleNames"></div>'
+        + '<div class="ap-field half"><label>Last name</label><input type="text" name="'+pfx+'_lastName"></div>'
+        + '<div class="ap-field half"><label>Date of birth</label><input type="date" name="'+pfx+'_dob"></div>'
+        + '<div class="ap-field half"><label>Email</label><input type="email" name="'+pfx+'_email"></div>'
+        + '<div class="ap-field half"><label>Mobile</label><input type="tel" name="'+pfx+'_mobile"></div>'
+        + '<div class="ap-field half"><label>Nationality</label><input type="text" name="'+pfx+'_nationality"></div>'
+        + (isOwner?'':'<div class="ap-field half"><label>Role</label><input type="text" name="'+pfx+'_role"></div>')
+        + (isOwner?'':'<div class="ap-field half"><label>Appointed on</label><input type="date" name="'+pfx+'_appointed"></div>')
+        + '<div class="ap-field"><label>Residential address <span class="hint">(last 3 years)</span></label><textarea name="'+pfx+'_address"></textarea></div>'
+        + '<div class="ap-field"><label>Date moved into each address <span class="hint">(MM/YY)</span></label><input type="text" name="'+pfx+'_moveDates"></div>'
+        + '</div>';
+    }
+    var dirCount = 0;
+    var dirList = document.getElementById('directorsList');
+    var addBtn = document.getElementById('addDirector');
+    function addDirector(){ if(dirCount>=3) return; dirCount++; dirList.insertAdjacentHTML('beforeend', directorHTML(dirCount,false)); if(dirCount>=3) addBtn.style.display='none'; }
+    addBtn.addEventListener('click', addDirector);
+    // owner block (sole trader)
+    document.getElementById('ownerHost').innerHTML = directorHTML(1,true);
+
+    // ---- Conditional show/hide ----
+    function selectedValues(name){
+      var els = form.querySelectorAll('[name="'+name+'"]'); var vals=[];
+      els.forEach(function(e){ if((e.type==='radio'||e.type==='checkbox')){ if(e.checked) vals.push(e.value); } else if(e.value) vals.push(e.value); });
+      return vals;
+    }
+    function applyConditions(){
+      document.querySelectorAll('[data-when]').forEach(function(el){
+        var cond = el.getAttribute('data-when'); // name=val1,val2
+        var name = cond.split('=')[0];
+        var wanted = cond.split('=')[1].split(',');
+        var have = selectedValues(name);
+        var show = wanted.some(function(w){ return have.indexOf(w)>-1; });
+        el.classList.toggle('ap-hidden', !show);
+      });
+      // ensure at least one director shown for Ltd/Partnership
+      var lt = selectedValues('legalType')[0];
+      if((lt==='Limited Company'||lt==='Partnership') && dirCount===0){ addDirector(); }
+    }
+    form.addEventListener('change', applyConditions);
+    applyConditions();
+
+    // ---- Pre-fill from Yoley app (when embedded). App injects window.YOLEY_PROFILE = {field:value,...} ----
+    if (window.YOLEY_PROFILE){
+      Object.keys(window.YOLEY_PROFILE).forEach(function(k){
+        var el = form.querySelector('[name="'+k+'"]');
+        if(el && !el.value){ el.value = window.YOLEY_PROFILE[k]; }
+      });
+      applyConditions();
+    }
+
+    // ---- Collect payload ----
+    function collect(){
+      var data = {}; var fd = new FormData(form);
+      fd.forEach(function(v,k){ if(data[k]!==undefined){ data[k]=[].concat(data[k],v); } else { data[k]=v; } });
+      // multi-checkboxes
+      ['channels','subsPeriods'].forEach(function(n){ data[n]=selectedValues(n); });
+      data._submittedAt = new Date().toISOString();
+      data._source = 'yoley-web';
+      return data;
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      msg.className='ap-msg'; msg.textContent='';
+      if(!document.getElementById('apConsent').checked){ msg.className='ap-msg err'; msg.textContent='Please tick the consent box so we can pass your application to Monek.'; window.scrollTo({top:0,behavior:'smooth'}); return; }
+      // basic required check
+      var missing=[];
+      form.querySelectorAll('.ap-req').forEach(function(s){
+        var fieldEl = s.closest('.ap-field'); if(!fieldEl || fieldEl.closest('.ap-hidden')) return;
+        var input = fieldEl.querySelector('input,select,textarea');
+        var grp = fieldEl.querySelector('.ap-choice');
+        if(grp){ var nm=grp.querySelector('input').name; if(selectedValues(nm).length===0) missing.push(nm); }
+        else if(input && !input.value.trim()) missing.push(input.name);
+      });
+      if(missing.length){ msg.className='ap-msg err'; msg.textContent='Please complete the required fields highlighted with *.'; window.scrollTo({top:0,behavior:'smooth'}); return; }
+
+      var payload = collect();
+      if(!SUBMIT_ENDPOINT){
+        // Secure channel not yet wired — do NOT plaintext-email. Hold and inform.
+        msg.className='ap-msg ok';
+        msg.innerHTML='Thanks — your application is ready. Secure submission to Monek is being switched on; we’ll be in touch shortly. (No data has been sent yet.)';
+        window.scrollTo({top:0,behavior:'smooth'});
+        console.log('Yoley/Monek application payload (not sent — endpoint not configured):', payload);
+        return;
+      }
+      var btn=document.getElementById('apSubmit'); btn.disabled=true; btn.textContent='Sending securely…';
+      fetch(SUBMIT_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+        .then(function(r){ if(!r.ok) throw new Error('bad status'); msg.className='ap-msg ok'; msg.textContent='Thanks — your application has been sent securely to Monek. They’ll be in touch to complete setup.'; form.reset(); applyConditions(); })
+        .catch(function(){ msg.className='ap-msg err'; msg.textContent='Something went wrong sending your application. Please try again, or contact support@yoley.com.'; })
+        .finally(function(){ btn.disabled=false; btn.textContent='Submit application to Monek'; window.scrollTo({top:0,behavior:'smooth'}); });
+    });
+  })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

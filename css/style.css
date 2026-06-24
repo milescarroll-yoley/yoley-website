@@ -195,12 +195,12 @@ a { text-decoration: none; color: inherit; }
    ============================================================ */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   background: linear-gradient(165deg, var(--navy) 0%, var(--navy-tint) 50%, #1e2a5a 100%);
   overflow: hidden;
-  padding: 120px 0 80px;
+  padding: 96px 0 44px;
 }
 
 .hero::before {
