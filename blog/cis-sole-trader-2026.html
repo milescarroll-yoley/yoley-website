@@ -48,11 +48,12 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", ".ai-faq"] },
     "headline": "How to Handle CIS as a Sole Trader in 2026 — UK Guide",
     "author": { "@type": "Organization", "name": "Yoley" },
     "publisher": { "@type": "Organization", "name": "Yoley Limited", "logo": { "@type": "ImageObject", "url": "https://yoley.com/yoley-logo-full.png" } },
     "datePublished": "2026-04-16",
-    "dateModified": "2026-04-16",
+    "dateModified": "2026-06-24",
     "image": "https://yoley.com/social-card.png",
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yoley.com/blog/cis-sole-trader-2026.html" },
     "description": "A plain-English guide to the Construction Industry Scheme for UK sole traders in 2026."
@@ -79,6 +80,46 @@
     .post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 24px; }
     .disclaimer { max-width: 760px; margin: 40px auto 0; padding: 18px 22px; background: var(--yellow-tint); border-left: 4px solid var(--yellow); border-radius: 0 8px 8px 0; font-size: 14px; color: var(--navy); }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do sole traders need to register for CIS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you do construction work as a subcontractor, you should register for CIS so your deduction rate is 20% rather than 30%. Sole traders who hire subcontractors act as contractors and must register and file monthly returns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you be both a contractor and subcontractor under CIS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Many sole traders are both — paid as a subcontractor on some jobs and paying their own subcontractors on others. You then have CIS obligations on both sides: deductions taken from you, and returns to file for those you pay."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do I need to do every month for CIS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Contractors must verify subcontractors with HMRC, deduct the right amount, give deduction statements, and file a monthly CIS return (even a nil return) by the 19th. Keeping clean records of labour and materials makes this straightforward."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Yoley help sole traders with CIS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Yoley applies CIS deductions automatically and free on your invoices and keeps the records you need, though you still file your own CIS returns with HMRC."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -104,7 +145,7 @@
       <div class="breadcrumb"><a href="../index.html">Home</a> <span>/</span> <a href="index.html">Blog</a> <span>/</span> <span style="color:rgba(255,255,255,0.8)">CIS for Sole Traders</span></div>
       <div class="tag">CIS &middot; Tax</div>
       <h1>How to handle CIS as a sole trader in 2026</h1>
-      <div class="meta">16 April 2026 &middot; 6 min read</div>
+      <div class="meta">16 April 2026 &middot; 6 min read &middot; <span style="color:var(--teal); font-weight:600;">Updated 24 June 2026</span></div>
     </div>
   </section>
 
@@ -166,6 +207,29 @@
       </a>
     </div>
   </section>
+  <!-- AI-FAQ (added for AI/answer-engine optimisation) -->
+  <section class="ai-faq" style="background:var(--light-grey); padding:64px 0;">
+    <div style="max-width:820px; margin:0 auto; padding:0 24px;">
+      <h2 style="font-size:clamp(24px,3.5vw,34px); font-weight:900; color:var(--navy); margin-bottom:24px;">Frequently asked questions</h2>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">Do sole traders need to register for CIS?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">If you do construction work as a subcontractor, you should register for CIS so your deduction rate is 20% rather than 30%. Sole traders who hire subcontractors act as contractors and must register and file monthly returns.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">Can you be both a contractor and subcontractor under CIS?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Yes. Many sole traders are both — paid as a subcontractor on some jobs and paying their own subcontractors on others. You then have CIS obligations on both sides: deductions taken from you, and returns to file for those you pay.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">What do I need to do every month for CIS?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Contractors must verify subcontractors with HMRC, deduct the right amount, give deduction statements, and file a monthly CIS return (even a nil return) by the 19th. Keeping clean records of labour and materials makes this straightforward.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">Does Yoley help sole traders with CIS?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Yes. Yoley applies CIS deductions automatically and free on your invoices and keeps the records you need, though you still file your own CIS returns with HMRC.</p>
+      </details>
+    </div>
+  </section>
+
 
   <footer class="footer">
     <div class="container">

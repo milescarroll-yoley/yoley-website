@@ -48,11 +48,12 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", ".ai-faq"] },
     "headline": "How to Send a Professional Quote in Under 60 Seconds",
     "author": { "@type": "Organization", "name": "Yoley" },
     "publisher": { "@type": "Organization", "name": "Yoley Limited", "logo": { "@type": "ImageObject", "url": "https://yoley.com/yoley-logo-full.png" } },
     "datePublished": "2026-04-16",
-    "dateModified": "2026-04-16",
+    "dateModified": "2026-06-24",
     "image": "https://yoley.com/social-card.png",
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yoley.com/blog/send-professional-quote-60-seconds.html" },
     "description": "The seven things every tradesperson&rsquo;s quote should have, and how to send one fast on your iPhone."
@@ -77,6 +78,46 @@
     .post-cta h2 { color: #fff; font-size: 26px; font-weight: 800; margin-bottom: 10px; }
     .post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 24px; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I send a professional quote quickly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use a quoting app with saved business details and reusable line items so you only enter what is specific to the job. With Yoley you can build and send a branded, professional quote from your phone in under 60 seconds."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should a tradesperson's quote include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A professional quote should include your business and contact details, the customer's details, a clear description of the work, itemised costs, VAT (if registered), payment terms, and a quote reference and date. Missing any of these makes you look less professional and slows acceptance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do quotes take so long to send?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most time is lost re-typing your details, prices and terms for every job, then formatting it to look professional. Saving reusable details and line items removes that, which is how a quote can take under a minute."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I send quotes for free with Yoley?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Yoley lets you create and send unlimited professional quotes for free, and customers can accept them on their phone, which speeds up getting the job confirmed."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -102,7 +143,7 @@
       <div class="breadcrumb"><a href="../index.html">Home</a> <span>/</span> <a href="index.html">Blog</a> <span>/</span> <span style="color:rgba(255,255,255,0.8)">Send a Quote in 60 Seconds</span></div>
       <div class="tag">Quoting</div>
       <h1>How to send a professional quote in under 60 seconds</h1>
-      <div class="meta">16 April 2026 &middot; 5 min read</div>
+      <div class="meta">16 April 2026 &middot; 5 min read &middot; <span style="color:var(--teal); font-weight:600;">Updated 24 June 2026</span></div>
     </div>
   </section>
 
@@ -159,6 +200,29 @@
       </a>
     </div>
   </section>
+  <!-- AI-FAQ (added for AI/answer-engine optimisation) -->
+  <section class="ai-faq" style="background:var(--light-grey); padding:64px 0;">
+    <div style="max-width:820px; margin:0 auto; padding:0 24px;">
+      <h2 style="font-size:clamp(24px,3.5vw,34px); font-weight:900; color:var(--navy); margin-bottom:24px;">Frequently asked questions</h2>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">How do I send a professional quote quickly?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Use a quoting app with saved business details and reusable line items so you only enter what is specific to the job. With Yoley you can build and send a branded, professional quote from your phone in under 60 seconds.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">What should a tradesperson's quote include?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">A professional quote should include your business and contact details, the customer's details, a clear description of the work, itemised costs, VAT (if registered), payment terms, and a quote reference and date. Missing any of these makes you look less professional and slows acceptance.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">Why do quotes take so long to send?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Most time is lost re-typing your details, prices and terms for every job, then formatting it to look professional. Saving reusable details and line items removes that, which is how a quote can take under a minute.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">Can I send quotes for free with Yoley?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Yes. Yoley lets you create and send unlimited professional quotes for free, and customers can accept them on their phone, which speeds up getting the job confirmed.</p>
+      </details>
+    </div>
+  </section>
+
 
   <footer class="footer">
     <div class="container">

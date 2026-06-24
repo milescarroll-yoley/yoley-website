@@ -48,11 +48,12 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", ".ai-faq"] },
     "headline": "Tap to Pay on iPhone for Tradespeople — Cost and How to Enable",
     "author": { "@type": "Organization", "name": "Yoley" },
     "publisher": { "@type": "Organization", "name": "Yoley Limited", "logo": { "@type": "ImageObject", "url": "https://yoley.com/yoley-logo-full.png" } },
     "datePublished": "2026-04-16",
-    "dateModified": "2026-04-16",
+    "dateModified": "2026-06-24",
     "image": "https://yoley.com/social-card.png",
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yoley.com/blog/tap-to-pay-iphone-tradespeople.html" },
     "description": "Tap to Pay on iPhone explained for UK tradespeople — cost, hardware, and how to enable it in Yoley."
@@ -77,6 +78,46 @@
     .post-cta h2 { color: #fff; font-size: 26px; font-weight: 800; margin-bottom: 10px; }
     .post-cta p { color: rgba(255,255,255,0.7); margin-bottom: 24px; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Tap to Pay on iPhone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tap to Pay on iPhone is an Apple feature that turns your iPhone into a contactless card reader — customers tap their card, Apple Pay or smartwatch directly on your phone, with no extra hardware or card-reader rental."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does Tap to Pay cost in Yoley?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Yoley, Tap to Pay on iPhone costs 0.99% per transaction on the £9.99/month Pro plan. There is no card reader to buy and no monthly rental, unlike traditional card machines."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do I need to use Tap to Pay on iPhone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You need a compatible iPhone (iPhone XS or later running a recent iOS) and the Yoley app on the Pro plan. No separate reader or dongle is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I use Tap to Pay instead of a payment link?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use Tap to Pay when the customer is with you and wants to pay on the spot — at the end of a job or on handover. Use a payment link when you are invoicing remotely or the customer wants to pay later."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -102,7 +143,7 @@
       <div class="breadcrumb"><a href="../index.html">Home</a> <span>/</span> <a href="index.html">Blog</a> <span>/</span> <span style="color:rgba(255,255,255,0.8)">Tap to Pay on iPhone</span></div>
       <div class="tag">Payments</div>
       <h1>Tap to Pay on iPhone for tradespeople — what it costs and how to enable it</h1>
-      <div class="meta">16 April 2026 &middot; 4 min read</div>
+      <div class="meta">16 April 2026 &middot; 4 min read &middot; <span style="color:var(--teal); font-weight:600;">Updated 24 June 2026</span></div>
     </div>
   </section>
 
@@ -162,6 +203,29 @@
       </a>
     </div>
   </section>
+  <!-- AI-FAQ (added for AI/answer-engine optimisation) -->
+  <section class="ai-faq" style="background:var(--light-grey); padding:64px 0;">
+    <div style="max-width:820px; margin:0 auto; padding:0 24px;">
+      <h2 style="font-size:clamp(24px,3.5vw,34px); font-weight:900; color:var(--navy); margin-bottom:24px;">Frequently asked questions</h2>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">What is Tap to Pay on iPhone?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Tap to Pay on iPhone is an Apple feature that turns your iPhone into a contactless card reader — customers tap their card, Apple Pay or smartwatch directly on your phone, with no extra hardware or card-reader rental.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">What does Tap to Pay cost in Yoley?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">In Yoley, Tap to Pay on iPhone costs 0.99% per transaction on the £9.99/month Pro plan. There is no card reader to buy and no monthly rental, unlike traditional card machines.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">What do I need to use Tap to Pay on iPhone?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">You need a compatible iPhone (iPhone XS or later running a recent iOS) and the Yoley app on the Pro plan. No separate reader or dongle is required.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">When should I use Tap to Pay instead of a payment link?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Use Tap to Pay when the customer is with you and wants to pay on the spot — at the end of a job or on handover. Use a payment link when you are invoicing remotely or the customer wants to pay later.</p>
+      </details>
+    </div>
+  </section>
+
 
   <footer class="footer">
     <div class="container">

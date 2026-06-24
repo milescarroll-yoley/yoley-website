@@ -93,6 +93,46 @@
     .related-trade-list a { padding: 10px 22px; background: #fff; border-radius: 100px; font-size: 14px; color: var(--dark-text); font-weight: 600; border: 1px solid #e5e5e5; transition: all 0.2s; }
     .related-trade-list a:hover { border-color: var(--teal); color: var(--teal); }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is there a free app for joiners and carpenters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Yoley is free for UK joiners — quote bespoke work with reference photos, take deposits before ordering timber, and get paid on handover, all with no monthly fee for the core app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I take a deposit before ordering materials?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Yoley lets you request and take a deposit before you order timber or materials, so you're not funding bespoke jobs out of your own pocket."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Yoley handle CIS for joiners on new-build sites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Yoley handles CIS deductions automatically and free, which applies to joinery work on new-build and contracted sites."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add photos to a joinery quote?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can attach reference photos to quotes in Yoley, which helps with bespoke and made-to-measure work where the customer needs to see exactly what they're agreeing to."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -240,6 +280,29 @@
       </div>
     </div>
   </section>
+  <!-- AI-FAQ (added for AI/answer-engine optimisation) -->
+  <section class="ai-faq" style="background:var(--light-grey); padding:64px 0;">
+    <div style="max-width:820px; margin:0 auto; padding:0 24px;">
+      <h2 style="font-size:clamp(24px,3.5vw,34px); font-weight:900; color:var(--navy); margin-bottom:24px;">Frequently asked questions</h2>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">Is there a free app for joiners and carpenters?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Yes. Yoley is free for UK joiners — quote bespoke work with reference photos, take deposits before ordering timber, and get paid on handover, all with no monthly fee for the core app.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">Can I take a deposit before ordering materials?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Yes. Yoley lets you request and take a deposit before you order timber or materials, so you're not funding bespoke jobs out of your own pocket.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">Does Yoley handle CIS for joiners on new-build sites?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Yes. Yoley handles CIS deductions automatically and free, which applies to joinery work on new-build and contracted sites.</p>
+      </details>
+      <details style="background:#fff; border-radius:12px; padding:18px 24px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <summary style="font-weight:700; color:var(--navy); cursor:pointer; font-size:16px; list-style:none;">Can I add photos to a joinery quote?</summary>
+        <p style="margin-top:12px; color:var(--dark-text); line-height:1.7;">Yes. You can attach reference photos to quotes in Yoley, which helps with bespoke and made-to-measure work where the customer needs to see exactly what they're agreeing to.</p>
+      </details>
+    </div>
+  </section>
+
 
   <footer class="footer">
     <div class="container">
