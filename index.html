@@ -152,66 +152,75 @@
         </div>
       </div>
       <div class="hero-phone">
-        <div class="phone-mockup">
+        <div class="phone-mockup has-shot">
           <div class="phone-screen">
-            <div class="mock-header">
-              <div class="greeting">Morning, Mike</div>
-              <div class="trade">Plumber &middot; London</div>
-            </div>
-            <div class="mock-kpis">
-              <div class="mock-kpi">
-                <div class="icon">&#128176;</div>
-                <div class="value">&pound;4,280</div>
-                <div class="label">This month</div>
-              </div>
-              <div class="mock-kpi">
-                <div class="icon">&#128221;</div>
-                <div class="value">7</div>
-                <div class="label">Open quotes</div>
-              </div>
-              <div class="mock-kpi">
-                <div class="icon">&#9989;</div>
-                <div class="value">12</div>
-                <div class="label">Jobs done</div>
-              </div>
-              <div class="mock-kpi">
-                <div class="icon">&#128184;</div>
-                <div class="value">&pound;820</div>
-                <div class="label">Expenses</div>
-              </div>
-            </div>
-            <div class="mock-chart">
-              <div class="mock-chart-title">Weekly Revenue</div>
-              <div class="mock-bars">
-                <div class="mock-bar" style="height: 55%"></div>
-                <div class="mock-bar" style="height: 70%"></div>
-                <div class="mock-bar" style="height: 45%"></div>
-                <div class="mock-bar" style="height: 85%"></div>
-                <div class="mock-bar" style="height: 95%"></div>
-                <div class="mock-bar" style="height: 60%"></div>
-                <div class="mock-bar" style="height: 30%"></div>
-              </div>
-            </div>
-            <div class="mock-jobs">
-              <div class="mock-jobs-title">Today&rsquo;s Jobs <span class="badge">3</span></div>
-              <div class="mock-job-row">
-                <span class="mock-job-name">Boiler install &mdash; Smith</span>
-                <span class="mock-job-time">09:00</span>
-              </div>
-              <div class="mock-job-row">
-                <span class="mock-job-name">Tap repair &mdash; Jones</span>
-                <span class="mock-job-time">13:00</span>
-              </div>
-              <div class="mock-job-row">
-                <span class="mock-job-name">Quote &mdash; 14 Elm Road</span>
-                <span class="mock-job-time">16:30</span>
-              </div>
-            </div>
+            <img class="phone-shot" src="screens/app-dashboard.png" alt="The Yoley app dashboard — messages, today's jobs, weather, money received and unpaid, open quotes and pipeline" width="591" height="1280" loading="eager">
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ===== LAUNCH COUNTDOWN ===== -->
+  <section class="launch" id="launch" style="background:radial-gradient(120% 120% at 50% 0%, #232a4d 0%, #1A1F36 55%, #11152a 100%); padding:88px 0 96px; text-align:center; overflow:hidden;">
+    <div class="container" style="max-width:840px; margin:0 auto; padding:0 24px;">
+      <div style="display:inline-block; padding:7px 16px; background:rgba(250,176,5,0.14); color:var(--yellow); border-radius:100px; font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:22px;">&#63743; Coming to the App Store</div>
+      <h2 style="color:#fff; font-size:clamp(32px,5.5vw,56px); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:18px;">The wait is nearly over.</h2>
+      <p style="color:rgba(255,255,255,0.72); font-size:clamp(17px,2.2vw,20px); line-height:1.6; max-width:600px; margin:0 auto 40px;">Two years of building and testing with real UK tradespeople &mdash; to deliver a best-in-class app, free, with nothing held back. Yoley lands on the App Store on <strong style="color:#fff;">30 July 2026</strong>.</p>
+
+      <div id="countdown" style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:40px;">
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:18px; padding:18px 10px; min-width:96px;">
+          <div id="cd-days" style="font-size:clamp(34px,6vw,52px); font-weight:900; color:#fff; line-height:1; font-variant-numeric:tabular-nums;">--</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--yellow); margin-top:8px;">Days</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:18px; padding:18px 10px; min-width:96px;">
+          <div id="cd-hours" style="font-size:clamp(34px,6vw,52px); font-weight:900; color:#fff; line-height:1; font-variant-numeric:tabular-nums;">--</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--yellow); margin-top:8px;">Hours</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:18px; padding:18px 10px; min-width:96px;">
+          <div id="cd-mins" style="font-size:clamp(34px,6vw,52px); font-weight:900; color:#fff; line-height:1; font-variant-numeric:tabular-nums;">--</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--yellow); margin-top:8px;">Minutes</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:18px; padding:18px 10px; min-width:96px;">
+          <div id="cd-secs" style="font-size:clamp(34px,6vw,52px); font-weight:900; color:#fff; line-height:1; font-variant-numeric:tabular-nums;">--</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--yellow); margin-top:8px;">Seconds</div>
+        </div>
+      </div>
+
+      <p style="display:inline-block; background:rgba(0,190,133,0.16); color:#5fe3b6; border-radius:100px; padding:10px 20px; font-size:15px; font-weight:600; margin:0 auto 32px;">&#127881; Launch-day offer: exclusive perks for the first wave of new users</p>
+
+      <div>
+        <a href="#" id="launch-cta" style="display:inline-flex; align-items:center; gap:10px; background:var(--yellow); color:var(--navy); padding:16px 32px; border-radius:100px; font-weight:800; font-size:17px; text-decoration:none;">Be first in line &rarr;</a>
+        <p style="color:rgba(255,255,255,0.5); font-size:13px; margin-top:16px;">Free forever &middot; iPhone &middot; Built &amp; tested in the UK</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      var target = new Date('2026-07-30T09:00:00+01:00').getTime();
+      function pad(n){ return (n<10?'0':'')+n; }
+      function tick(){
+        var now = Date.now(), diff = target - now;
+        var d=document.getElementById('cd-days'); if(!d) return;
+        if(diff<=0){
+          document.getElementById('cd-days').textContent='0';
+          document.getElementById('cd-hours').textContent='00';
+          document.getElementById('cd-mins').textContent='00';
+          document.getElementById('cd-secs').textContent='00';
+          var h=document.querySelector('#launch h2'); if(h) h.textContent='Available now on the App Store.';
+          var cta=document.getElementById('launch-cta'); if(cta) cta.textContent='Download on the App Store →';
+          return;
+        }
+        var s=Math.floor(diff/1000);
+        document.getElementById('cd-days').textContent=Math.floor(s/86400);
+        document.getElementById('cd-hours').textContent=pad(Math.floor(s%86400/3600));
+        document.getElementById('cd-mins').textContent=pad(Math.floor(s%3600/60));
+        document.getElementById('cd-secs').textContent=pad(s%60);
+      }
+      tick(); setInterval(tick,1000);
+    })();
+  </script>
 
   <!-- ===== TRUST BAR ===== -->
   <section class="trust-bar">
@@ -312,6 +321,38 @@
           <span class="feature-badge pro">Pro</span>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEE IT IN ACTION ===== -->
+  <section class="app-gallery" style="background:#fff; padding:80px 0;">
+    <div class="container" style="max-width:1080px; margin:0 auto; padding:0 24px;">
+      <div style="text-align:center; max-width:600px; margin:0 auto 44px;">
+        <h2 style="font-size:clamp(28px,4vw,40px); font-weight:900; color:var(--navy); line-height:1.15; margin-bottom:12px;">Your whole business, in your pocket</h2>
+        <p style="font-size:18px; color:var(--mid-text); line-height:1.6;">Dashboard, quotes, invoices, diary and payments &mdash; everything a UK trade needs, on one clean app.</p>
+      </div>
+      <div style="display:flex; gap:28px; justify-content:center; flex-wrap:wrap;">
+        <figure style="margin:0; text-align:center; max-width:240px;">
+          <img src="screens/app-dashboard.png" alt="Yoley dashboard showing messages, jobs, weather and money owed" width="591" height="1280" loading="lazy" style="width:100%; border-radius:26px; box-shadow:0 24px 50px rgba(26,31,54,0.16); border:1px solid #eef0f4;">
+          <figcaption style="margin-top:14px; font-weight:700; color:var(--navy); font-size:15px;">Dashboard</figcaption>
+        </figure>
+        <figure style="margin:0; text-align:center; max-width:240px;">
+          <img src="screens/app-quotes.png" alt="Yoley quotes screen showing open quotes, their status and total pipeline" width="591" height="1280" loading="lazy" style="width:100%; border-radius:26px; box-shadow:0 24px 50px rgba(26,31,54,0.16); border:1px solid #eef0f4;">
+          <figcaption style="margin-top:14px; font-weight:700; color:var(--navy); font-size:15px;">Quotes &amp; pipeline</figcaption>
+        </figure>
+        <figure style="margin:0; text-align:center; max-width:240px;">
+          <img src="screens/app-diary.png" alt="Yoley job diary with a weather-aware schedule of upcoming jobs" width="591" height="1280" loading="lazy" style="width:100%; border-radius:26px; box-shadow:0 24px 50px rgba(26,31,54,0.16); border:1px solid #eef0f4;">
+          <figcaption style="margin-top:14px; font-weight:700; color:var(--navy); font-size:15px;">Weather-aware diary</figcaption>
+        </figure>
+        <figure style="margin:0; text-align:center; max-width:240px;">
+          <img src="screens/app-payment.png" alt="Yoley take payment screen for invoice and simple payments" width="591" height="1280" loading="lazy" style="width:100%; border-radius:26px; box-shadow:0 24px 50px rgba(26,31,54,0.16); border:1px solid #eef0f4;">
+          <figcaption style="margin-top:14px; font-weight:700; color:var(--navy); font-size:15px;">Get paid on the spot</figcaption>
+        </figure>
+        <figure style="margin:0; text-align:center; max-width:240px;">
+          <img src="screens/app-menu.png" alt="Yoley menu showing quotes, invoices, job diary, customers, subcontractors, expenses and more" width="591" height="1280" loading="lazy" style="width:100%; border-radius:26px; box-shadow:0 24px 50px rgba(26,31,54,0.16); border:1px solid #eef0f4;">
+          <figcaption style="margin-top:14px; font-weight:700; color:var(--navy); font-size:15px;">Everything in one place</figcaption>
+        </figure>
       </div>
     </div>
   </section>

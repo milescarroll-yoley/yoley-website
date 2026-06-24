@@ -363,6 +363,11 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
 }
 
+/* Real app screenshot inside the phone frame */
+.phone-mockup.has-shot::before { display: none; }
+.phone-mockup.has-shot .phone-screen { padding: 0; background: #fff; }
+.phone-shot { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+
 /* Mini dashboard inside phone */
 .mock-header {
   text-align: left;
