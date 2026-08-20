@@ -1,23 +1,33 @@
 ---
-title: Can I share my Yoley login?
+title: Account sharing & multi-device
 section: settings
-screen: settings
 summary: |
-  Your Yoley account is tied to one device at a time to keep your data secure. If you need several people to see the same data and coordinate work, upgrade to Yoley Max for multi-user access. Every plan lets you send your trading data to a nominated accountant.
+  Yoley uses iCloud (CloudKit) to sync your data across all your Apple devices signed in to the same Apple ID — no extra setup needed. Changes on one device appear on others within seconds.
 questions:
-  - Can I share my account login?
-  - Can two people use the same Yoley account?
-  - Can my partner log in at the same time?
-  - Is Yoley multi-user?
-  - Can my team share an account?
-tags: [login, share-account, multi-user, max, accountant, devices]
+  - Can I use Yoley on more than one device?
+  - Does Yoley sync between my iPhone and iPad?
+  - How does Yoley back up my data?
+  - Is my data stored in the cloud?
+tags: [sync, icloud, cloudkit, multi-device, backup, apple id]
 audiences: [user-guide, faq, in-app, bot]
-updated: 2026-04-17
-order: 20
+updated: 2025-07-16
+order: 10
 ---
 
-Sharing a single login isn't supported — Yoley only allows one device to be signed in at any moment, and signing in on a new device will sign you out of the old one.
+## How syncing works
 
-If you run a team, **Yoley Max** is the answer. Max adds multi-user access so several people can see the same jobs, quotes and invoices and coordinate their work.
+Yoley stores all your data in **iCloud (CloudKit)**. Any device signed in to the same **Apple ID** will stay in sync automatically — quotes, invoices, customers, expenses and settings all update within seconds.
 
-> **Tip:** Whatever plan you're on, you can share your trading data directly with your accountant — they don't need a Yoley login to receive it.
+No account password is needed beyond your Apple ID. There's nothing to set up.
+
+## Using Yoley on multiple devices
+
+- Sign in to the same **Apple ID** on each device.
+- Install Yoley from the App Store on each device.
+- Open the app — your data will sync down automatically.
+
+> **Tip:** If data doesn't appear immediately after installing on a new device, pull down to refresh on any list screen or close and reopen the app.
+
+## Saving your settings
+
+When you change anything in **Settings**, tap **Save Changes** — the button is always visible at the bottom of the screen, so you don't need to scroll down to find it.
