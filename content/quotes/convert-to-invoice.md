@@ -11,7 +11,7 @@ questions:
 tags: [convert, invoice, quote-to-invoice, convert-to-invoice, turn-into-invoice]
 audiences: [user-guide, faq, quick-guide, in-app, bot]
 related: [quotes.statuses, quotes.comments-to-invoice]
-updated: 2026-04-17
+updated: 2026-09-10
 order: 70
 quick_start_order: 2
 ---
@@ -22,4 +22,4 @@ quick_start_order: 2
 4. Set a **due date** (your default payment terms apply, but you can override).
 5. Tap **Send Invoice**.
 
-The customer receives the invoice with a Pay Now link so they can pay by card immediately. Funds settle to your bank account within 1–2 working days.
+The customer receives the invoice with a Pay Now link so they can pay by card immediately. Funds are paid into your bank account two working days after the payment.

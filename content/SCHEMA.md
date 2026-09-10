@@ -126,15 +126,15 @@ quick_start_order: 1
 
 ## Facts (marketing substitution)
 
-`content/facts/*.yaml` holds single-source-of-truth values for everything mentioned on the marketing pages that would otherwise drift: pricing, plan names, rates, settlement days, etc. Each YAML file becomes a namespace keyed by its filename — `content/facts/pricing.yaml` resolves under `pricing.*`.
+`content/facts/*.yaml` holds single-source-of-truth values for everything mentioned on the marketing pages that would otherwise drift: pricing, rates, settlement days, etc. Each YAML file becomes a namespace keyed by its filename — `content/facts/pricing.yaml` resolves under `pricing.*`.
 
 To embed a fact anywhere in a marketing HTML file or content Markdown body, wrap the current text in paired markers:
 
 ```html
-<strong><!-- FACT:pricing.free.card_rate -->1.49%<!-- /FACT --></strong>
+<strong><!-- FACT:pricing.card.rate -->0.99%<!-- /FACT --></strong>
 ```
 
-The generator resolves `pricing.free.card_rate` from the YAML on every run and replaces the body between the markers. Markers are retained, so the substitution is idempotent. Unresolved paths fail the build with a clear error.
+The generator resolves `pricing.card.rate` from the YAML on every run and replaces the body between the markers. Markers are retained, so the substitution is idempotent. Unresolved paths fail the build with a clear error.
 
 Rules:
 

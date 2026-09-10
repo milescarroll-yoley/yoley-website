@@ -133,3 +133,62 @@
     });
   });
 })();
+
+// ---- App Store go-live switch ----
+// Asks Apple's public iTunes lookup whether Yoley (id 6789192466) is on sale
+// in the UK store. Until it is, the lookup returns resultCount 0 and nothing
+// changes. Once Apple releases the app, every "Download" button on the site
+// starts pointing at the listing and the homepage launch banner switches to
+// "live" — no edit needed on launch day. Uses JSONP because the lookup API
+// doesn't send CORS headers.
+(function () {
+  var APP_ID = '6789192466';
+  var APP_URL = 'https://apps.apple.com/gb/app/yoley-invoice-quote-app/id' + APP_ID;
+
+  function isDownloadLink(a) {
+    var href = a.getAttribute('href') || '';
+    var cls = ' ' + (a.className || '') + ' ';
+    var looksLikeDownload =
+      /\s(nav-cta|btn-appstore|btn-pricing)\s/.test(cls) || /download/i.test(a.textContent || '');
+    var placeholder = href === '#' || /(^|\/)index\.html$/.test(href);
+    return looksLikeDownload && placeholder && !/tool-talk|blog/.test(href);
+  }
+
+  function goLive() {
+    document.documentElement.classList.add('yoley-live');
+    document.querySelectorAll('a').forEach(function (a) {
+      if (isDownloadLink(a)) {
+        a.href = APP_URL;
+        a.rel = 'noopener';
+      }
+    });
+    function setText(id, text) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+    setText('launch-tag', ' Out now on the App Store');
+    setText('launch-title', 'Yoley is live on the App Store.');
+    setText('launch-sub', 'Two years of building and testing with real UK tradespeople — free, with nothing held back. Download it on your iPhone today.');
+    var cta = document.getElementById('launch-cta');
+    if (cta) {
+      cta.textContent = 'Download on the App Store →';
+      cta.href = APP_URL;
+    }
+  }
+
+  function check() {
+    window.__yoleyAppLookup = function (res) {
+      if (res && res.resultCount > 0) goLive();
+    };
+    var s = document.createElement('script');
+    s.src = 'https://itunes.apple.com/lookup?id=' + APP_ID + '&country=gb&callback=__yoleyAppLookup';
+    s.async = true;
+    document.body.appendChild(s);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', check);
+  } else {
+    check();
+  }
+})();

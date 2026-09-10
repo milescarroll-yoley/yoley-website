@@ -2,8 +2,8 @@
 title: Settings & Security
 section: settings
 summary: |
-  Business profile, account login, Face ID / app lock, data security,
-  iCloud sync, the Pro plan and Open Banking.
+  Business profile, account login, Face ID / app lock, data security
+  and iCloud sync.
 questions:
   - What can I manage in Settings?
 tags: [settings, security]

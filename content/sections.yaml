@@ -37,7 +37,7 @@ sections:
     title: Job Diary
     screen: jobDiary
     icon: "📅"
-    summary: A 14-day rolling calendar with commute times, maps and (on Pro) weather forecasts.
+    summary: A 14-day rolling calendar with commute times, maps and weather forecasts.
     faq_visible: true
     order: 4
 
@@ -61,7 +61,7 @@ sections:
     title: Payments
     screen: payments
     icon: "💳"
-    summary: Card payments at 1.49% (Free) or 0.99% (Pro), Tap to Pay on iPhone, and Monek processing.
+    summary: Card and Apple Pay payments from 0.99% + 5p through your own Monek Processing Account, with a payment link on every invoice.
     faq_visible: true
     order: 7
 
@@ -69,6 +69,6 @@ sections:
     title: Settings & Security
     screen: settings
     icon: "⚙️"
-    summary: Business profile, Face ID / app lock, CloudKit sync, Pro plan and Open Banking.
+    summary: Business profile, Face ID / app lock and CloudKit sync.
     faq_visible: true
     order: 8
