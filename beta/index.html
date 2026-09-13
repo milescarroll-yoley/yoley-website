@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Yoley beta | Yoley</title>
+  <meta name="description" content="Apply to join the Yoley beta test. Free app for UK tradespeople — quotes, invoices, expenses, CIS and card payments. iPhone and Android.">
+  <link rel="canonical" href="https://yoley.com/beta/">
+  <meta property="og:title" content="Join the Yoley beta">
+  <meta property="og:description" content="Yoley is in beta testing with UK tradespeople. Apply for a place on iPhone or Android.">
+  <meta property="og:url" content="https://yoley.com/beta/">
+  <meta property="og:image" content="https://yoley.com/social-card.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .bt-hero { background:linear-gradient(165deg,var(--navy) 0%,var(--navy-tint) 100%); padding:110px 0 48px; text-align:center; }
+    .bt-hero .container { max-width:780px; }
+    .bt-tag { display:inline-block; padding:7px 16px; background:rgba(250,176,5,0.14); color:var(--yellow); border-radius:100px; font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:22px; }
+    .bt-hero h1 { color:#fff; font-size:clamp(28px,4.4vw,42px); font-weight:900; margin-bottom:14px; }
+    .bt-hero p { color:rgba(255,255,255,0.78); font-size:17px; line-height:1.6; max-width:620px; margin:0 auto; }
+
+    .bt-wrap { background:var(--light-grey); padding:48px 0 80px; }
+    .bt-form { max-width:680px; margin:0 auto; padding:0 20px; }
+    .bt-card { background:#fff; border:1px solid #eef0f4; border-radius:16px; padding:28px; margin-bottom:22px; }
+    .bt-card h2 { font-size:20px; font-weight:800; color:var(--navy); margin-bottom:4px; }
+    .bt-card .desc { font-size:14px; color:var(--mid-text); margin-bottom:20px; line-height:1.6; }
+    .bt-field { margin-bottom:18px; }
+    .bt-field label { display:block; font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px; }
+    .bt-field .hint { display:block; font-weight:400; color:var(--mid-text); font-size:12px; margin-top:4px; line-height:1.5; }
+    .bt-field input[type=text], .bt-field input[type=email], .bt-field input[type=tel], .bt-field select {
+      width:100%; padding:12px 14px; border:1px solid #d7dbe3; border-radius:10px; font:inherit; font-size:15px; color:var(--dark-text); background:#fff;
+    }
+    .bt-field input:focus, .bt-field select:focus { outline:none; border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-tint); }
+    .bt-choice { display:flex; gap:10px; flex-wrap:wrap; }
+    .bt-choice label { display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border:1px solid #d7dbe3; border-radius:100px; cursor:pointer; font-weight:600; font-size:14px; color:var(--navy); background:#fff; margin:0; }
+    .bt-choice input { accent-color:var(--teal); }
+    .bt-choice label:hover { border-color:var(--teal); }
+    .bt-req { color:#E74C3C; }
+    .bt-hidden { display:none !important; }
+    .bt-consent { background:#fff; border:1px solid #eef0f4; border-radius:16px; padding:24px; margin-bottom:22px; font-size:14px; color:var(--dark-text); line-height:1.6; }
+    .bt-consent label { display:flex; gap:10px; align-items:flex-start; margin-top:12px; font-weight:600; color:var(--navy); }
+    .bt-consent input { accent-color:var(--teal); margin-top:3px; flex:0 0 auto; }
+    .bt-submit { background:var(--yellow); color:var(--navy); border:0; border-radius:100px; padding:16px 34px; font-weight:800; font-size:17px; cursor:pointer; width:100%; }
+    .bt-submit:disabled { opacity:0.5; cursor:not-allowed; }
+    .bt-note { font-size:13px; color:var(--mid-text); text-align:center; margin-top:14px; line-height:1.6; }
+    .bt-note a { color:var(--teal-dark); }
+    .bt-msg { display:none; border-radius:12px; padding:16px 18px; margin-bottom:20px; font-size:15px; line-height:1.6; }
+    .bt-msg.ok { display:block; background:var(--teal-tint); color:var(--teal-dark); border-left:4px solid var(--teal); }
+    .bt-msg.err { display:block; background:#fef2f2; color:#b3261e; border-left:4px solid #E74C3C; }
+    .bt-what { max-width:680px; margin:0 auto 26px; padding:0 20px; }
+    .bt-what ul { list-style:none; padding:0; margin:0; }
+    .bt-what li { position:relative; padding-left:28px; margin-bottom:12px; font-size:15px; color:var(--dark-text); line-height:1.6; }
+    .bt-what li::before { content:"\2713"; position:absolute; left:0; top:0; color:var(--teal); font-weight:900; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo" aria-label="Yoley home"><img src="../yoley-logo-navbar.png" alt="Yoley logo" height="80" width="200"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#features">Features</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="../tool-talk/index.html">Tool Talk</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../index.html" class="nav-cta">Download Free</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="bt-hero">
+    <div class="container">
+      <div class="bt-tag">Beta testing now under way</div>
+      <h1>Join the Yoley beta</h1>
+      <p>Yoley is in the hands of its first testers on iPhone and Android. We are taking on a small number of UK tradespeople to use it on real jobs before general release. Tell us a bit about yourself and we&rsquo;ll send you an invite.</p>
+    </div>
+  </section>
+
+  <div class="bt-wrap">
+    <div class="bt-what">
+      <ul>
+        <li>The full app, free, with nothing held back &mdash; quotes, invoices, expenses, job diary, CIS and card payments.</li>
+        <li>An invite link by email, usually within a couple of days. Places are limited while we&rsquo;re in beta.</li>
+        <li>All we ask is that you use it on real work and tell us what&rsquo;s wrong with it.</li>
+      </ul>
+    </div>
+
+    <form class="bt-form" id="btForm" novalidate>
+      <div class="bt-msg" id="btMsg" role="status" aria-live="polite"></div>
+
+      <div class="bt-card">
+        <h2>Your details</h2>
+        <p class="desc">We only need enough to get an invite to you and to know which build to send.</p>
+
+        <div class="bt-field">
+          <label>Which phone do you use? <span class="bt-req">*</span></label>
+          <div class="bt-choice">
+            <label><input type="radio" name="platform" value="Android"> Android</label>
+            <label><input type="radio" name="platform" value="iPhone"> iPhone</label>
+            <label><input type="radio" name="platform" value="Both"> Both</label>
+          </div>
+        </div>
+
+        <div class="bt-field">
+          <label for="btName">Your name <span class="bt-req">*</span></label>
+          <input type="text" id="btName" name="name" autocomplete="name">
+        </div>
+
+        <div class="bt-field">
+          <label for="btEmail">Email address <span class="bt-req">*</span></label>
+          <input type="email" id="btEmail" name="email" autocomplete="email">
+          <span class="hint" id="btEmailHint">This is where your invite goes. For Android it must be the email address on your Google account; for iPhone, your Apple ID email.</span>
+        </div>
+
+        <div class="bt-field">
+          <label for="btMobile">Mobile number <span class="bt-req">*</span></label>
+          <input type="tel" id="btMobile" name="mobile" autocomplete="tel" inputmode="tel">
+          <span class="hint">So we can text you the invite link if email goes astray. We won&rsquo;t cold-call you.</span>
+        </div>
+
+        <div class="bt-field">
+          <label for="btTrade">Your trade <span class="bt-req">*</span></label>
+          <select id="btTrade" name="trade">
+            <option value="">Choose your trade&hellip;</option>
+            <option>Electrician</option>
+            <option>Plumber / Heating engineer</option>
+            <option>Carpenter / Joiner</option>
+            <option>Builder</option>
+            <option>Bricklayer</option>
+            <option>Plasterer</option>
+            <option>Painter &amp; decorator</option>
+            <option>Roofer</option>
+            <option>Tiler</option>
+            <option>Landscaper / Groundworker</option>
+            <option>Flooring fitter</option>
+            <option>Kitchen &amp; bathroom fitter</option>
+            <option>Window &amp; door fitter</option>
+            <option>Air conditioning / Refrigeration</option>
+            <option>Scaffolder</option>
+            <option>Locksmith</option>
+            <option>Handyperson / Multi-trade</option>
+            <option value="Other">Something else</option>
+          </select>
+        </div>
+
+        <div class="bt-field bt-hidden" id="btOtherWrap">
+          <label for="btOther">What&rsquo;s your trade?</label>
+          <input type="text" id="btOther" name="tradeOther">
+        </div>
+      </div>
+
+      <div class="bt-consent">
+        We&rsquo;ll use your details to send you a beta invite and to contact you about the test. We won&rsquo;t sell them or pass them to anyone outside Yoley. You can ask us to delete them at any time by emailing <a href="mailto:privacy@yoley.com">privacy@yoley.com</a>. See our <a href="../privacy-policy.html">Privacy Policy</a>.
+        <label><input type="checkbox" id="btConsent"> <span>Yes, contact me about the Yoley beta.</span></label>
+      </div>
+
+      <button type="submit" class="bt-submit" id="btSubmit">Apply to join the beta</button>
+      <p class="bt-note">Already testing? Head to <a href="../support.html">Support</a> if you&rsquo;ve hit a problem.</p>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" aria-label="Yoley home"><img src="../yoley-logo-navbar.png" alt="Yoley logo" height="80" width="200"></a>
+          <p>The free business app built for UK tradespeople.</p>
+        </div>
+        <div class="footer-col"><h4>More</h4><ul>
+          <li><a href="../tool-talk/index.html">Tool Talk</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../terms-of-service.html">Terms of Service</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Yoley Limited. All rights reserved.</span>
+        <div class="footer-flag"><span>&#127468;&#127463;</span> Designed &amp; built in the UK</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    // ===== Submission: Formspree =====
+    // Paste the form's 8-character ID from the Formspree dashboard (the bit after
+    // /f/ in the endpoint). Until it is set, the form HOLDS and sends nothing.
+    var FORMSPREE_ID = "xkjnlqan";
+
+    var form    = document.getElementById('btForm');
+    var msg     = document.getElementById('btMsg');
+    var submit  = document.getElementById('btSubmit');
+    var tradeEl = document.getElementById('btTrade');
+    var otherW  = document.getElementById('btOtherWrap');
+
+    // ---- Anti-spam honeypot. Formspree drops anything with _gotcha filled. ----
+    var hp = document.createElement('input');
+    hp.type='text'; hp.name='_gotcha'; hp.tabIndex=-1; hp.autocomplete='off';
+    hp.style.position='absolute'; hp.style.left='-9999px';
+    hp.setAttribute('aria-hidden','true');
+    form.appendChild(hp);
+
+    // ---- "Something else" reveals a free-text trade ----
+    tradeEl.addEventListener('change', function(){
+      otherW.classList.toggle('bt-hidden', tradeEl.value !== 'Other');
+    });
+
+    function selected(name){
+      var el = form.querySelector('[name="'+name+'"]:checked');
+      return el ? el.value : '';
+    }
+
+    function show(kind, html){
+      msg.className = 'bt-msg ' + kind;
+      msg.innerHTML = html;
+      window.scrollTo({ top:0, behavior:'smooth' });
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      msg.className = 'bt-msg'; msg.textContent = '';
+
+      var platform = selected('platform');
+      var name     = document.getElementById('btName').value.trim();
+      var email    = document.getElementById('btEmail').value.trim();
+      var mobile   = document.getElementById('btMobile').value.trim();
+      var trade    = tradeEl.value === 'Other'
+                       ? document.getElementById('btOther').value.trim()
+                       : tradeEl.value;
+
+      if(!platform || !name || !email || !mobile || !trade){
+        show('err','Please fill in every field so we know who to invite and which build to send.');
+        return;
+      }
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+        show('err','That email address doesn&rsquo;t look right &mdash; please check it, as your invite goes there.');
+        return;
+      }
+      if(!document.getElementById('btConsent').checked){
+        show('err','Please tick the box so we can contact you about the beta.');
+        return;
+      }
+      if(hp.value) return; // bot
+
+      var payload = {
+        platform: platform,
+        name:     name,
+        email:    email,
+        mobile:   mobile,
+        trade:    trade,
+        _subject: 'Yoley beta application — ' + name + ' (' + platform + ', ' + trade + ')',
+        _gotcha:  ''
+      };
+
+      if(!FORMSPREE_ID){
+        // Endpoint not configured yet — HOLD, send nothing, and say so honestly.
+        show('ok','Thanks &mdash; we&rsquo;re just switching the sign-up on. Please email <a href="mailto:beta@yoley.com">beta@yoley.com</a> and we&rsquo;ll get you straight on the list.');
+        console.log('Yoley beta application (not sent — FORMSPREE_ID not set):', payload);
+        return;
+      }
+
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+
+      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Accept':'application/json', 'Content-Type':'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function(res){
+        if(!res.ok) throw new Error('HTTP ' + res.status);
+        form.reset();
+        otherW.classList.add('bt-hidden');
+        show('ok','<strong>You&rsquo;re on the list.</strong> We&rsquo;ll email your invite to <strong>' + email.replace(/[<>&]/g,'') + '</strong>, usually within a couple of days. Keep an eye on your junk folder.');
+        submit.style.display = 'none';
+      }).catch(function(){
+        submit.disabled = false;
+        submit.textContent = 'Apply to join the beta';
+        show('err','Something went wrong sending that. Please try again, or email <a href="mailto:beta@yoley.com">beta@yoley.com</a> and we&rsquo;ll sort it out.');
+      });
+    });
+  })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
