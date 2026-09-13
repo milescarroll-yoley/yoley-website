@@ -168,7 +168,7 @@
     }
     setText('launch-tag', ' Out now on the App Store');
     setText('launch-title', 'Yoley is live on the App Store.');
-    setText('launch-sub', 'Two years of building and testing with real UK tradespeople — free, with nothing held back. Download it on your iPhone today.');
+    setText('launch-sub', 'Two years of building and testing with real UK tradespeople — free, with nothing held back. Download it today.');
     var cta = document.getElementById('launch-cta');
     if (cta) {
       cta.textContent = 'Download on the App Store →';
