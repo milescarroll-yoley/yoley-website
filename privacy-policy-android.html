@@ -43,10 +43,10 @@
 </header>
 
 <h1>Privacy Policy — Android App</h1>
-<p class="meta">Effective date: 1 September 2026 &nbsp;·&nbsp; Version 1.1 &nbsp;·&nbsp; Applies to the Yoley Android app only</p>
+<p class="meta">Effective date: 13 September 2026 &nbsp;·&nbsp; Version 1.2 &nbsp;·&nbsp; Applies to the Yoley Android app only</p>
 
 <div class="highlight">
-  <strong>Plain English summary:</strong> Your business records live on your device, not on Yoley's servers. We don't sell your data, there's no advertising and no tracking. A few features do send small amounts of information to outside services to work — checking an email address, looking up a postcode or a company, getting a weather forecast, and setting up card payments with Monek. Section 4 lists every one of them and exactly what is sent. Android's own backup also copies the app's data to your Google Drive unless you turn that off.
+  <strong>Plain English summary:</strong> Your business records live on your device, not on Yoley's servers. We don't sell your data, there's no advertising and no tracking. A few features do send small amounts of information to outside services to work — checking an email address, looking up a postcode or a company, getting a weather forecast, and setting up card payments with Monek. Section 4 lists every one of them and exactly what is sent. If you import a customer from your phone's contacts, that stays on your device too. Android's own backup also copies the app's data to your Google Drive unless you turn that off.
 </div>
 
 <h2>1. Who we are</h2>
@@ -80,6 +80,12 @@
 <h3>2.4 Sensitive fields we encrypt</h3>
 <p>Subcontractor UTR and National Insurance numbers are encrypted on your device using a key held in the Android Keystore. That key cannot leave your device, which means these fields cannot be read from a backup restored onto a different phone — you will be asked to re-enter them.</p>
 
+<h3>2.5 Importing a contact</h3>
+<p>When adding a customer you can choose <strong>Import from contacts</strong>. Android shows you its own contact picker and you pick one person; the app then copies that person's name, phone number, email address and postal address into a new customer record on your device. The app asks for contacts permission at that point, only reads the one contact you pick, and never uploads your address book. If you would rather not grant the permission, you can type customer details in by hand instead.</p>
+
+<h3>2.6 Location</h3>
+<p>Two features use your location. The job diary can show a job on a map, which uses your device's approximate location on your device only. The weather forecast needs a place to forecast for, so an approximate location is sent to our weather provider (see section 4) &mdash; if you have allowed location access that is your device's approximate position, and if you have not, it is the postcode of the business address you entered in Settings. Nothing more precise than that is sent, your location is never stored in your records, and it is never sent to Yoley. You can refuse the location permission and everything still works; the forecast simply uses your business postcode instead.</p>
+
 <h2>3. Where your data is stored</h2>
 <p>All business records you create are stored on your device, in a local database (Room/SQLite). There is no Yoley server, no Yoley account, and no synchronisation between devices. Yoley staff cannot see, access or recover your records.</p>
 <p><strong>Android backup:</strong> the app takes part in Android's standard backup, which copies the app's database and settings to <em>your own Google Drive</em>. This is a Google service governed by Google's privacy policy; Yoley has no access to it. It exists so you can restore your data on a new phone. You can turn it off in your device settings under System &rsaquo; Backup. You can also export a backup file yourself from Settings inside the app.</p>
@@ -93,7 +99,7 @@
   <tr><td><strong>Companies House</strong> (UK)</td><td>The company name or number you type</td><td>When you look up a limited company</td></tr>
   <tr><td><strong>HMRC</strong></td><td>The VAT number you type</td><td>When you verify a VAT registration</td></tr>
   <tr><td><strong>Fetchify</strong> (Royal Mail address data)</td><td>The postcode and any house name or number you type</td><td>When you use postcode lookup to fill in an address</td></tr>
-  <tr><td><strong>Open-Meteo</strong></td><td>An approximate location</td><td>When the job diary shows a weather forecast</td></tr>
+  <tr><td><strong>OpenWeather</strong></td><td>An approximate location &mdash; your device's approximate position if you have allowed location access, otherwise the postcode of your business address</td><td>When the job diary or dashboard shows a weather forecast</td></tr>
 </table>
 <p>All of these connections use HTTPS encryption. We do not send your quotes, invoices, customer lists, expenses or receipt images to any of them, or to anyone else.</p>
 <p><strong>Optional AI help assistant:</strong> the in-app help assistant answers from content built into the app. If you choose to add your own Anthropic API key in Settings, your typed question is sent to Anthropic to generate an answer. This is off unless you add a key yourself.</p>
