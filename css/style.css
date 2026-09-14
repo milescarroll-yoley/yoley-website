@@ -1211,3 +1211,14 @@ a { text-decoration: none; color: inherit; }
   .pricing-card           { padding: 28px; }
   .pricing-price .amount  { font-size: 36px; }
 }
+
+
+/* ============================================================
+   SCAN-TO-DOWNLOAD PANEL
+   Inline display:none in the markup is the mobile default; a QR
+   code is no use on the phone you'd scan it with. Needs
+   !important to beat that inline style.
+   ============================================================ */
+@media (min-width: 768px) {
+  .qr-panel { display: flex !important; }
+}

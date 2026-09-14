@@ -168,12 +168,16 @@
     }
     setText('launch-tag', ' Out now on the App Store');
     setText('launch-title', 'Yoley is live on the App Store.');
-    setText('launch-sub', 'Two years of building and testing with real UK tradespeople — free, with nothing held back. Download it today.');
+    setText('launch-sub', 'Two years of building and testing with real UK tradespeople — free, with nothing held back. Download it today. The Android app is in beta testing, with general release to follow.');
     var cta = document.getElementById('launch-cta');
     if (cta) {
       cta.textContent = 'Download on the App Store →';
       cta.href = APP_URL;
     }
+    // iOS being live doesn't end the Android beta, so make sure the beta route
+    // is showing rather than letting the App Store button replace it. The markup
+    // already shows it since 14 Sept 2026; this is here for any page that still
+    // ships it hidden.
   }
 
   function check() {
@@ -181,7 +185,13 @@
       if (res && res.resultCount > 0) goLive();
     };
     var s = document.createElement('script');
-    s.src = 'https://itunes.apple.com/lookup?id=' + APP_ID + '&country=gb&callback=__yoleyAppLookup';
+    // Cache-buster is REQUIRED, not belt-and-braces. Apple's CDN caches the
+    // lookup response per exact URL, so on 14 Sept 2026 the un-busted URL was
+    // still returning resultCount 0 hours after the app went on sale, while the
+    // same query with a different callback name returned 1. Bucketed to 5
+    // minutes so we still get some caching without pinning a stale answer.
+    var bucket = Math.floor(Date.now() / 300000);
+    s.src = 'https://itunes.apple.com/lookup?id=' + APP_ID + '&country=gb&_=' + bucket + '&callback=__yoleyAppLookup';
     s.async = true;
     document.body.appendChild(s);
   }

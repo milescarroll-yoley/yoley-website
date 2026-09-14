@@ -159,15 +159,33 @@
        6789192466) on every page load and, once Yoley is actually on sale,
        swaps this section to "live" and points every download button at the
        App Store listing. Nothing to change by hand on launch day. -->
+  <!-- ===== LAUNCH =====
+       iOS went on sale in the UK App Store 14 Sept 2026, so this section states
+       the live position directly rather than waiting on the go-live switch in
+       js/main.js. That switch still runs (it repoints every download link across
+       the site) and its setText strings are kept identical to the markup below,
+       so it is now a no-op here rather than a dependency. Android stays in beta
+       until its Play release is public — keep the beta link until then. -->
   <section class="launch" id="launch" style="background:radial-gradient(120% 120% at 50% 0%, #232a4d 0%, #1A1F36 55%, #11152a 100%); padding:56px 0 80px; text-align:center; overflow:hidden;">
     <div class="container" style="max-width:840px; margin:0 auto; padding:0 24px;">
-      <div id="launch-tag" style="display:inline-block; padding:7px 16px; background:rgba(250,176,5,0.14); color:var(--yellow); border-radius:100px; font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:22px;">Beta testing now under way</div>
-      <h2 id="launch-title" style="color:#fff; font-size:clamp(32px,5.5vw,56px); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:18px;">Yoley is in the hands of testers.</h2>
-      <p id="launch-sub" style="color:rgba(255,255,255,0.72); font-size:clamp(17px,2.2vw,20px); line-height:1.6; max-width:600px; margin:0 auto 40px;">Two years of building with real UK tradespeople, and Yoley is now in <strong style="color:#fff;">beta testing</strong> &mdash; quotes, invoices, expenses, CIS and card payments, free, with nothing held back. General release on the App Store and Google Play follows shortly.</p>
+      <div id="launch-tag" style="display:inline-block; padding:7px 16px; background:rgba(250,176,5,0.14); color:var(--yellow); border-radius:100px; font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:22px;">&#63743; Out now on the App Store</div>
+      <h2 id="launch-title" style="color:#fff; font-size:clamp(32px,5.5vw,56px); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:18px;">Yoley is live on the App Store.</h2>
+      <p id="launch-sub" style="color:rgba(255,255,255,0.72); font-size:clamp(17px,2.2vw,20px); line-height:1.6; max-width:600px; margin:0 auto 40px;">Two years of building and testing with real UK tradespeople &mdash; free, with nothing held back. Download it today. The Android app is in beta testing, with general release to follow.</p>
 
       <div>
-        <a href="beta/index.html" id="launch-cta" style="display:inline-flex; align-items:center; gap:10px; background:var(--yellow); color:var(--navy); padding:16px 32px; border-radius:100px; font-weight:800; font-size:17px; text-decoration:none;">Apply to join the beta &rarr;</a>
-        <p style="color:rgba(255,255,255,0.5); font-size:13px; margin-top:16px;">Free forever &middot; iPhone &amp; Android &middot; Built &amp; tested in the UK</p>
+        <a href="https://apps.apple.com/gb/app/yoley-invoice-quote-app/id6789192466" id="launch-cta" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; background:var(--yellow); color:var(--navy); padding:16px 32px; border-radius:100px; font-weight:800; font-size:17px; text-decoration:none;">Download on the App Store &rarr;</a>
+        <a href="beta/index.html" id="launch-beta" style="display:inline-flex; align-items:center; gap:8px; margin-left:14px; color:rgba(255,255,255,0.85); font-weight:700; font-size:15px; text-decoration:underline; text-underline-offset:4px;">On Android? Join the beta &rarr;</a>
+        <p style="color:rgba(255,255,255,0.5); font-size:13px; margin-top:16px;">Free forever &middot; iPhone now, Android in beta &middot; Built &amp; tested in the UK</p>
+      </div>
+
+      <!-- Scan-to-download. Hidden below 768px: a QR code is useless on the
+           phone you would scan it with, and the button above already serves. -->
+      <div class="qr-panel" style="margin:44px auto 0; display:none; align-items:center; gap:22px; justify-content:center; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:20px 26px; max-width:440px;">
+        <img src="qr-appstore.svg" alt="QR code linking to Yoley on the App Store" width="132" height="132" style="display:block; width:132px; height:132px; background:#fff; border-radius:14px; padding:8px;">
+        <div style="text-align:left;">
+          <div style="color:#fff; font-weight:800; font-size:17px; margin-bottom:6px;">Scan to download</div>
+          <p style="color:rgba(255,255,255,0.6); font-size:14px; line-height:1.55; margin:0;">Point your iPhone camera at the code and Yoley opens straight in the App Store.</p>
+        </div>
       </div>
     </div>
   </section>
