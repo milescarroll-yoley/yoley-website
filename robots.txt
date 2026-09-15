@@ -1,19 +1,65 @@
 # robots.txt for Yoley — https://yoley.com
+
 User-agent: *
 Allow: /
 Disallow: /docs/
 
-# Allow major AI crawlers (optional — remove lines to block)
+# ---------------------------------------------------------------
+# AI crawlers.
+# IMPORTANT: "training" bots and "retrieval/citation" bots are NOT
+# the same thing. Blocking a retrieval bot removes Yoley from that
+# assistant's answers entirely. Do not block anything marked
+# RETRIEVAL below without understanding that trade-off.
+# ---------------------------------------------------------------
+
+# OpenAI
+# GPTBot — training
 User-agent: GPTBot
 Allow: /
 
-User-agent: Google-Extended
+# OAI-SearchBot — RETRIEVAL, indexes for ChatGPT search
+User-agent: OAI-SearchBot
 Allow: /
 
+# ChatGPT-User — RETRIEVAL, user-initiated page fetch
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
+# ClaudeBot — training
 User-agent: ClaudeBot
 Allow: /
 
+# Claude-SearchBot — RETRIEVAL, indexes for Claude search
+User-agent: Claude-SearchBot
+Allow: /
+
+# Claude-User — RETRIEVAL, user-initiated page fetch
+User-agent: Claude-User
+Allow: /
+
+# Perplexity
+# PerplexityBot — RETRIEVAL, indexing and citation, not training
 User-agent: PerplexityBot
+Allow: /
+
+# Perplexity-User — RETRIEVAL, user-initiated page fetch
+User-agent: Perplexity-User
+Allow: /
+
+# Google
+# Google-Extended is a policy token for Gemini training and grounding.
+# It has NO effect on Google Search. AI Overviews are served by Googlebot.
+User-agent: Google-Extended
+Allow: /
+
+# Apple
+# Applebot — RETRIEVAL, Apple Search plus Siri and Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+# Microsoft — feeds Bing and Copilot
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://yoley.com/sitemap.xml
