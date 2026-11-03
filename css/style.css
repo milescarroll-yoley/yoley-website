@@ -1111,6 +1111,7 @@ a { text-decoration: none; color: inherit; }
   max-width: 280px;
 }
 
+.footer-col h2,
 .footer-col h4 {
   color: #fff;
   font-size: 14px;

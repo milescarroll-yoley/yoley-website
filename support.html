@@ -83,7 +83,7 @@
       display:flex; align-items:center; justify-content:center;
       font-size:22px; flex-shrink:0;
     }
-    .agent-info h3 { font-size:16px; font-weight:800; color:var(--navy); margin-bottom:2px; }
+    .agent-info h2 { font-size:16px; font-weight:800; color:var(--navy); margin-bottom:2px; }
     .agent-info p  { font-size:13px; color:var(--mid-text); }
     .agent-status {
       margin-left:auto; display:flex; align-items:center; gap:6px;
@@ -228,7 +228,7 @@
       background:#fff; border-radius:20px; padding:24px;
       box-shadow:0 4px 24px rgba(0,0,0,0.06); margin-top:24px;
     }
-    .related-resources h4 {
+    .related-resources h2 {
       font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:1.5px;
       color:var(--mid-text); margin-bottom:16px;
     }
@@ -276,6 +276,26 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://yoley.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Ask Yoley Support",
+        "item": "https://yoley.com/support.html"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -319,7 +339,7 @@
     <div class="agent-card">
       <div class="agent-avatar">&#129302;</div>
       <div class="agent-info">
-        <h3>Yoley Support Agent</h3>
+        <h2>Yoley Support Agent</h2>
         <p>Knows every feature in the app &mdash; ask me anything</p>
       </div>
       <div class="agent-status">Online</div>
@@ -368,7 +388,7 @@
 
     <!-- Related resources -->
     <div class="related-resources">
-      <h4>Helpful Resources</h4>
+      <h2>Helpful Resources</h2>
       <div class="resource-links">
         <a href="quick-guide.html" class="resource-link">&#9889; Quick Start Guide</a>
         <a href="user-guide.html" class="resource-link">&#128218; Full User Guide</a>
@@ -388,7 +408,7 @@
           <p>The free business app built for UK tradespeople.</p>
         </div>
         <div class="footer-col">
-          <h4>Help</h4>
+          <h2>Help</h2>
           <ul>
             <li><a href="quick-guide.html">Quick Start</a></li>
             <li><a href="user-guide.html">Full User Guide</a></li>
@@ -397,7 +417,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Product</h4>
+          <h2>Product</h2>
           <ul>
             <li><a href="index.html#features">Features</a></li>
             <li><a href="index.html#pricing">Pricing</a></li>
@@ -405,7 +425,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Trades</h4>
+          <h2>Trades</h2>
           <ul>
             <li><a href="for/electricians.html">Electricians</a></li>
             <li><a href="for/plumbers.html">Plumbers</a></li>
@@ -415,7 +435,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Compare</h4>
+          <h2>Compare</h2>
           <ul>
             <li><a href="compare/yoley-vs-tradify.html">vs Tradify</a></li>
             <li><a href="compare/yoley-vs-powered-now.html">vs Powered Now</a></li>
@@ -424,10 +444,13 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>More</h4>
+          <h2>More</h2>
           <ul>
             <li><a href="tool-talk/index.html">Tool Talk</a></li>
             <li><a href="blog/index.html">Blog</a></li>
+            <li><a href="calculators/day-rate-calculator.html">Day Rate Calculator</a></li>
+            <li><a href="calculators/cis-deduction-calculator.html">CIS Calculator</a></li>
+            <li><a href="tool-talk/templates/index.html">Free Templates</a></li>
             <li><a href="privacy-policy.html">Privacy Policy</a></li>
             <li><a href="terms-of-service.html">Terms of Service</a></li>
           </ul>

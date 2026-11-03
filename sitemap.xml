@@ -3,37 +3,37 @@
   <!-- Core pages -->
   <url>
     <loc>https://yoley.com/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://yoley.com/beta/</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yoley.com/quick-guide.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yoley.com/user-guide.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yoley.com/faq.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yoley.com/support.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -53,31 +53,31 @@
   <!-- Trade landing pages -->
   <url>
     <loc>https://yoley.com/for/electricians.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yoley.com/for/plumbers.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yoley.com/for/builders.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yoley.com/for/joiners.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yoley.com/for/roofers.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -85,25 +85,25 @@
   <!-- Comparison pages -->
   <url>
     <loc>https://yoley.com/compare/yoley-vs-tradify.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yoley.com/compare/yoley-vs-powered-now.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yoley.com/compare/yoley-vs-servicem8.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yoley.com/compare/yoley-vs-quickbooks.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -111,13 +111,13 @@
   <!-- Tools -->
   <url>
     <loc>https://yoley.com/calculators/day-rate-calculator.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yoley.com/calculators/cis-deduction-calculator.html</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -125,146 +125,164 @@
   <!-- Blog -->
   <url>
     <loc>https://yoley.com/blog/index.html</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/ai-confessions-of-a-chairman.html</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/real-cost-of-running-a-van-tradespeople.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/hmrc-mileage-rate-55p-2026-tradespeople.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/chase-late-paying-customers-unpaid-invoices.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/how-much-tradesman-charge-day-rate-2026.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/vat-registration-sole-trader-tradesman-2026.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/cis-sole-trader-2026.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/making-tax-digital-sole-traders-2026.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/send-professional-quote-60-seconds.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/tap-to-pay-iphone-tradespeople.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/free-alternatives-tradify-powered-now-2026.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/blog/cis-deduction-rates-explained.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/index.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/do-i-need-a-written-contract.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/handling-a-customer-complaint.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/how-to-hold-your-price.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/can-i-ask-for-a-deposit.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/what-to-do-when-a-customer-wont-pay.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/can-i-charge-interest-on-late-payments.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/can-a-customer-cancel-a-job.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/can-i-do-anything-about-a-bad-review.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/customer-rights-consumer-rights-act.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yoley.com/tool-talk/templates/index.html</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yoley.com/privacy/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://yoley.com/privacy-policy-android.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://yoley.com/delete-data.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

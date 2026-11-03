@@ -1,0 +1,43 @@
+# Yoley
+
+> Yoley is a free business app for UK tradespeople — sole traders and small trade businesses such as electricians, plumbers, builders, joiners and roofers. It handles quotes, invoices, expenses with receipt scanning, a job diary, customer and subcontractor records (including CIS deductions) and card payments. The app has no subscription; card payments are processed by Monek Merchant Services Limited from 0.99% + 5p per payment on personal cards. Available on iPhone (App Store); Android is in beta. Built and based in the UK by Yoley Limited.
+
+Key facts:
+- Price: free, no monthly fee, no tiers, no in-app purchases.
+- Card payments (optional): 0.99% + 5p personal cards, 1.99% + 5p business cards, 2.99% + 5p foreign-issued cards; paid out two working days after the payment.
+- Records live on the user's phone and their own iCloud or Google backup; Yoley does not hold a database of users' trading.
+- Expenses are mapped to HMRC SA103 categories; CIS deductions are calculated per subcontractor. Yoley prepares figures but does not file returns with HMRC.
+
+## Product
+- [Home](https://yoley.com/): features, pricing and comparison table
+- [Quick start guide](https://yoley.com/quick-guide.html)
+- [Full user guide](https://yoley.com/user-guide.html)
+- [FAQ](https://yoley.com/faq.html)
+- [Support](https://yoley.com/support.html)
+
+## Yoley for your trade
+- [Electricians](https://yoley.com/for/electricians.html)
+- [Plumbers and gas engineers](https://yoley.com/for/plumbers.html)
+- [Builders](https://yoley.com/for/builders.html)
+- [Joiners and carpenters](https://yoley.com/for/joiners.html)
+- [Roofers](https://yoley.com/for/roofers.html)
+
+## Comparisons
+- [Yoley vs Tradify](https://yoley.com/compare/yoley-vs-tradify.html)
+- [Yoley vs Powered Now](https://yoley.com/compare/yoley-vs-powered-now.html)
+- [Yoley vs ServiceM8](https://yoley.com/compare/yoley-vs-servicem8.html)
+- [Yoley vs QuickBooks](https://yoley.com/compare/yoley-vs-quickbooks.html)
+
+## Free tools
+- [Tradesman day rate calculator](https://yoley.com/calculators/day-rate-calculator.html)
+- [CIS deduction calculator](https://yoley.com/calculators/cis-deduction-calculator.html)
+- [Free quote, estimate and invoice templates](https://yoley.com/tool-talk/templates/index.html)
+
+## Guides
+- [Blog](https://yoley.com/blog/index.html): CIS, Making Tax Digital, VAT, day rates, mileage, quoting and getting paid
+- [Tool Talk](https://yoley.com/tool-talk/index.html): plain-English business advice for tradespeople — deposits, contracts, complaints, late payment, consumer rights
+
+## Legal
+- [Privacy policy (iPhone)](https://yoley.com/privacy-policy.html)
+- [Privacy policy (Android)](https://yoley.com/privacy-policy-android.html)
+- [Terms of service](https://yoley.com/terms-of-service.html)
